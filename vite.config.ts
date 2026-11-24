@@ -29,8 +29,8 @@ export default defineConfig(({ mode }) => {
   const isProduction = buildEnv === "production";
   const basePath = (process.env.KENER_BASE_PATH || "") as "" | `/${string}`;
 
-  const origin = process.env.ORIGIN || `http://localhost:${port}`;
-  const allowedHost = getAllowedHost(origin);
+  const configuredOrigin = process.env.ORIGIN;
+  const allowedHost = getAllowedHost(configuredOrigin || `http://localhost:${port}`);
 
   return {
     optimizeDeps: {
@@ -56,7 +56,7 @@ export default defineConfig(({ mode }) => {
         },
         paths: {
           base: basePath,
-          origin,
+          ...(configuredOrigin ? { origin: configuredOrigin } : {}),
         },
         csrf: {
           trustedOrigins: ["*"],
