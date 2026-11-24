@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { Label } from "$lib/components/ui/label/index.js";
-  import * as Card from "$lib/components/ui/card/index.js";
-  import { Checkbox } from "$lib/components/ui/checkbox/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import * as Card from "#lib/components/ui/card/index.js";
+  import { Checkbox } from "#lib/components/ui/checkbox/index.js";
   import FileTextIcon from "@lucide/svelte/icons/file-text";
   import { toast } from "svelte-sonner";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
+  import clientResolver from "#lib/client/resolver.js";
 
   interface PageWithMonitors {
     id: number;

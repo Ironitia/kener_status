@@ -10,7 +10,7 @@ import type {
   DocsSidebarGroupSource,
   DocsVersion,
   DocsVersionMeta,
-} from "$lib/types/docs";
+} from "#lib/types/docs.ts";
 
 // Front-matter attributes interface
 interface DocsFrontMatter {

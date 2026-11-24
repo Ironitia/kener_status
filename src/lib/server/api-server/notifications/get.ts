@@ -1,6 +1,6 @@
 import { json } from "@sveltejs/kit";
-import type { APIServerRequest } from "$lib/server/types/api-server";
-import type { NotificationPayload } from "$lib/server/controllers/dashboardController";
+import type { APIServerRequest } from "#lib/server/types/api-server.ts";
+import type { NotificationPayload } from "#lib/server/controllers/dashboardController.ts";
 import {
   GetOngoingIncidentsForMonitorList,
   GetResolvedIncidentsForMonitorList,
@@ -8,11 +8,11 @@ import {
   GetPastMaintenanceEventsForMonitorList,
   GetUpcomingMaintenanceEventsForMonitorList,
   BuildNotificationPayload,
-} from "$lib/server/controllers/dashboardController";
-import { GetMinuteStartNowTimestampUTC } from "$lib/server/tool";
-import { GetSiteDataByKey } from "$lib/server/controllers/siteDataController";
-import type { EventDisplaySettings } from "$lib/types/site";
-import seedSiteData from "$lib/server/db/seedSiteData";
+} from "#lib/server/controllers/dashboardController.ts";
+import { GetMinuteStartNowTimestampUTC } from "#lib/server/tool.ts";
+import { GetSiteDataByKey } from "#lib/server/controllers/siteDataController.ts";
+import type { EventDisplaySettings } from "#lib/types/site.ts";
+import seedSiteData from "#lib/server/db/seedSiteData.ts";
 
 /**
  * GET /dashboard-apis/notifications?tags=tag1,tag2

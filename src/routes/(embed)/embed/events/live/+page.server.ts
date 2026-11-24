@@ -1,7 +1,7 @@
 import type { PageServerLoad } from "./$types";
-import db from "$lib/server/db/db";
+import db from "#lib/server/db/db.ts";
 
-import { GetNowTimestampUTC } from "$lib/server/tool";
+import { GetNowTimestampUTC } from "#lib/server/tool.ts";
 
 export const load: PageServerLoad = async ({ params, parent, url }) => {
   const ts = GetNowTimestampUTC();

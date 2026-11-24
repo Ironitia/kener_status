@@ -34,11 +34,9 @@
           // Fall through to create a fresh element below.
         } else {
           existingScript.addEventListener("load", () => resolvePromise(), { once: true });
-          existingScript.addEventListener(
-            "error",
-            () => rejectPromise(new Error(`Failed to load ${src}`)),
-            { once: true }
-          );
+          existingScript.addEventListener("error", () => rejectPromise(new Error(`Failed to load ${src}`)), {
+            once: true
+          });
           return;
         }
       }
@@ -75,7 +73,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
+  import clientResolver from "#lib/client/resolver.js";
 
   interface Props {
     // Carries the *current* token, so `null` means "no valid token right now"

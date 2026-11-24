@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import { Switch } from "$lib/components/ui/switch/index.js";
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
-  import * as Card from "$lib/components/ui/card/index.js";
-  import * as Dialog from "$lib/components/ui/dialog/index.js";
-  import * as AlertDialog from "$lib/components/ui/alert-dialog/index.js";
-  import * as Table from "$lib/components/ui/table/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import { Switch } from "#lib/components/ui/switch/index.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
+  import * as Card from "#lib/components/ui/card/index.js";
+  import * as Dialog from "#lib/components/ui/dialog/index.js";
+  import * as AlertDialog from "#lib/components/ui/alert-dialog/index.js";
+  import * as Table from "#lib/components/ui/table/index.js";
   import Plus from "@lucide/svelte/icons/plus";
   import Loader from "@lucide/svelte/icons/loader";
   import Copy from "@lucide/svelte/icons/copy";
@@ -15,10 +15,10 @@
   import KeyIcon from "@lucide/svelte/icons/key";
   import Trash2 from "@lucide/svelte/icons/trash-2";
   import { toast } from "svelte-sonner";
-  import LocalTime from "$lib/components/LocalTime.svelte";
+  import LocalTime from "#lib/components/LocalTime.svelte";
   import { onMount } from "svelte";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
+  import clientResolver from "#lib/client/resolver.js";
   import { page } from "$app/state";
   interface ApiKey {
     id: number;

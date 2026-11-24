@@ -1,9 +1,9 @@
 import { json } from "@sveltejs/kit";
-import type { APIServerRequest } from "$lib/server/types/api-server";
-import { GetAllPages } from "$lib/server/controllers/pagesController";
-import { GetSiteDataByKey } from "$lib/server/controllers/siteDataController";
-import type { PageNavItem } from "$lib/server/controllers/dashboardController";
-import type { PageOrderingSettings } from "$lib/types/site";
+import type { APIServerRequest } from "#lib/server/types/api-server.ts";
+import { GetAllPages } from "#lib/server/controllers/pagesController.ts";
+import { GetSiteDataByKey } from "#lib/server/controllers/siteDataController.ts";
+import type { PageNavItem } from "#lib/server/controllers/dashboardController.ts";
+import type { PageOrderingSettings } from "#lib/types/site.ts";
 
 /**
  * GET /dashboard-apis/pages

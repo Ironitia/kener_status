@@ -1,18 +1,18 @@
 <script lang="ts">
-  import * as Item from "$lib/components/ui/item/index.js";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Badge } from "$lib/components/ui/badge/index.js";
+  import * as Item from "#lib/components/ui/item/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Badge } from "#lib/components/ui/badge/index.js";
   import ArrowRight from "@lucide/svelte/icons/arrow-right";
-  import * as Popover from "$lib/components/ui/popover/index.js";
-  import * as Avatar from "$lib/components/ui/avatar/index.js";
-  import { t } from "$lib/stores/i18n";
-  import { formatDate, formatDuration } from "$lib/stores/datetime";
+  import * as Popover from "#lib/components/ui/popover/index.js";
+  import * as Avatar from "#lib/components/ui/avatar/index.js";
+  import { t } from "#lib/stores/i18n.ts";
+  import { formatDate, formatDuration } from "#lib/stores/datetime.ts";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
-  import { GetInitials } from "$lib/clientTools.js";
-  import type { IncidentCommentRecord, IncidentForMonitorListWithComments } from "$lib/server/types/db";
+  import clientResolver from "#lib/client/resolver.js";
+  import { GetInitials } from "#lib/clientTools.js";
+  import type { IncidentCommentRecord, IncidentForMonitorListWithComments } from "#lib/server/types/db.ts";
   import { SveltePurify } from "@humanspeak/svelte-purify";
-  import mdToHTML from "$lib/marked";
+  import mdToHTML from "#lib/marked.ts";
   import { slide } from "svelte/transition";
   import { page } from "$app/state";
 

@@ -7,9 +7,9 @@
 
 import * as client from "openid-client";
 import { GenerateRandomHexString } from "../tool.js";
-import db from "$lib/server/db/db";
+import db from "#lib/server/db/db.ts";
 import { GenerateToken, CookieConfig } from "./commonController.js";
-import type { OidcSettings } from "$lib/types/site.js";
+import type { OidcSettings } from "#lib/types/site.js";
 import type { UserRecordPublic } from "../types/db.js";
 import { GetSiteDataByKey } from "./siteDataController.js";
 import GC from "../../global-constants.js";

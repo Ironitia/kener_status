@@ -1,22 +1,22 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
-  import * as Card from "$lib/components/ui/card/index.js";
-  import ThemePlus from "$lib/components/ThemePlus.svelte";
-  import IncidentItem from "$lib/components/IncidentItem.svelte";
-  import MaintenanceItem from "$lib/components/MaintenanceItem.svelte";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
+  import * as Card from "#lib/components/ui/card/index.js";
+  import ThemePlus from "#lib/components/ThemePlus.svelte";
+  import IncidentItem from "#lib/components/IncidentItem.svelte";
+  import MaintenanceItem from "#lib/components/MaintenanceItem.svelte";
   import ArrowLeft from "@lucide/svelte/icons/arrow-left";
   import ArrowRight from "@lucide/svelte/icons/arrow-right";
   import Check from "@lucide/svelte/icons/check";
-  import ICONS from "$lib/icons";
-  import { t } from "$lib/stores/i18n";
-  import { formatDate } from "$lib/stores/datetime";
+  import ICONS from "#lib/icons.ts";
+  import { t } from "#lib/stores/i18n.ts";
+  import { formatDate } from "#lib/stores/datetime.ts";
   import { resolve } from "$app/paths";
-  import clientResolver, { absoluteResolve } from "$lib/client/resolver.js";
+  import clientResolver, { absoluteResolve } from "#lib/client/resolver.js";
   import { format, parse, addMonths, subMonths, getUnixTime, startOfDay, formatDistanceStrict } from "date-fns";
   import { page } from "$app/state";
-  import type { IncidentForMonitorListWithComments, MaintenanceEventsMonitorList } from "$lib/server/types/db";
+  import type { IncidentForMonitorListWithComments, MaintenanceEventsMonitorList } from "#lib/server/types/db.ts";
 
   let { data } = $props();
 

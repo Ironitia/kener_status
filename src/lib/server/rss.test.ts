@@ -1,19 +1,19 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import type { IncidentForMonitorListWithComments, MaintenanceEventsMonitorList } from "$lib/server/types/db.js";
+import type { IncidentForMonitorListWithComments, MaintenanceEventsMonitorList } from "#lib/server/types/db.js";
 
-vi.mock("$lib/server/db/db.js", () => ({
+vi.mock("#lib/server/db/db.js", () => ({
   default: {
     getIncidentsForEventsByDateRange: vi.fn(),
     getMaintenanceEventsForEventsByDateRange: vi.fn(),
   },
 }));
 
-vi.mock("$lib/server/controllers/siteDataController.js", () => ({
+vi.mock("#lib/server/controllers/siteDataController.js", () => ({
   GetAllSiteData: vi.fn(),
 }));
 
-import db from "$lib/server/db/db.js";
-import { GetAllSiteData } from "$lib/server/controllers/siteDataController.js";
+import db from "#lib/server/db/db.js";
+import { GetAllSiteData } from "#lib/server/controllers/siteDataController.js";
 import { renderRssFeedResponse } from "./rss";
 
 const mockedDb = vi.mocked(db);

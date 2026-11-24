@@ -1,9 +1,9 @@
 <script lang="ts">
-  import * as Select from "$lib/components/ui/select/index.js";
-  import { i18n, t } from "$lib/stores/i18n";
+  import * as Select from "#lib/components/ui/select/index.js";
+  import { i18n, t } from "#lib/stores/i18n.ts";
   import Languages from "@lucide/svelte/icons/languages";
-  import { cn } from "$lib/utils.js";
-  import trackEvent from "$lib/beacon";
+  import { cn } from "#lib/utils.js";
+  import trackEvent from "#lib/beacon.ts";
 
   interface Props {
     compact?: boolean;

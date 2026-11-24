@@ -6,9 +6,9 @@ const { VerifyCaptchaToken, GetSiteDataByKey, SubscriberLogin } = vi.hoisted(() 
   SubscriberLogin: vi.fn(),
 }));
 
-vi.mock("$lib/server/controllers/captchaController", () => ({ VerifyCaptchaToken }));
-vi.mock("$lib/server/controllers/siteDataController", () => ({ GetSiteDataByKey }));
-vi.mock("$lib/server/controllers/userSubscriptionsController", () => ({
+vi.mock("#lib/server/controllers/captchaController.ts", () => ({ VerifyCaptchaToken }));
+vi.mock("#lib/server/controllers/siteDataController.ts", () => ({ GetSiteDataByKey }));
+vi.mock("#lib/server/controllers/userSubscriptionsController.ts", () => ({
   SubscriberLogin,
   VerifySubscriberOTP: vi.fn(),
   VerifySubscriberToken: vi.fn(),

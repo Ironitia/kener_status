@@ -6,8 +6,8 @@ import type { Cookies } from "@sveltejs/kit";
 vi.hoisted(() => {
   if (process.env.TEST_DATABASE_URL) process.env.DATABASE_URL = process.env.TEST_DATABASE_URL;
 });
-vi.mock("$lib/server/db/db", async () => {
-  const { default: DbImpl } = await import("$lib/server/db/dbimpl");
+vi.mock("#lib/server/db/db.ts", async () => {
+  const { default: DbImpl } = await import("#lib/server/db/dbimpl.ts");
   if (process.env.TEST_DATABASE_URL) {
     const { default: knexOb } = await import("../../../../../knexfile");
     return { default: new DbImpl(knexOb) };
@@ -16,12 +16,12 @@ vi.mock("$lib/server/db/db", async () => {
     default: new DbImpl({ client: "better-sqlite3", connection: { filename: ":memory:" }, useNullAsDefault: true }),
   };
 });
-vi.mock("$lib/server/queues/alertingQueue", () => ({ default: { push: vi.fn() } }));
+vi.mock("#lib/server/queues/alertingQueue.ts", () => ({ default: { push: vi.fn() } }));
 const { listContainers } = vi.hoisted(() => ({ listContainers: vi.fn(async () => ({ data: [] })) }));
-vi.mock("$lib/server/docker", async (importOriginal) => ({ ...(await importOriginal<object>()), listContainers }));
+vi.mock("#lib/server/docker.ts", async (importOriginal) => ({ ...(await importOriginal<object>()), listContainers }));
 
-import db from "$lib/server/db/db";
-import { GenerateToken } from "$lib/server/controllers/commonController";
+import db from "#lib/server/db/db.ts";
+import { GenerateToken } from "#lib/server/controllers/commonController.ts";
 import { seed as seedPermissions } from "../../../../../seeds/permissions";
 import { seed as seedRoles } from "../../../../../seeds/roles";
 import { POST } from "./+server";

@@ -1,8 +1,8 @@
-import type { TimestampStatusCount } from "$lib/server/types/db";
-import type { GroupMemberDisplay } from "$lib/server/types/monitor";
-import GC, { PAGE_STATUS_MESSAGES } from "$lib/global-constants";
-import type { StatusType } from "$lib/types/status";
-import type { EventDisplaySettings, EventListPlacement } from "$lib/types/site";
+import type { TimestampStatusCount } from "#lib/server/types/db.ts";
+import type { GroupMemberDisplay } from "#lib/server/types/monitor.ts";
+import GC, { PAGE_STATUS_MESSAGES } from "#lib/global-constants.ts";
+import type { StatusType } from "#lib/types/status.ts";
+import type { EventDisplaySettings, EventListPlacement } from "#lib/types/site.ts";
 
 function ParseLatency(latencyMs: number): string {
   if (!!!latencyMs) {

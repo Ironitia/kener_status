@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { Button } from "$lib/components/ui/button/index.js";
-  import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import * as DropdownMenu from "#lib/components/ui/dropdown-menu/index.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
+  import clientResolver from "#lib/client/resolver.js";
   import { onMount } from "svelte";
   import ChevronDown from "@lucide/svelte/icons/chevron-down";
-  import type { PageNavItem } from "$lib/server/controllers/dashboardController.js";
+  import type { PageNavItem } from "#lib/server/controllers/dashboardController.js";
   import { page } from "$app/state";
 
   let currentPath = $derived(page.params.page_path);

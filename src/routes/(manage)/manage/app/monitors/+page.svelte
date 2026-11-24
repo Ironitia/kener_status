@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { Badge } from "$lib/components/ui/badge/index.js";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Input } from "$lib/components/ui/input/index.js";
-  import * as Select from "$lib/components/ui/select/index.js";
-  import * as Table from "$lib/components/ui/table/index.js";
-  import * as Avatar from "$lib/components/ui/avatar/index.js";
+  import { Badge } from "#lib/components/ui/badge/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import * as Select from "#lib/components/ui/select/index.js";
+  import * as Table from "#lib/components/ui/table/index.js";
+  import * as Avatar from "#lib/components/ui/avatar/index.js";
   import ChevronLeftIcon from "@lucide/svelte/icons/chevron-left";
   import ChevronRightIcon from "@lucide/svelte/icons/chevron-right";
   import Plus from "@lucide/svelte/icons/plus";
@@ -12,14 +12,14 @@
   import SearchIcon from "@lucide/svelte/icons/search";
   import FilterIcon from "@lucide/svelte/icons/filter";
   import XIcon from "@lucide/svelte/icons/x";
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
-  import * as Item from "$lib/components/ui/item/index.js";
-  import { Switch } from "$lib/components/ui/switch/index.js";
-  import type { MonitorRecord } from "$lib/server/types/db.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
+  import * as Item from "#lib/components/ui/item/index.js";
+  import { Switch } from "#lib/components/ui/switch/index.js";
+  import type { MonitorRecord } from "#lib/server/types/db.js";
   import { resolve } from "$app/paths";
   import { page } from "$app/state";
-  import clientResolver from "$lib/client/resolver.js";
-  import { GetInitials } from "$lib/clientTools.js";
+  import clientResolver from "#lib/client/resolver.js";
+  import { GetInitials } from "#lib/clientTools.js";
   import { onMount } from "svelte";
   import { toast } from "svelte-sonner";
 

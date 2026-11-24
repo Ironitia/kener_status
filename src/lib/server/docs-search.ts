@@ -5,8 +5,8 @@
  */
 
 import FlexSearch from "flexsearch";
-import { redisConnection } from "$lib/server/redisConnector";
-import type { DocsSearchDocument, DocsSearchResult, DocsSearchIndexData } from "$lib/types/docs-search";
+import { redisConnection } from "#lib/server/redisConnector.ts";
+import type { DocsSearchDocument, DocsSearchResult, DocsSearchIndexData } from "#lib/types/docs-search.ts";
 
 const REDIS_DOCS_KEY = "kener-docs:search:documents";
 

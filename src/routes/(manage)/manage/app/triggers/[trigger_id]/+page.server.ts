@@ -1,9 +1,9 @@
 import { error } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
-import emailTemplate from "$lib/server/templates/email_alert_template";
-import webhookTemplate from "$lib/server/templates/webhook_alert_template";
-import slackTemplate from "$lib/server/templates/slack_alert_template";
-import discordTemplate from "$lib/server/templates/discord_alert_template";
+import emailTemplate from "#lib/server/templates/email_alert_template.ts";
+import webhookTemplate from "#lib/server/templates/webhook_alert_template.ts";
+import slackTemplate from "#lib/server/templates/slack_alert_template.ts";
+import discordTemplate from "#lib/server/templates/discord_alert_template.ts";
 
 export const load: PageServerLoad = async ({ params }) => {
   return {

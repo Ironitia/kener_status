@@ -3,11 +3,11 @@
   import "../kener.css";
   import { ModeWatcher } from "mode-watcher";
   import { resolve } from "$app/paths";
-  import { Toaster } from "$lib/components/ui/sonner/index.js";
-  import clientResolver from "$lib/client/resolver.js";
+  import { Toaster } from "#lib/components/ui/sonner/index.js";
+  import clientResolver from "#lib/client/resolver.js";
 
   let { children, data } = $props();
-  import KenerNav from "$lib/components/KenerNav.svelte";
+  import KenerNav from "#lib/components/KenerNav.svelte";
 </script>
 
 <ModeWatcher defaultMode={data.defaultSiteTheme as "light" | "dark" | "system"} />

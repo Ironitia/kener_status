@@ -5,17 +5,17 @@
   import Monitor from "@lucide/svelte/icons/monitor";
   import ArrowRight from "@lucide/svelte/icons/arrow-right";
   import Repeat from "@lucide/svelte/icons/repeat";
-  import * as Item from "$lib/components/ui/item/index.js";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import GC from "$lib/global-constants.js";
-  import { Badge } from "$lib/components/ui/badge/index.js";
-  import * as Tooltip from "$lib/components/ui/tooltip/index.js";
-  import mdToHTML from "$lib/marked";
-  import ThemePlus from "$lib/components/ThemePlus.svelte";
-  import STATUS_ICON from "$lib/icons";
-  import { t } from "$lib/stores/i18n";
-  import { formatDate, formatDuration } from "$lib/stores/datetime";
-  import clientResolver, { absoluteResolve } from "$lib/client/resolver.js";
+  import * as Item from "#lib/components/ui/item/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import GC from "#lib/global-constants.js";
+  import { Badge } from "#lib/components/ui/badge/index.js";
+  import * as Tooltip from "#lib/components/ui/tooltip/index.js";
+  import mdToHTML from "#lib/marked.ts";
+  import ThemePlus from "#lib/components/ThemePlus.svelte";
+  import STATUS_ICON from "#lib/icons.ts";
+  import { t } from "#lib/stores/i18n.ts";
+  import { formatDate, formatDuration } from "#lib/stores/datetime.ts";
+  import clientResolver, { absoluteResolve } from "#lib/client/resolver.js";
   import { SveltePurify } from "@humanspeak/svelte-purify";
   import { page } from "$app/state";
 

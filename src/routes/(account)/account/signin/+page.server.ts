@@ -5,11 +5,11 @@ import {
   GetUsersCount,
   GetUserPasswordHashById,
   CreateFirstUser,
-} from "$lib/server/controllers/userController";
-import { VerifyPassword, GenerateToken, CookieConfig } from "$lib/server/controllers/commonController";
-import { GetOidcSettings } from "$lib/server/controllers/oidcController";
-import serverResolve from "$lib/server/resolver.js";
-import GC from "$lib/global-constants";
+} from "#lib/server/controllers/userController.ts";
+import { VerifyPassword, GenerateToken, CookieConfig } from "#lib/server/controllers/commonController.ts";
+import { GetOidcSettings } from "#lib/server/controllers/oidcController.ts";
+import serverResolve from "#lib/server/resolver.js";
+import GC from "#lib/global-constants.ts";
 
 // oidc_error carries a code, never free text; anything unknown gets the generic message.
 const OIDC_ERROR_MESSAGES: Record<string, string> = {

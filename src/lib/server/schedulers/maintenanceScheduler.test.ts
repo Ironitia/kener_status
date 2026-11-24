@@ -5,8 +5,8 @@ import type { Knex } from "knex";
 vi.hoisted(() => {
   if (process.env.TEST_DATABASE_URL) process.env.DATABASE_URL = process.env.TEST_DATABASE_URL;
 });
-vi.mock("$lib/server/db/db", async () => {
-  const { default: DbImpl } = await import("$lib/server/db/dbimpl");
+vi.mock("#lib/server/db/db.ts", async () => {
+  const { default: DbImpl } = await import("#lib/server/db/dbimpl.ts");
   if (process.env.TEST_DATABASE_URL) {
     const { default: knexOb } = await import("../../../../knexfile");
     return { default: new DbImpl(knexOb) };
@@ -19,14 +19,14 @@ vi.mock("$lib/server/db/db", async () => {
 const { hourlyJob } = vi.hoisted(() => ({
   hourlyJob: { run: (async () => {}) as (job: unknown) => Promise<unknown> },
 }));
-vi.mock("$lib/server/cache/cache", () => ({
+vi.mock("#lib/server/cache/cache.ts", () => ({
   getCache: async (_key: string, fetcher?: () => unknown) => (fetcher ? await fetcher() : null),
   setCache: async () => {},
   deleteCache: async () => {},
 }));
-vi.mock("$lib/server/queues/subscriberQueue", () => ({ default: { push: vi.fn() } }));
-vi.mock("$lib/server/queues/alertingQueue", () => ({ default: { push: vi.fn() } }));
-vi.mock("$lib/server/queues/q", () => ({
+vi.mock("#lib/server/queues/subscriberQueue.ts", () => ({ default: { push: vi.fn() } }));
+vi.mock("#lib/server/queues/alertingQueue.ts", () => ({ default: { push: vi.fn() } }));
+vi.mock("#lib/server/queues/q.ts", () => ({
   default: {
     createQueue: () => ({ upsertJobScheduler: async () => {} }),
     createWorker: (_queue: unknown, processor: (job: unknown) => Promise<unknown>) => {
@@ -36,13 +36,13 @@ vi.mock("$lib/server/queues/q", () => ({
   },
 }));
 
-import db from "$lib/server/db/db";
+import db from "#lib/server/db/db.ts";
 import {
   CreateMaintenance,
   UpdateMaintenance,
   UpdateMaintenanceEventStatuses,
-} from "$lib/server/controllers/maintenanceController";
-import subscriberQueue from "$lib/server/queues/subscriberQueue";
+} from "#lib/server/controllers/maintenanceController.ts";
+import subscriberQueue from "#lib/server/queues/subscriberQueue.ts";
 import scheduler from "./maintenanceScheduler";
 import { seed as seedSiteData } from "../../../../seeds/site_data";
 

@@ -1,17 +1,17 @@
 <script lang="ts">
-  import { Label } from "$lib/components/ui/label/index.js";
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import * as Select from "$lib/components/ui/select/index.js";
-  import { Badge } from "$lib/components/ui/badge/index.js";
-  import MonitorPicker from "$lib/components/MonitorPicker.svelte";
-  import type { MonitorRecord } from "$lib/server/types/db.js";
-  import type { GroupMemberDisplay, GroupMonitorMember } from "$lib/server/types/monitor.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import * as Select from "#lib/components/ui/select/index.js";
+  import { Badge } from "#lib/components/ui/badge/index.js";
+  import MonitorPicker from "#lib/components/MonitorPicker.svelte";
+  import type { MonitorRecord } from "#lib/server/types/db.js";
+  import type { GroupMemberDisplay, GroupMonitorMember } from "#lib/server/types/monitor.js";
   import ArrowUp from "@lucide/svelte/icons/arrow-up";
   import ArrowDown from "@lucide/svelte/icons/arrow-down";
   import GripVertical from "@lucide/svelte/icons/grip-vertical";
   import X from "@lucide/svelte/icons/x";
-  import clientResolver from "$lib/client/resolver.js";
+  import clientResolver from "#lib/client/resolver.js";
   import { resolve } from "$app/paths";
 
   const LATENCY_CALCULATION_OPTIONS = ["AVG", "MAX", "MIN"] as const;

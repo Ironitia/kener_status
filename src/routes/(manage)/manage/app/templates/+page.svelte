@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
-  import { Badge } from "$lib/components/ui/badge/index.js";
-  import * as Card from "$lib/components/ui/card/index.js";
-  import * as Select from "$lib/components/ui/select/index.js";
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Textarea } from "$lib/components/ui/textarea/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
+  import { Badge } from "#lib/components/ui/badge/index.js";
+  import * as Card from "#lib/components/ui/card/index.js";
+  import * as Select from "#lib/components/ui/select/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Textarea } from "#lib/components/ui/textarea/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
   import SaveIcon from "@lucide/svelte/icons/save";
   import FileTextIcon from "@lucide/svelte/icons/file-text";
   import MailIcon from "@lucide/svelte/icons/mail";
@@ -18,7 +18,7 @@
   import { githubLight, githubDark } from "@uiw/codemirror-theme-github";
   import { onMount } from "svelte";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
+  import clientResolver from "#lib/client/resolver.js";
 
   interface GeneralEmailTemplate {
     template_id: string;

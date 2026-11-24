@@ -1,6 +1,6 @@
 import { json } from "@sveltejs/kit";
 import type { RequestHandler } from "./$types";
-import { searchDocs } from "$lib/server/docs-search";
+import { searchDocs } from "#lib/server/docs-search.ts";
 
 export const GET: RequestHandler = async ({ url }) => {
   const query = url.searchParams.get("q") || "";

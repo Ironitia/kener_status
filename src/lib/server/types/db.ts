@@ -1,6 +1,6 @@
 // Server-only database types (based on migrations schema)
 import type { Knex } from "knex";
-import type { PageMonitorLayoutStyle } from "$lib/types/api";
+import type { PageMonitorLayoutStyle } from "#lib/types/api.ts";
 
 /** Audit column as returned by the driver: Date on pg/mysql, naive UTC text on SQLite. Parse before use. */
 export type DbTimestamp = Date | string;

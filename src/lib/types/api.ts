@@ -1,9 +1,9 @@
 // Types for request/response payloads.
 // Keep these decoupled from DB models (DTOs) so you can evolve DB without breaking the API.
 
-import type { MonitorRecordTyped } from "$lib/server/types/db";
-import type { MonitorPublicView } from "$lib/types/monitor";
-import type GC from "$lib/global-constants";
+import type { MonitorRecordTyped } from "#lib/server/types/db.ts";
+import type { MonitorPublicView } from "#lib/types/monitor.ts";
+import type GC from "#lib/global-constants.ts";
 
 export type ApiError = {
   code: string;

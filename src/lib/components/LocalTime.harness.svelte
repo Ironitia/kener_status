@@ -1,6 +1,6 @@
 <!-- Test-only: LocalTime needs the Tooltip.Provider that app layouts supply. -->
 <script lang="ts">
-  import * as Tooltip from "$lib/components/ui/tooltip/index.js";
+  import * as Tooltip from "#lib/components/ui/tooltip/index.js";
   import LocalTime from "./LocalTime.svelte";
 
   let { value, format }: { value: Date | string | number; format?: string } = $props();

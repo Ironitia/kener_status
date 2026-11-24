@@ -1,12 +1,12 @@
 <script lang="ts">
-  import * as Dialog from "$lib/components/ui/dialog/index.js";
-  import CopyButton from "$lib/components/CopyButton.svelte";
-  import GC from "$lib/global-constants.js";
+  import * as Dialog from "#lib/components/ui/dialog/index.js";
+  import CopyButton from "#lib/components/CopyButton.svelte";
+  import GC from "#lib/global-constants.js";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
-  import { t } from "$lib/stores/i18n";
-  import trackEvent from "$lib/beacon";
-  import { Button } from "$lib/components/ui/button/index.js";
+  import clientResolver from "#lib/client/resolver.js";
+  import { t } from "#lib/stores/i18n.ts";
+  import trackEvent from "#lib/beacon.ts";
+  import { Button } from "#lib/components/ui/button/index.js";
 
   import TrendingUp from "@lucide/svelte/icons/trending-up";
   import Percent from "@lucide/svelte/icons/percent";

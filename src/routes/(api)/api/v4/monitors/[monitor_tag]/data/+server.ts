@@ -1,16 +1,16 @@
 import { json, type RequestHandler } from "@sveltejs/kit";
-import db from "$lib/server/db/db";
+import db from "#lib/server/db/db.ts";
 import type {
   GetMonitoringDataResponse,
   MonitoringDataPoint,
   UpdateMonitoringDataRangeRequest,
   UpdateMonitoringDataRangeResponse,
   BadRequestResponse,
-} from "$lib/types/api";
-import GC from "$lib/global-constants";
-import { UpdateMonitoringData } from "$lib/server/controllers/monitorsController";
-import { GetMinuteStartTimestampUTC } from "$lib/server/tool";
-import { readRequestBody } from "$lib/server/requestBody";
+} from "#lib/types/api.ts";
+import GC from "#lib/global-constants.ts";
+import { UpdateMonitoringData } from "#lib/server/controllers/monitorsController.ts";
+import { GetMinuteStartTimestampUTC } from "#lib/server/tool.ts";
+import { readRequestBody } from "#lib/server/requestBody.ts";
 
 export const GET: RequestHandler = async ({ locals, url }) => {
   // Monitor is validated by middleware and available in locals

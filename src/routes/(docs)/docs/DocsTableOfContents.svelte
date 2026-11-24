@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { DocsTableOfContentsItem } from "$lib/types/docs";
+  import type { DocsTableOfContentsItem } from "#lib/types/docs.ts";
 
   interface Props {
     items: DocsTableOfContentsItem[];

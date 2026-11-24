@@ -1,8 +1,8 @@
 // Server-only monitor types (internal representation with all fields).
 
-import type { PingHost, PingMonitorTypeData } from "$lib/types/ping.js";
-import type { TcpHost, TcpMonitorTypeData } from "$lib/types/tcp.js";
-import type { DockerMonitorTypeData } from "$lib/types/docker.js";
+import type { PingHost, PingMonitorTypeData } from "#lib/types/ping.js";
+import type { TcpHost, TcpMonitorTypeData } from "#lib/types/tcp.js";
+import type { DockerMonitorTypeData } from "#lib/types/docker.js";
 
 export interface MonitoringResult {
   status: string;

@@ -1,19 +1,19 @@
 <script lang="ts">
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import * as Select from "$lib/components/ui/select/index.js";
-  import { ValidateIpAddress } from "$lib/clientTools";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import * as Select from "#lib/components/ui/select/index.js";
+  import { ValidateIpAddress } from "#lib/clientTools.ts";
   import Plus from "@lucide/svelte/icons/plus";
   import X from "@lucide/svelte/icons/x";
-  import { DefaultTCPEval } from "$lib/anywhere.js";
+  import { DefaultTCPEval } from "#lib/anywhere.js";
   import CodeMirror from "svelte-codemirror-editor";
   import { javascript } from "@codemirror/lang-javascript";
   import { githubLight, githubDark } from "@uiw/codemirror-theme-github";
   import { mode } from "mode-watcher";
-  import type { PingHostType } from "$lib/types/ping.js";
-  import { PING_HOST_TYPES } from "$lib/types/ping.js";
-  import type { TcpHost, TcpMonitorTypeData } from "$lib/types/tcp.js";
+  import type { PingHostType } from "#lib/types/ping.js";
+  import { PING_HOST_TYPES } from "#lib/types/ping.js";
+  import type { TcpHost, TcpMonitorTypeData } from "#lib/types/tcp.js";
 
   let { data = $bindable({ hosts: [], tcpEval: DefaultTCPEval }) }: { data: TcpMonitorTypeData } = $props();
 

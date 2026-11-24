@@ -1,6 +1,6 @@
 import { redirect, error } from "@sveltejs/kit";
 import type { RequestHandler } from "./$types";
-import { GetOidcSettings, BuildAuthorizationUrl } from "$lib/server/controllers/oidcController";
+import { GetOidcSettings, BuildAuthorizationUrl } from "#lib/server/controllers/oidcController.ts";
 
 export const GET: RequestHandler = async ({ url, cookies }) => {
   const settings = await GetOidcSettings();
@@ -29,7 +29,7 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
     cookies.set("oidc-nonce", nonce, cookieOptions);
     cookies.set("oidc-code-verifier", codeVerifier, cookieOptions);
 
-    throw redirect(302, authUrl);
+    throw redirect(302, authUrl, { external: true });
   } catch (e) {
     if (e && typeof e === "object" && "status" in e && (e as { status: number }).status === 302) {
       throw e;

@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
-  import { Badge } from "$lib/components/ui/badge/index.js";
-  import { Switch } from "$lib/components/ui/switch/index.js";
-  import * as Select from "$lib/components/ui/select/index.js";
-  import * as Table from "$lib/components/ui/table/index.js";
-  import * as Tooltip from "$lib/components/ui/tooltip/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
+  import { Badge } from "#lib/components/ui/badge/index.js";
+  import { Switch } from "#lib/components/ui/switch/index.js";
+  import * as Select from "#lib/components/ui/select/index.js";
+  import * as Table from "#lib/components/ui/table/index.js";
+  import * as Tooltip from "#lib/components/ui/tooltip/index.js";
   import ChevronLeftIcon from "@lucide/svelte/icons/chevron-left";
   import ChevronRightIcon from "@lucide/svelte/icons/chevron-right";
   import PlusIcon from "@lucide/svelte/icons/plus";
@@ -14,11 +14,11 @@
   import BellOffIcon from "@lucide/svelte/icons/bell-off";
   import { goto } from "$app/navigation";
   import { toast } from "svelte-sonner";
-  import GC from "$lib/global-constants";
-  import { getAlertText } from "$lib/alerts/alert-text";
-  import type { MonitorAlertConfigWithTriggers } from "$lib/server/types/db";
+  import GC from "#lib/global-constants.ts";
+  import { getAlertText } from "#lib/alerts/alert-text.ts";
+  import type { MonitorAlertConfigWithTriggers } from "#lib/server/types/db.ts";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
+  import clientResolver from "#lib/client/resolver.js";
 
   // State
   let loading = $state(true);

@@ -9,7 +9,7 @@ import {
   resolveVersionedDocsSlug,
 } from "../../docs-utils.server";
 import { error, redirect } from "@sveltejs/kit";
-import mdToHTML from "$lib/marked";
+import mdToHTML from "#lib/marked.ts";
 
 export const load: PageServerLoad = async ({ params }) => {
   const { versionSlug, pageSlug } = resolveVersionedDocsSlug(params.slug);

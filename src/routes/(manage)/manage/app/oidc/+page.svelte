@@ -1,15 +1,15 @@
 <script lang="ts">
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import { Switch } from "$lib/components/ui/switch/index.js";
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
-  import { Badge } from "$lib/components/ui/badge/index.js";
-  import { Separator } from "$lib/components/ui/separator/index.js";
-  import * as Card from "$lib/components/ui/card/index.js";
-  import * as Table from "$lib/components/ui/table/index.js";
-  import * as Select from "$lib/components/ui/select/index.js";
-  import * as AlertDialog from "$lib/components/ui/alert-dialog/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import { Switch } from "#lib/components/ui/switch/index.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
+  import { Badge } from "#lib/components/ui/badge/index.js";
+  import { Separator } from "#lib/components/ui/separator/index.js";
+  import * as Card from "#lib/components/ui/card/index.js";
+  import * as Table from "#lib/components/ui/table/index.js";
+  import * as Select from "#lib/components/ui/select/index.js";
+  import * as AlertDialog from "#lib/components/ui/alert-dialog/index.js";
   import SaveIcon from "@lucide/svelte/icons/save";
   import PlayIcon from "@lucide/svelte/icons/play";
   import PlusIcon from "@lucide/svelte/icons/plus";
@@ -21,8 +21,8 @@
   import { toast } from "svelte-sonner";
   import { onMount } from "svelte";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
-  import type { OidcSettings } from "$lib/types/site.js";
+  import clientResolver from "#lib/client/resolver.js";
+  import type { OidcSettings } from "#lib/types/site.js";
 
   // ============ Types ============
 
@@ -125,9 +125,11 @@
       if (settingsToSave.client_secret === originalMaskedSecret) {
         delete (settingsToSave as Record<string, unknown>).client_secret;
       }
+
       const result = (await apiCall("storeSiteData", { oidcSettings: JSON.stringify(settingsToSave) })) as {
         error?: string;
       };
+
       if (result?.error) {
         toast.error(result.error);
       } else {
@@ -233,9 +235,8 @@
     if (!mappingToDelete) return;
     deletingMapping = true;
     try {
-      const result = (await apiCall("deleteOidcGroupRoleMapping", {
-        id: mappingToDelete.id
-      })) as { error?: string };
+      const result = (await apiCall("deleteOidcGroupRoleMapping", { id: mappingToDelete.id })) as { error?: string };
+
       if (result?.error) {
         toast.error(result.error);
       } else {
@@ -600,7 +601,7 @@
               <strong>Callback URL</strong> to configure in your OIDC provider:<br />
               <code class="bg-muted rounded px-2 py-1 text-xs">
                 {typeof window !== "undefined" ? window.location.origin : "https://your-kener-domain"}{resolve(
-                  "/account/oidc/callback"
+                  "account/oidc/callback"
                 )}
               </code>
             </p>

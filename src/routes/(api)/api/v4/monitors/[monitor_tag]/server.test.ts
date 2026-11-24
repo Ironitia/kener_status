@@ -13,10 +13,10 @@ const { db, rows } = vi.hoisted(() => {
     },
   };
 });
-vi.mock("$lib/server/db/db", () => ({ default: db }));
+vi.mock("#lib/server/db/db.ts", () => ({ default: db }));
 
 import { GET, PATCH } from "./+server";
-import { HEARTBEAT_SECRET_RULE } from "$lib/anywhere";
+import { HEARTBEAT_SECRET_RULE } from "#lib/anywhere.ts";
 
 const stored = (monitor_type: string, type_data: Record<string, unknown>) => ({
   id: 7,

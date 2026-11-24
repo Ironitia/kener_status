@@ -1,8 +1,8 @@
 <script lang="ts">
-  import * as Tooltip from "$lib/components/ui/tooltip/index.js";
+  import * as Tooltip from "#lib/components/ui/tooltip/index.js";
   import { format as fmt, isValid } from "date-fns";
   import { formatInTimeZone } from "date-fns-tz";
-  import { parseDateInput } from "$lib/stores/datetime";
+  import { parseDateInput } from "#lib/stores/datetime.ts";
 
   interface Props {
     /** Audit column (Date, ISO or naive "YYYY-MM-DD HH:mm:ss" string) or event time (epoch seconds). */

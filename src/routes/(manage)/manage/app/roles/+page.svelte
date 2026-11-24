@@ -1,16 +1,16 @@
 <script lang="ts">
-  import * as Accordion from "$lib/components/ui/accordion/index.js";
-  import * as Card from "$lib/components/ui/card/index.js";
-  import * as Table from "$lib/components/ui/table/index.js";
-  import * as Dialog from "$lib/components/ui/dialog/index.js";
-  import * as Sheet from "$lib/components/ui/sheet/index.js";
-  import * as Checkbox from "$lib/components/ui/checkbox/index.js";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import { Badge } from "$lib/components/ui/badge/index.js";
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
-  import { Separator } from "$lib/components/ui/separator/index.js";
+  import * as Accordion from "#lib/components/ui/accordion/index.js";
+  import * as Card from "#lib/components/ui/card/index.js";
+  import * as Table from "#lib/components/ui/table/index.js";
+  import * as Dialog from "#lib/components/ui/dialog/index.js";
+  import * as Sheet from "#lib/components/ui/sheet/index.js";
+  import * as Checkbox from "#lib/components/ui/checkbox/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import { Badge } from "#lib/components/ui/badge/index.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
+  import { Separator } from "#lib/components/ui/separator/index.js";
   import ShieldIcon from "@lucide/svelte/icons/shield";
   import PlusIcon from "@lucide/svelte/icons/plus";
   import LockIcon from "@lucide/svelte/icons/lock";
@@ -24,8 +24,8 @@
   import { toast } from "svelte-sonner";
   import { onMount } from "svelte";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
-  import type { UserRecordPublic, RoleRecord } from "$lib/server/types/db.js";
+  import clientResolver from "#lib/client/resolver.js";
+  import type { UserRecordPublic, RoleRecord } from "#lib/server/types/db.js";
 
   interface Permission {
     id: string;

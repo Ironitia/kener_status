@@ -56,9 +56,7 @@ class DNSResolver {
 
   createQuery(domain: string, type: string): InstanceType<typeof dns2.Packet> {
     const packet = new dns2.Packet();
-    // @ts-expect-error dns2 types are incomplete
     packet.header.id = 1;
-    // @ts-expect-error dns2 types are incomplete
     packet.header.rd = 1;
     // @ts-expect-error dns2 types are incomplete
     packet.questions.push({
@@ -92,7 +90,6 @@ class DNSResolver {
         clearTimeout(timeoutId);
         socket.removeListener("message", onMessage);
         try {
-          // @ts-expect-error dns2 types are incomplete
           const response = dns2.Packet.parse(message) as DNSResponse;
           resolve(response);
         } catch (error) {
@@ -173,7 +170,6 @@ class DNSResolver {
           cleanup();
           const responseData = responseBuffer.subarray(2, 2 + expectedLength);
           try {
-            // @ts-expect-error dns2 types are incomplete
             const response = dns2.Packet.parse(responseData) as DNSResponse;
             socket.destroy();
             resolve(response);

@@ -1,6 +1,6 @@
 import { json, type RequestHandler } from "@sveltejs/kit";
-import { parseDbTimestamp } from "$lib/server/tool";
-import db from "$lib/server/db/db";
+import { parseDbTimestamp } from "#lib/server/tool.ts";
+import db from "#lib/server/db/db.ts";
 import type {
   GetMaintenanceEventResponse,
   UpdateMaintenanceEventRequest,
@@ -9,16 +9,16 @@ import type {
   MaintenanceEventResponse,
   NotFoundResponse,
   BadRequestResponse,
-} from "$lib/types/api";
-import { GetMinuteStartTimestampUTC } from "$lib/server/tool";
-import { GetSiteURL } from "$lib/server/controllers/siteDataController";
+} from "#lib/types/api.ts";
+import { GetMinuteStartTimestampUTC } from "#lib/server/tool.ts";
+import { GetSiteURL } from "#lib/server/controllers/siteDataController.ts";
 import {
   DeleteMaintenanceEvent,
   UpdateMaintenanceEvent,
   UpdateMaintenanceEventStatus,
-} from "$lib/server/controllers/maintenanceController";
-import serverResolver from "$lib/server/resolver";
-import { readRequestBody } from "$lib/server/requestBody";
+} from "#lib/server/controllers/maintenanceController.ts";
+import serverResolver from "#lib/server/resolver.ts";
+import { readRequestBody } from "#lib/server/requestBody.ts";
 
 async function buildEventResponse(event: {
   id: number;

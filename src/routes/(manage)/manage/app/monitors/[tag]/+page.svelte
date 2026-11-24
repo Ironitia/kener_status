@@ -1,24 +1,24 @@
 <script lang="ts">
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
-  import * as Card from "$lib/components/ui/card/index.js";
-  import * as Breadcrumb from "$lib/components/ui/breadcrumb/index.js";
-  import * as Alert from "$lib/components/ui/alert/index.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
+  import * as Card from "#lib/components/ui/card/index.js";
+  import * as Breadcrumb from "#lib/components/ui/breadcrumb/index.js";
+  import * as Alert from "#lib/components/ui/alert/index.js";
   import AlertTriangleIcon from "@lucide/svelte/icons/alert-triangle";
   import type { PageProps } from "./$types";
-  import type { MonitorRecord } from "$lib/server/types/db.js";
-  import type { MonitorType } from "$lib/types/monitor.js";
+  import type { MonitorRecord } from "#lib/server/types/db.js";
+  import type { MonitorType } from "#lib/types/monitor.js";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
-  import * as Accordion from "$lib/components/ui/accordion/index.js";
-  import * as ButtonGroup from "$lib/components/ui/button-group/index.js";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import * as HoverCard from "$lib/components/ui/hover-card/index.js";
-  import * as Dialog from "$lib/components/ui/dialog/index.js";
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
+  import clientResolver from "#lib/client/resolver.js";
+  import * as Accordion from "#lib/components/ui/accordion/index.js";
+  import * as ButtonGroup from "#lib/components/ui/button-group/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import * as HoverCard from "#lib/components/ui/hover-card/index.js";
+  import * as Dialog from "#lib/components/ui/dialog/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
   import { toast } from "svelte-sonner";
   import { goto } from "$app/navigation";
-  import type { SiteSubMenuOptions } from "$lib/types/site";
+  import type { SiteSubMenuOptions } from "#lib/types/site.ts";
 
   // Card components
   import GeneralSettingsCard from "./components/GeneralSettingsCard.svelte";
@@ -30,7 +30,7 @@
   import MonitorRecentLogs from "./components/MonitorRecentLogs.svelte";
   import StatusHistoryDaysCard from "./components/StatusHistoryDaysCard.svelte";
   import MonitorSharingOptionsCard from "./components/MonitorSharingOptionsCard.svelte";
-  import GC from "$lib/global-constants.js";
+  import GC from "#lib/global-constants.js";
 
   let { params, data }: PageProps = $props();
   const isNew = $derived(params.tag === "new");

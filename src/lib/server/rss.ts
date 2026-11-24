@@ -8,9 +8,9 @@
  *      both the default-page and named-page route handlers.
  */
 
-import db from "$lib/server/db/db.js";
-import { GetAllSiteData } from "$lib/server/controllers/siteDataController.js";
-import type { IncidentForMonitorListWithComments, MaintenanceEventsMonitorList } from "$lib/server/types/db.js";
+import db from "#lib/server/db/db.js";
+import { GetAllSiteData } from "#lib/server/controllers/siteDataController.js";
+import type { IncidentForMonitorListWithComments, MaintenanceEventsMonitorList } from "#lib/server/types/db.js";
 
 export type RssFeedItemType = "incident" | "maintenance";
 

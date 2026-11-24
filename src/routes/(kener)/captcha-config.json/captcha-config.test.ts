@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 
 const { GetPublicCaptchaConfig } = vi.hoisted(() => ({ GetPublicCaptchaConfig: vi.fn() }));
-vi.mock("$lib/server/controllers/captchaController", () => ({ GetPublicCaptchaConfig }));
+vi.mock("#lib/server/controllers/captchaController.ts", () => ({ GetPublicCaptchaConfig }));
 
 import { GET } from "./+server";
 

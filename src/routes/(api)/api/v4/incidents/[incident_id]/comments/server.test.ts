@@ -30,9 +30,9 @@ const { db, subscriberQueue, row } = vi.hoisted(() => {
     subscriberQueue: { push: vi.fn() },
   };
 });
-vi.mock("$lib/server/db/db", () => ({ default: db }));
-vi.mock("$lib/server/queues/subscriberQueue", () => ({ default: subscriberQueue }));
-vi.mock("$lib/server/controllers/siteDataController", () => ({
+vi.mock("#lib/server/db/db.ts", () => ({ default: db }));
+vi.mock("#lib/server/queues/subscriberQueue.ts", () => ({ default: subscriberQueue }));
+vi.mock("#lib/server/controllers/siteDataController.ts", () => ({
   GetAllSiteData: vi.fn(async () => ({ siteURL: "https://status.example.com", siteName: "Example", colors: {} })),
 }));
 

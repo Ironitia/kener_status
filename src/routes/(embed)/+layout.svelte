@@ -3,7 +3,7 @@
   import "../kener.css";
   import "../embed.css";
   import { ModeWatcher } from "mode-watcher";
-  import { Toaster } from "$lib/components/ui/sonner/index.js";
+  import { Toaster } from "#lib/components/ui/sonner/index.js";
 
   let { children, data } = $props();
 </script>

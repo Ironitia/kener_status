@@ -1,8 +1,8 @@
 import { json, error } from "@sveltejs/kit";
-import type { APIServerRequest } from "$lib/server/types/api-server";
-import type { IncidentForMonitorListWithComments, MaintenanceEventsMonitorList } from "$lib/server/types/db";
-import db from "$lib/server/db/db";
-import { GetAllSiteData } from "$lib/server/controllers/siteDataController";
+import type { APIServerRequest } from "#lib/server/types/api-server.ts";
+import type { IncidentForMonitorListWithComments, MaintenanceEventsMonitorList } from "#lib/server/types/db.ts";
+import db from "#lib/server/db/db.ts";
+import { GetAllSiteData } from "#lib/server/controllers/siteDataController.ts";
 
 interface EventsByMonthRequest {
   start_ts: number;
@@ -25,11 +25,11 @@ export default async function post(req: APIServerRequest): Promise<Response> {
   }
 
   if (!body.start_ts || typeof body.start_ts !== "number") {
-    return error(400, { message: "start_ts is required and must be a number" });
+    return error(400, "start_ts is required and must be a number");
   }
 
   if (!body.end_ts || typeof body.end_ts !== "number") {
-    return error(400, { message: "end_ts is required and must be a number" });
+    return error(400, "end_ts is required and must be a number");
   }
 
   // get site data
@@ -45,7 +45,7 @@ export default async function post(req: APIServerRequest): Promise<Response> {
   if (pagePath !== null) {
     const pageData = await db.getPageByPath(pagePath);
     if (!pageData) {
-      return error(404, { message: "Page not found" });
+      return error(404, "Page not found");
     }
     const monitorsForPage = await db.getActivePageMonitors(pageData.id);
     pathMonitors = monitorsForPage.map((m) => m.monitor_tag);

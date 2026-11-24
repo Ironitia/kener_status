@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import type { EventDisplaySettings } from "$lib/types/site";
+import type { EventDisplaySettings } from "#lib/types/site.ts";
 import {
   IsValidDnsResolver,
   ParseLatency,

@@ -31,9 +31,9 @@ import { parseDbTimestamp } from "../tool.js";
 import GC from "../../global-constants.js";
 import { alertToVariables, siteDataToVariables } from "../notification/notification_utils.js";
 import sendEmail from "../notification/email_notification.js";
-import sendWebhook from "$lib/server/notification/webhook_notification.js";
-import sendSlack from "$lib/server/notification/slack_notification.js";
-import sendDiscord from "$lib/server/notification/discord_notification.js";
+import sendWebhook from "#lib/server/notification/webhook_notification.js";
+import sendSlack from "#lib/server/notification/slack_notification.js";
+import sendDiscord from "#lib/server/notification/discord_notification.js";
 
 import type { SiteDataForNotification } from "../notification/types.js";
 let alertingQueue: Queue | null = null;

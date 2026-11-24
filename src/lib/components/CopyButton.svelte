@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { UseClipboard } from "$lib/hooks/use-clipboard.svelte.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { UseClipboard } from "#lib/hooks/use-clipboard.svelte.js";
   import Check from "@lucide/svelte/icons/check";
   import type { Snippet } from "svelte";
-  import { t } from "$lib/stores/i18n";
+  import { t } from "#lib/stores/i18n.ts";
 
   interface Props {
     variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link";

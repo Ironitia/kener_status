@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-vi.mock("$lib/server/db/db", () => ({
+vi.mock("#lib/server/db/db.ts", () => ({
   default: {
     insertMonitor: vi.fn().mockResolvedValue([1]),
     updateMonitor: vi.fn().mockResolvedValue(1),
@@ -9,7 +9,7 @@ vi.mock("$lib/server/db/db", () => ({
   },
 }));
 
-import db from "$lib/server/db/db";
+import db from "#lib/server/db/db.ts";
 import {
   CloneMonitor,
   CreateMonitor,
@@ -18,7 +18,7 @@ import {
   mergeLatestMonitoringWithSslCache,
   RestoreMonitorSecrets,
 } from "./monitorsController";
-import { HEARTBEAT_SECRET_RULE } from "$lib/anywhere";
+import { HEARTBEAT_SECRET_RULE } from "#lib/anywhere.ts";
 import type { MonitoringData } from "../types/db.js";
 
 const mockedDb = vi.mocked(db);

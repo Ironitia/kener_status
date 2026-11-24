@@ -6,8 +6,8 @@ import {
   FindOrCreateOidcUser,
   GenerateOidcSession,
   OidcLoginError,
-} from "$lib/server/controllers/oidcController";
-import serverResolve from "$lib/server/resolver.js";
+} from "#lib/server/controllers/oidcController.ts";
+import serverResolve from "#lib/server/resolver.js";
 
 export const GET: RequestHandler = async ({ url, cookies }) => {
   const settings = await GetOidcSettings();

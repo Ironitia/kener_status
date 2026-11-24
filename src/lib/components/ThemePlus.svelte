@@ -1,25 +1,25 @@
 <script lang="ts">
-  import { Button } from "$lib/components/ui/button/index.js";
-  import * as ButtonGroup from "$lib/components/ui/button-group/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import * as ButtonGroup from "#lib/components/ui/button-group/index.js";
   import { setMode, mode } from "mode-watcher";
   import { page } from "$app/state";
-  import { i18n, t } from "$lib/stores/i18n";
+  import { i18n, t } from "#lib/stores/i18n.ts";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
+  import clientResolver from "#lib/client/resolver.js";
 
   import Sun from "@lucide/svelte/icons/sun";
   import Moon from "@lucide/svelte/icons/moon";
   import Share from "@lucide/svelte/icons/share-2";
   import Rss from "@lucide/svelte/icons/rss";
   import { format } from "date-fns";
-  import SubscribeMenu from "$lib/components/SubscribeMenu.svelte";
-  import CopyButton from "$lib/components/CopyButton.svelte";
-  import BadgesMenu from "$lib/components/BadgesMenu.svelte";
-  import EmbedMenu from "$lib/components/EmbedMenu.svelte";
+  import SubscribeMenu from "#lib/components/SubscribeMenu.svelte";
+  import CopyButton from "#lib/components/CopyButton.svelte";
+  import BadgesMenu from "#lib/components/BadgesMenu.svelte";
+  import EmbedMenu from "#lib/components/EmbedMenu.svelte";
   import { onMount } from "svelte";
   import LanguageSelector from "./LanguageSelector.svelte";
   import TimezoneSelector from "./TimezoneSelector.svelte";
-  import trackEvent from "$lib/beacon";
+  import trackEvent from "#lib/beacon.ts";
   import SiteBanner from "./SiteBanner.svelte";
   import NotificationsPopover from "./NotificationsPopover.svelte";
   import PageSelector from "./PageSelector.svelte";

@@ -1,5 +1,6 @@
+import type { Handle, ResolveOptions } from "@sveltejs/kit/hooks";
+import type { RequestEvent } from "@sveltejs/kit";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import type { Handle, RequestEvent, ResolveOptions } from "@sveltejs/kit";
 
 const { db, GetMonitorsParsed } = vi.hoisted(() => ({
   db: {
@@ -10,15 +11,15 @@ const { db, GetMonitorsParsed } = vi.hoisted(() => ({
   },
   GetMonitorsParsed: vi.fn(async (_query: { tag?: string }): Promise<Array<{ tag: string }>> => []),
 }));
-vi.mock("$lib/server/db/db", () => ({ default: db }));
-vi.mock("$lib/server/controllers/monitorsController", () => ({ GetMonitorsParsed }));
+vi.mock("#lib/server/db/db.ts", () => ({ default: db }));
+vi.mock("#lib/server/controllers/monitorsController.ts", () => ({ GetMonitorsParsed }));
 // SvelteKit's sequence() needs a request store that only its server runtime sets up.
 vi.mock("@sveltejs/kit/hooks", () => ({
   sequence:
     (...handlers: Handle[]): Handle =>
     ({ event, resolve }) =>
-      handlers.reduceRight<(event: RequestEvent, opts?: ResolveOptions) => ReturnType<Handle>>(
-        (next, handle) => (event) => handle({ event, resolve: next }),
+      handlers.reduceRight<(event: RequestEvent, opts?: ResolveOptions) => Promise<Response>>(
+        (next, handle) => async (event) => await handle({ event, resolve: next }),
         resolve,
       )(event),
 }));
@@ -213,7 +214,9 @@ describe("route params fill event.locals", () => {
       { monitor_tag: "mon1" },
       "Monitor with tag 'mon1' not found",
     ],
+
     ["incident_id", "/(api)/api/v4/incidents/[incident_id]", { incident_id: "12" }, "Incident with id '12' not found"],
+
     [
       "maintenance_id",
       "/(api)/api/v4/maintenances/[maintenance_id]",

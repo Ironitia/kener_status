@@ -4,24 +4,24 @@ import {
   GetIncidentById,
   GetIncidentCommentsByIncidentId,
   GetAffectedMonitorsByIncidentId,
-} from "$lib/server/controllers/dashboardController.js";
+} from "#lib/server/controllers/dashboardController.js";
 
 export const load: PageServerLoad = async ({ params, parent }) => {
   const { incident_id } = params;
   const incidentIdNum = Number(incident_id);
   if (isNaN(incidentIdNum)) {
-    throw error(400, { message: "Invalid incident ID" });
+    throw error(400, "Invalid incident ID");
   }
 
   // Fetch incident details
   const incident = await GetIncidentById(incidentIdNum);
   if (!incident) {
-    throw error(404, { message: "Incident not found" });
+    throw error(404, "Incident not found");
   }
   const { canSeeHiddenMonitors } = await parent();
   const affectedMonitors = await GetAffectedMonitorsByIncidentId(incidentIdNum, canSeeHiddenMonitors);
   if (incident.is_global !== "YES" && affectedMonitors.length === 0) {
-    throw error(404, { message: "Incident not found" });
+    throw error(404, "Incident not found");
   }
   const comments = await GetIncidentCommentsByIncidentId(incidentIdNum);
 

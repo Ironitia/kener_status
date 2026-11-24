@@ -1,5 +1,5 @@
 import { json, type RequestHandler } from "@sveltejs/kit";
-import db from "$lib/server/db/db";
+import db from "#lib/server/db/db.ts";
 import type {
   GetMaintenancesListResponse,
   MaintenanceResponse,
@@ -7,17 +7,17 @@ import type {
   CreateMaintenanceResponse,
   BadRequestResponse,
   MaintenanceMonitor,
-} from "$lib/types/api";
-import { GetMinuteStartTimestampUTC, parseDbTimestamp } from "$lib/server/tool";
+} from "#lib/types/api.ts";
+import { GetMinuteStartTimestampUTC, parseDbTimestamp } from "#lib/server/tool.ts";
 import {
   CreateMaintenance,
   GenerateMaintenanceEvents,
   isOneTimeRrule,
-} from "$lib/server/controllers/maintenanceController";
-import { GetSiteURL } from "$lib/server/controllers/siteDataController";
-import serverResolver from "$lib/server/resolver";
-import { readRequestBody } from "$lib/server/requestBody";
-import { isValidRrule, isValidTimezone } from "$lib/maintenanceOccurrences";
+} from "#lib/server/controllers/maintenanceController.ts";
+import { GetSiteURL } from "#lib/server/controllers/siteDataController.ts";
+import serverResolver from "#lib/server/resolver.ts";
+import { readRequestBody } from "#lib/server/requestBody.ts";
+import { isValidRrule, isValidTimezone } from "#lib/maintenanceOccurrences.ts";
 
 export const GET: RequestHandler = async ({ url }) => {
   // Parse query params for filtering

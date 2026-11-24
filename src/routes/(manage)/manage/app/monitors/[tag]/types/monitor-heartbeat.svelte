@@ -1,16 +1,16 @@
 <script lang="ts">
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import { Button } from "$lib/components/ui/button/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
   import Copy from "@lucide/svelte/icons/copy";
-  import * as InputGroup from "$lib/components/ui/input-group/index.js";
-  import clientResolve from "$lib/client/resolver.js";
+  import * as InputGroup from "#lib/components/ui/input-group/index.js";
+  import clientResolve from "#lib/client/resolver.js";
   import { resolve } from "$app/paths";
-  import type { HeartbeatMonitorTypeData } from "$lib/server/types/monitor";
+  import type { HeartbeatMonitorTypeData } from "#lib/server/types/monitor.ts";
   import randomName from "@scaleway/random-name";
-  import CopyButton from "$lib/components/CopyButton.svelte";
-  import { Badge } from "$lib/components/ui/badge";
-  import { HEARTBEAT_SECRET_RULE, IsValidHeartbeatSecret } from "$lib/anywhere";
+  import CopyButton from "#lib/components/CopyButton.svelte";
+  import { Badge } from "#lib/components/ui/badge/index.ts";
+  import { HEARTBEAT_SECRET_RULE, IsValidHeartbeatSecret } from "#lib/anywhere.ts";
 
   let { data = $bindable(), tag = "" }: { data: HeartbeatMonitorTypeData; tag?: string } = $props();
 

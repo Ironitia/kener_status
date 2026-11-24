@@ -1,6 +1,6 @@
 import { resolve } from "$app/paths";
-import clientResolver from "$lib/client/resolver.js";
-import type { NotificationEvent } from "$lib/types/notifications.js";
+import clientResolver from "#lib/client/resolver.js";
+import type { NotificationEvent } from "#lib/types/notifications.js";
 
 interface NotificationsResponse {
   notifications?: NotificationEvent[];

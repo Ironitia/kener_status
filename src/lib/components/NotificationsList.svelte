@@ -1,12 +1,12 @@
 <script lang="ts">
   import { resolve } from "$app/paths";
   import { page } from "$app/state";
-  import { requestNotifications } from "$lib/client/notifications-client.js";
-  import clientResolver from "$lib/client/resolver.js";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { formatDate, formatDuration } from "$lib/stores/datetime";
-  import { t } from "$lib/stores/i18n";
-  import type { NotificationEvent } from "$lib/types/notifications.js";
+  import { requestNotifications } from "#lib/client/notifications-client.js";
+  import clientResolver from "#lib/client/resolver.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { formatDate, formatDuration } from "#lib/stores/datetime.ts";
+  import { t } from "#lib/stores/i18n.ts";
+  import type { NotificationEvent } from "#lib/types/notifications.js";
   import Calendar from "@lucide/svelte/icons/calendar-1";
   import { format } from "date-fns";
 

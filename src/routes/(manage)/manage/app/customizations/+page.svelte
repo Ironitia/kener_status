@@ -1,20 +1,20 @@
 <script lang="ts">
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Textarea } from "$lib/components/ui/textarea/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import * as Card from "$lib/components/ui/card/index.js";
-  import * as Table from "$lib/components/ui/table/index.js";
-  import * as Breadcrumb from "$lib/components/ui/breadcrumb/index.js";
-  import * as Tooltip from "$lib/components/ui/tooltip/index.js";
-  import * as Select from "$lib/components/ui/select/index.js";
-  import * as RadioGroup from "$lib/components/ui/radio-group/index.js";
-  import { Checkbox } from "$lib/components/ui/checkbox/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Textarea } from "#lib/components/ui/textarea/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import * as Card from "#lib/components/ui/card/index.js";
+  import * as Table from "#lib/components/ui/table/index.js";
+  import * as Breadcrumb from "#lib/components/ui/breadcrumb/index.js";
+  import * as Tooltip from "#lib/components/ui/tooltip/index.js";
+  import * as Select from "#lib/components/ui/select/index.js";
+  import * as RadioGroup from "#lib/components/ui/radio-group/index.js";
+  import { Checkbox } from "#lib/components/ui/checkbox/index.js";
   import Loader from "@lucide/svelte/icons/loader";
   import Info from "@lucide/svelte/icons/info";
   import { toast } from "svelte-sonner";
   import { mode } from "mode-watcher";
-  import constants from "$lib/global-constants";
+  import constants from "#lib/global-constants.ts";
 
   import CodeMirror from "svelte-codemirror-editor";
   import { html } from "@codemirror/lang-html";
@@ -22,8 +22,8 @@
   import { githubLight, githubDark } from "@uiw/codemirror-theme-github";
   import ColorPicker from "svelte-awesome-color-picker";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
-  import type { SiteAnnouncement, PageOrderingSettings } from "$lib/types/site.js";
+  import clientResolver from "#lib/client/resolver.js";
+  import type { SiteAnnouncement, PageOrderingSettings } from "#lib/types/site.js";
   import ArrowUp from "@lucide/svelte/icons/arrow-up";
   import ArrowDown from "@lucide/svelte/icons/arrow-down";
   import GripVertical from "@lucide/svelte/icons/grip-vertical";
@@ -446,7 +446,7 @@
   }
 
   import { onMount } from "svelte";
-  import { Spinner } from "$lib/components/ui/spinner";
+  import { Spinner } from "#lib/components/ui/spinner/index.ts";
 
   // Initialize on mount
   onMount(() => {

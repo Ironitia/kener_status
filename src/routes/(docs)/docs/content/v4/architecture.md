@@ -151,7 +151,7 @@ The database layer follows a repository pattern:
 - **`src/lib/server/db/dbimpl.ts`** — facade that composes all repositories and exposes their methods through a single interface
 - **`src/lib/server/db/db.ts`** — exports a singleton `DbImpl` instance used throughout the application
 
-All database access goes through the singleton: `import db from "$lib/server/db/db"`.
+All database access goes through the singleton: `import db from "#lib/server/db/db"`.
 
 ### Migrations {#migrations}
 
@@ -175,7 +175,7 @@ The build process has two stages:
 
 - Bundles all project TypeScript into a single ESM file
 - Externalizes `node_modules` (resolved at runtime) except CJS packages that need ESM conversion
-- Resolves the `$lib` path alias so SvelteKit imports work outside the Vite context
+- Resolves the `#lib` path alias so SvelteKit imports work outside the Vite context
 - Injects the package version at build time
 
 ### Build Commands {#build-commands}

@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { Button } from "$lib/components/ui/button/index.js";
-  import * as Card from "$lib/components/ui/card/index.js";
-  import * as Field from "$lib/components/ui/field/index.js";
-  import * as InputGroup from "$lib/components/ui/input-group/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import * as Card from "#lib/components/ui/card/index.js";
+  import * as Field from "#lib/components/ui/field/index.js";
+  import * as InputGroup from "#lib/components/ui/input-group/index.js";
   import MailIcon from "@lucide/svelte/icons/mail";
   import LockIcon from "@lucide/svelte/icons/lock";
   import UserIcon from "@lucide/svelte/icons/user";
@@ -10,7 +10,7 @@
   import EyeClosedIcon from "@lucide/svelte/icons/eye-closed";
   import EyeOpenIcon from "@lucide/svelte/icons/eye";
   import LogInIcon from "@lucide/svelte/icons/log-in";
-  import * as Alert from "$lib/components/ui/alert/index.js";
+  import * as Alert from "#lib/components/ui/alert/index.js";
   import type { PageProps } from "./$types";
   import { resolve } from "$app/paths";
 
@@ -79,7 +79,7 @@
 
         {#if oidcEnabled && isAdminAccountCreated}
           <div class="mb-4">
-            <Button variant="outline" class="w-full" href={resolve("/account/oidc/login")}>
+            <Button variant="outline" class="w-full" href={resolve("account/oidc/login")}>
               <LogInIcon class="mr-2 h-4 w-4" />
               Sign in with {oidcProviderName}
             </Button>
@@ -157,10 +157,8 @@
                     variant="link"
                     size="sm"
                     class="text-muted-foreground absolute top-0 right-0 h-auto p-0 text-xs"
-                    href={resolve("/account/forgot")}
+                    href={resolve("account/forgot")}>Forgot?</Button
                   >
-                    Forgot?
-                  </Button>
                 </Field.Label>
                 <InputGroup.Root>
                   <InputGroup.Addon>

@@ -1,22 +1,22 @@
 <script lang="ts">
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import { Textarea } from "$lib/components/ui/textarea/index.js";
-  import { Switch } from "$lib/components/ui/switch/index.js";
-  import * as Card from "$lib/components/ui/card/index.js";
-  import * as Select from "$lib/components/ui/select/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import { Textarea } from "#lib/components/ui/textarea/index.js";
+  import { Switch } from "#lib/components/ui/switch/index.js";
+  import * as Card from "#lib/components/ui/card/index.js";
+  import * as Select from "#lib/components/ui/select/index.js";
   import SaveIcon from "@lucide/svelte/icons/save";
   import Loader from "@lucide/svelte/icons/loader";
   import UploadIcon from "@lucide/svelte/icons/upload";
   import XIcon from "@lucide/svelte/icons/x";
   import ImageIcon from "@lucide/svelte/icons/image";
-  import type { MonitorRecord } from "$lib/server/types/db.js";
+  import type { MonitorRecord } from "#lib/server/types/db.js";
   import { toast } from "svelte-sonner";
   import { goto } from "$app/navigation";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
-  import GC from "$lib/global-constants.js";
+  import clientResolver from "#lib/client/resolver.js";
+  import GC from "#lib/global-constants.js";
 
   interface Props {
     monitor: MonitorRecord;

@@ -1,5 +1,5 @@
-import type { PageSettings, PageSettingsPatch } from "$lib/types/api";
-import GC from "$lib/global-constants";
+import type { PageSettings, PageSettingsPatch } from "#lib/types/api.ts";
+import GC from "#lib/global-constants.ts";
 
 // Stored page_settings_json keys differ from the API contract for the meta
 // fields: the manage UI writes camelCase (metaPageTitle, metaPageDescription,

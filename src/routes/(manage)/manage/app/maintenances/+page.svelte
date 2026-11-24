@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
-  import { Badge } from "$lib/components/ui/badge/index.js";
-  import * as Card from "$lib/components/ui/card/index.js";
-  import * as Select from "$lib/components/ui/select/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
+  import { Badge } from "#lib/components/ui/badge/index.js";
+  import * as Card from "#lib/components/ui/card/index.js";
+  import * as Select from "#lib/components/ui/select/index.js";
   import BlendIcon from "@lucide/svelte/icons/blend";
-  import * as Table from "$lib/components/ui/table/index.js";
-  import * as Tooltip from "$lib/components/ui/tooltip/index.js";
+  import * as Table from "#lib/components/ui/table/index.js";
+  import * as Tooltip from "#lib/components/ui/tooltip/index.js";
   import PlusIcon from "@lucide/svelte/icons/plus";
   import ChevronLeftIcon from "@lucide/svelte/icons/chevron-left";
   import ChevronRightIcon from "@lucide/svelte/icons/chevron-right";
@@ -18,9 +18,9 @@
   import UsersIcon from "@lucide/svelte/icons/users";
   import { goto } from "$app/navigation";
   import { formatDistanceToNow, isPast, isFuture, isWithinInterval } from "date-fns";
-  import LocalTime from "$lib/components/LocalTime.svelte";
+  import LocalTime from "#lib/components/LocalTime.svelte";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
+  import clientResolver from "#lib/client/resolver.js";
 
   // Types
   interface MaintenanceEvent {

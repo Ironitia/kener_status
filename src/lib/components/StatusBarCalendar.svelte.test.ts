@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { render } from "vitest-browser-svelte";
 import StatusBarCalendar from "./StatusBarCalendar.svelte";
-import type { TimestampStatusCount } from "$lib/server/types/db";
+import type { TimestampStatusCount } from "#lib/server/types/db.ts";
 
 // The browser context is pinned to UTC (see vite.config.ts), so the timezone store
 // (which defaults to browser TZ) is deterministic; noon UTC keeps fixtures safe too.

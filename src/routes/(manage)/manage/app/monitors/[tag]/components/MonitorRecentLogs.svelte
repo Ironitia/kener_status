@@ -1,16 +1,16 @@
 <script lang="ts">
-  import { Badge } from "$lib/components/ui/badge/index.js";
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
-  import * as Card from "$lib/components/ui/card/index.js";
-  import * as Table from "$lib/components/ui/table/index.js";
-  import * as Tooltip from "$lib/components/ui/tooltip/index.js";
-  import { Button } from "$lib/components/ui/button/index.js";
+  import { Badge } from "#lib/components/ui/badge/index.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
+  import * as Card from "#lib/components/ui/card/index.js";
+  import * as Table from "#lib/components/ui/table/index.js";
+  import * as Tooltip from "#lib/components/ui/tooltip/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
   import RefreshCwIcon from "@lucide/svelte/icons/refresh-cw";
   import ExternalLinkIcon from "@lucide/svelte/icons/external-link";
   import { onMount } from "svelte";
-  import LocalTime from "$lib/components/LocalTime.svelte";
+  import LocalTime from "#lib/components/LocalTime.svelte";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
+  import clientResolver from "#lib/client/resolver.js";
 
   interface Props {
     monitor_tag: string;

@@ -1,5 +1,5 @@
 import { json, type RequestHandler } from "@sveltejs/kit";
-import db from "$lib/server/db/db";
+import db from "#lib/server/db/db.ts";
 import {
   GetMonitorsParsed,
   DeleteMonitorCompletelyUsingTag,
@@ -8,7 +8,7 @@ import {
   UpdateMonitor,
   ValidateTypeDataProxy,
   WithValidHeartbeatSecret,
-} from "$lib/server/controllers/monitorsController";
+} from "#lib/server/controllers/monitorsController.ts";
 import type {
   GetMonitorResponse,
   MonitorResponse,
@@ -16,8 +16,8 @@ import type {
   UpdateMonitorResponse,
   DeleteMonitorResponse,
   BadRequestResponse,
-} from "$lib/types/api";
-import { readRequestBody } from "$lib/server/requestBody";
+} from "#lib/types/api.ts";
+import { readRequestBody } from "#lib/server/requestBody.ts";
 
 export const GET: RequestHandler = async ({ locals }) => {
   // Monitor is validated by middleware and available in locals

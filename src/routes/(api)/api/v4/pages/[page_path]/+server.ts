@@ -1,6 +1,6 @@
 import { json, type RequestHandler } from "@sveltejs/kit";
-import { parseDbTimestamp } from "$lib/server/tool";
-import db from "$lib/server/db/db";
+import { parseDbTimestamp } from "#lib/server/tool.ts";
+import db from "#lib/server/db/db.ts";
 import type {
   GetPageResponse,
   PageResponse,
@@ -9,18 +9,18 @@ import type {
   DeletePageResponse,
   BadRequestResponse,
   NotFoundResponse,
-} from "$lib/types/api";
-import type { PageRecord } from "$lib/server/types/db";
-import GC from "$lib/global-constants";
-import { toApiPageSettings, applyPageSettingsPatch, validatePageSettings } from "$lib/server/pageSettings";
+} from "#lib/types/api.ts";
+import type { PageRecord } from "#lib/server/types/db.ts";
+import GC from "#lib/global-constants.ts";
+import { toApiPageSettings, applyPageSettingsPatch, validatePageSettings } from "#lib/server/pageSettings.ts";
 import {
   AddMonitorToPage,
   DeletePage,
   GetPageMonitors,
   RemoveMonitorFromPage,
   UpdatePage,
-} from "$lib/server/controllers/pagesController";
-import { readRequestBody } from "$lib/server/requestBody";
+} from "#lib/server/controllers/pagesController.ts";
+import { readRequestBody } from "#lib/server/requestBody.ts";
 
 async function formatPageResponse(page: PageRecord): Promise<PageResponse> {
   const pageSettings = toApiPageSettings(page.page_settings_json);

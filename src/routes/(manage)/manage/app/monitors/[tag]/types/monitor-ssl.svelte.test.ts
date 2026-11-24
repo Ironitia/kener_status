@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { render } from "vitest-browser-svelte";
-import type { SslMonitorTypeData } from "$lib/server/types/monitor";
+import type { SslMonitorTypeData } from "#lib/server/types/monitor.ts";
 import MonitorSsl from "./monitor-ssl.svelte";
 
 describe("monitor-ssl form", () => {

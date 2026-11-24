@@ -1,12 +1,12 @@
 <script lang="ts">
-  import NotificationsList from "$lib/components/NotificationsList.svelte";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import * as Popover from "$lib/components/ui/popover/index.js";
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
-  import { requestNotifications } from "$lib/client/notifications-client.js";
-  import ICONS from "$lib/icons";
-  import { t } from "$lib/stores/i18n";
-  import type { NotificationEvent } from "$lib/types/notifications.js";
+  import NotificationsList from "#lib/components/NotificationsList.svelte";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import * as Popover from "#lib/components/ui/popover/index.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
+  import { requestNotifications } from "#lib/client/notifications-client.js";
+  import ICONS from "#lib/icons.ts";
+  import { t } from "#lib/stores/i18n.ts";
+  import type { NotificationEvent } from "#lib/types/notifications.js";
 
   interface Props {
     monitorTags?: string[];

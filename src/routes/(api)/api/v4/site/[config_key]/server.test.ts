@@ -17,9 +17,9 @@ const { db } = vi.hoisted(() => {
     },
   };
 });
-vi.mock("$lib/server/db/db", () => ({ default: db }));
+vi.mock("#lib/server/db/db.ts", () => ({ default: db }));
 
-import { GetPublicCaptchaConfig, VerifyCaptchaToken } from "$lib/server/controllers/captchaController";
+import { GetPublicCaptchaConfig, VerifyCaptchaToken } from "#lib/server/controllers/captchaController.ts";
 import { PATCH } from "./+server";
 
 describe("PATCH /api/v4/site/{config_key}", () => {

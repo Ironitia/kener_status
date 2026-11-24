@@ -2,7 +2,7 @@ import { AllRecordTypes, ValidateIpAddress, IsValidNameServer } from "../clientT
 import knexOb from "../../../knexfile.js";
 import crypto from "crypto";
 import GC from "../global-constants.js";
-import { ParseLatency } from "$lib/clientTools.js";
+import { ParseLatency } from "#lib/clientTools.js";
 import dotenv from "dotenv";
 import type { TimestampStatusCount, UptimeCalculatorResult } from "./db/dbimpl.js";
 dotenv.config();
@@ -231,9 +231,7 @@ function ApplySecretsToHeaders(
 
 function ValidateMonitorAlerts(
   alerts:
-    | Record<string, { triggers?: unknown[]; failureThreshold?: number; successThreshold?: number }>
-    | null
-    | undefined,
+    Record<string, { triggers?: unknown[]; failureThreshold?: number; successThreshold?: number }> | null | undefined,
 ): boolean {
   if (!alerts) {
     console.log("Alerts object is not provided.");

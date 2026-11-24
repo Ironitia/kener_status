@@ -1,6 +1,6 @@
 import { json, type RequestHandler } from "@sveltejs/kit";
-import { parseDbTimestamp } from "$lib/server/tool";
-import db from "$lib/server/db/db";
+import { parseDbTimestamp } from "#lib/server/tool.ts";
+import db from "#lib/server/db/db.ts";
 import type {
   GetMaintenanceResponse,
   UpdateMaintenanceRequest,
@@ -8,17 +8,17 @@ import type {
   MaintenanceResponse,
   BadRequestResponse,
   DeleteMaintenanceResponse,
-} from "$lib/types/api";
-import { GetMinuteStartTimestampUTC } from "$lib/server/tool";
+} from "#lib/types/api.ts";
+import { GetMinuteStartTimestampUTC } from "#lib/server/tool.ts";
 import {
   DeleteMaintenance,
   UpdateMaintenance,
   type UpdateMaintenanceInput,
-} from "$lib/server/controllers/maintenanceController";
-import { GetSiteURL } from "$lib/server/controllers/siteDataController";
-import serverResolver from "$lib/server/resolver";
-import { readRequestBody } from "$lib/server/requestBody";
-import { isValidRrule, isValidTimezone } from "$lib/maintenanceOccurrences";
+} from "#lib/server/controllers/maintenanceController.ts";
+import { GetSiteURL } from "#lib/server/controllers/siteDataController.ts";
+import serverResolver from "#lib/server/resolver.ts";
+import { readRequestBody } from "#lib/server/requestBody.ts";
+import { isValidRrule, isValidTimezone } from "#lib/maintenanceOccurrences.ts";
 
 async function buildMaintenanceResponse(maintenanceId: number): Promise<MaintenanceResponse | null> {
   const maintenance = await db.getMaintenanceById(maintenanceId);

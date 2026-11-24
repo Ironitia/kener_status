@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { DocsConfig } from "$lib/types/docs";
+  import type { DocsConfig } from "#lib/types/docs.ts";
 
   import { goto } from "$app/navigation";
   import Sun from "@lucide/svelte/icons/sun";
@@ -7,11 +7,11 @@
   import Menu from "@lucide/svelte/icons/menu";
   import X from "@lucide/svelte/icons/x";
   import Search from "@lucide/svelte/icons/search";
-  import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
+  import * as DropdownMenu from "#lib/components/ui/dropdown-menu/index.js";
 
   import { toggleMode, mode } from "mode-watcher";
   import DocsSearch from "./DocsSearch.svelte";
-  import { Button } from "$lib/components/ui/button";
+  import { Button } from "#lib/components/ui/button/index.ts";
 
   interface Props {
     config: DocsConfig;

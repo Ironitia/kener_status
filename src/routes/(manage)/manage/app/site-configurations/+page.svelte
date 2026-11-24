@@ -1,27 +1,27 @@
 <script lang="ts">
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import { Textarea } from "$lib/components/ui/textarea/index.js";
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
-  import { Switch } from "$lib/components/ui/switch/index.js";
-  import * as Card from "$lib/components/ui/card/index.js";
-  import * as RadioGroup from "$lib/components/ui/radio-group/index.js";
-  import GC from "$lib/global-constants.js";
-  import { ResolveEventListPlacement } from "$lib/clientTools";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import { Textarea } from "#lib/components/ui/textarea/index.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
+  import { Switch } from "#lib/components/ui/switch/index.js";
+  import * as Card from "#lib/components/ui/card/index.js";
+  import * as RadioGroup from "#lib/components/ui/radio-group/index.js";
+  import GC from "#lib/global-constants.js";
+  import { ResolveEventListPlacement } from "#lib/clientTools.ts";
   import SaveIcon from "@lucide/svelte/icons/save";
   import Loader from "@lucide/svelte/icons/loader";
   import UploadIcon from "@lucide/svelte/icons/upload";
   import XIcon from "@lucide/svelte/icons/x";
   import ImageIcon from "@lucide/svelte/icons/image";
   import Plus from "@lucide/svelte/icons/plus";
-  import CopyButton from "$lib/components/CopyButton.svelte";
+  import CopyButton from "#lib/components/CopyButton.svelte";
   import CopyIcon from "@lucide/svelte/icons/copy";
   import ExternalLinkIcon from "@lucide/svelte/icons/external-link";
   import { onMount } from "svelte";
   import { toast } from "svelte-sonner";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
+  import clientResolver from "#lib/client/resolver.js";
   import { page } from "$app/state";
   import type {
     DataRetentionPolicy,
@@ -30,7 +30,7 @@
     GlobalPageVisibilitySettings,
     SitemapXMLConfig,
     GlobalMaintenanceNotificationSettings
-  } from "$lib/types/site.js";
+  } from "#lib/types/site.js";
   interface NavItem {
     name: string;
     url: string;

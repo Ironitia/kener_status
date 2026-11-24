@@ -1,25 +1,25 @@
 import type { PageServerLoad } from "./$types";
 import { error } from "@sveltejs/kit";
-import db from "$lib/server/db/db";
+import db from "#lib/server/db/db.ts";
 import {
   GetOngoingIncidentsForMonitorList,
   GetResolvedIncidentsForMonitorList,
   GetOngoingMaintenanceEventsForMonitorList,
   GetPastMaintenanceEventsForMonitorList,
   GetUpcomingMaintenanceEventsForMonitorList,
-} from "$lib/server/controllers/dashboardController.js";
-import type { TimestampStatusCount } from "$lib/server/types/db";
-import { GetNowTimestampUTC, UptimeCalculator } from "$lib/server/tool";
-import GC from "$lib/global-constants.js";
+} from "#lib/server/controllers/dashboardController.js";
+import type { TimestampStatusCount } from "#lib/server/types/db.ts";
+import { GetNowTimestampUTC, UptimeCalculator } from "#lib/server/tool.ts";
+import GC from "#lib/global-constants.js";
 import {
   GetStatusColor,
   GetStatusSummary,
   ParseLatency,
   ResolveGroupMemberDisplay,
   ResolveSslExpiresAtMs,
-} from "$lib/clientTools";
-import { AttachSslCacheFields, GetMonitorsParsed } from "$lib/server/controllers/monitorsController";
-import type { GroupMemberDisplay, GroupMonitorTypeData } from "$lib/server/types/monitor";
+} from "#lib/clientTools.ts";
+import { AttachSslCacheFields, GetMonitorsParsed } from "#lib/server/controllers/monitorsController.ts";
+import type { GroupMemberDisplay, GroupMonitorTypeData } from "#lib/server/types/monitor.ts";
 
 export const load: PageServerLoad = async ({ params, parent }) => {
   const { monitor_tag } = params;
@@ -28,7 +28,7 @@ export const load: PageServerLoad = async ({ params, parent }) => {
   const monitors = await GetMonitorsParsed({ tag: monitor_tag, status: "ACTIVE", is_hidden });
   const monitor = monitors[0];
   if (!monitor) {
-    throw error(404, { message: "Monitor not found" });
+    throw error(404, "Monitor not found");
   }
 
   const monitorTags = [monitor_tag];

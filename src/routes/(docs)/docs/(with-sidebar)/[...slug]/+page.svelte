@@ -1,16 +1,16 @@
 <script lang="ts">
-  import type { DocsTableOfContentsItem, DocsPage } from "$lib/types/docs";
+  import type { DocsTableOfContentsItem, DocsPage } from "#lib/types/docs.ts";
   import DocsTableOfContents from "../../DocsTableOfContents.svelte";
   import DocsPageNavigation from "../../DocsPageNavigation.svelte";
   import Copy from "@lucide/svelte/icons/copy";
   import Check from "@lucide/svelte/icons/check";
   import ExternalLink from "@lucide/svelte/icons/external-link";
 
-  import { Button } from "$lib/components/ui/button/index.js";
-  import * as ButtonGroup from "$lib/components/ui/button-group/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import * as ButtonGroup from "#lib/components/ui/button-group/index.js";
   import ChevronDown from "@lucide/svelte/icons/chevron-down";
 
-  import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
+  import * as DropdownMenu from "#lib/components/ui/dropdown-menu/index.js";
   import { afterNavigate } from "$app/navigation";
   interface Props {
     data: {
@@ -80,7 +80,9 @@
 
   // Add copy buttons to code blocks after content is rendered
   $effect(() => {});
-  afterNavigate(() => {
+
+  afterNavigate(({ shallow, type }) => {
+    if (shallow && type === "goto") return;
     if (!contentEl) return;
 
     const codeBlocks = contentEl.querySelectorAll("pre");
@@ -171,15 +173,9 @@
         name: "Documentation",
         item: "https://kener.ing/docs"
       },
-      ...(data.group
-        ? [
-            {
-              "@type": "ListItem",
-              position: 2,
-              name: data.group
-            }
-          ]
-        : []),
+
+      ...(data.group ? [{ "@type": "ListItem", position: 2, name: data.group }] : []),
+
       {
         "@type": "ListItem",
         position: data.group ? 3 : 2,

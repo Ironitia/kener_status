@@ -1,21 +1,21 @@
 <script lang="ts">
   import { page } from "$app/state";
   import { goto } from "$app/navigation";
-  import * as Alert from "$lib/components/ui/alert/index.js";
+  import * as Alert from "#lib/components/ui/alert/index.js";
 
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Textarea } from "$lib/components/ui/textarea/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Textarea } from "#lib/components/ui/textarea/index.js";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
-  import { Badge } from "$lib/components/ui/badge/index.js";
-  import * as Card from "$lib/components/ui/card/index.js";
-  import * as Breadcrumb from "$lib/components/ui/breadcrumb/index.js";
-  import * as Select from "$lib/components/ui/select/index.js";
-  import * as AlertDialog from "$lib/components/ui/alert-dialog/index.js";
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import { Switch } from "$lib/components/ui/switch/index.js";
+  import clientResolver from "#lib/client/resolver.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
+  import { Badge } from "#lib/components/ui/badge/index.js";
+  import * as Card from "#lib/components/ui/card/index.js";
+  import * as Breadcrumb from "#lib/components/ui/breadcrumb/index.js";
+  import * as Select from "#lib/components/ui/select/index.js";
+  import * as AlertDialog from "#lib/components/ui/alert-dialog/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import { Switch } from "#lib/components/ui/switch/index.js";
   import SaveIcon from "@lucide/svelte/icons/save";
   import PlusIcon from "@lucide/svelte/icons/plus";
   import XIcon from "@lucide/svelte/icons/x";
@@ -26,11 +26,11 @@
   import { toast } from "svelte-sonner";
   import { onMount } from "svelte";
   import { mode } from "mode-watcher";
-  import { IsValidURL } from "$lib/clientTools";
+  import { IsValidURL } from "#lib/clientTools.ts";
   import CodeMirror from "svelte-codemirror-editor";
   import { html } from "@codemirror/lang-html";
   import { githubLight, githubDark } from "@uiw/codemirror-theme-github";
-  import type { TriggerMeta } from "$lib/server/types/db";
+  import type { TriggerMeta } from "#lib/server/types/db.ts";
 
   let { data } = page;
   // Types

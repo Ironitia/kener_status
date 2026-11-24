@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { browser } from "$app/environment";
-  import { Button } from "$lib/components/ui/button/index.js";
+  import { browser } from "$app/env";
+  import { Button } from "#lib/components/ui/button/index.js";
   import { onMount } from "svelte";
-  import type { SiteAnnouncement } from "$lib/types/site.js";
+  import type { SiteAnnouncement } from "#lib/types/site.js";
   import X from "@lucide/svelte/icons/x";
 
   interface Props {

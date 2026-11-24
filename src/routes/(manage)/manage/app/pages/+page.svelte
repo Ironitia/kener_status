@@ -1,17 +1,17 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import { onMount } from "svelte";
-  import * as Table from "$lib/components/ui/table/index.js";
-  import * as Avatar from "$lib/components/ui/avatar/index.js";
-  import { Badge } from "$lib/components/ui/badge/index.js";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
+  import * as Table from "#lib/components/ui/table/index.js";
+  import * as Avatar from "#lib/components/ui/avatar/index.js";
+  import { Badge } from "#lib/components/ui/badge/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
   import Plus from "@lucide/svelte/icons/plus";
   import SettingsIcon from "@lucide/svelte/icons/settings";
-  import * as Item from "$lib/components/ui/item/index.js";
-  import type { PageRecord } from "$lib/server/types/db.js";
+  import * as Item from "#lib/components/ui/item/index.js";
+  import type { PageRecord } from "#lib/server/types/db.js";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
+  import clientResolver from "#lib/client/resolver.js";
 
   interface PageWithMonitors extends PageRecord {
     monitors?: { monitor_tag: string }[];

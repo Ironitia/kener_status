@@ -1,5 +1,5 @@
 import db from "../db/db.js";
-import type { PaginationInput } from "$lib/types/common";
+import type { PaginationInput } from "#lib/types/common.ts";
 import { GenerateToken, HashPassword, ValidatePassword, VerifyToken } from "./commonController.js";
 import type { Cookies } from "@sveltejs/kit";
 import type { UserRecordPublic, UserRecordDashboard, RoleRecord } from "../types/db.js";

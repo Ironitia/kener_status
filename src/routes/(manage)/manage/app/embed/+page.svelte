@@ -1,18 +1,18 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
-  import * as Card from "$lib/components/ui/card/index.js";
-  import * as Select from "$lib/components/ui/select/index.js";
-  import { Checkbox } from "$lib/components/ui/checkbox/index.js";
-  import CopyButton from "$lib/components/CopyButton.svelte";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
+  import * as Card from "#lib/components/ui/card/index.js";
+  import * as Select from "#lib/components/ui/select/index.js";
+  import { Checkbox } from "#lib/components/ui/checkbox/index.js";
+  import CopyButton from "#lib/components/CopyButton.svelte";
   import CopyIcon from "@lucide/svelte/icons/copy";
   import RefreshCwIcon from "@lucide/svelte/icons/refresh-cw";
-  import type { MonitorRecord } from "$lib/server/types/db.js";
+  import type { MonitorRecord } from "#lib/server/types/db.js";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
+  import clientResolver from "#lib/client/resolver.js";
   import { mode } from "mode-watcher";
 
   // Monitors state

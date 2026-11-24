@@ -1,11 +1,11 @@
 import { json, error } from "@sveltejs/kit";
-import type { APIServerRequest } from "$lib/server/types/api-server";
-import db from "$lib/server/db/db";
-import { GetMinuteStartNowTimestampUTC } from "$lib/server/tool";
-import type { StatusType } from "$lib/types/status";
-import type { TimestampStatusCount } from "$lib/server/types/db";
+import type { APIServerRequest } from "#lib/server/types/api-server.ts";
+import db from "#lib/server/db/db.ts";
+import { GetMinuteStartNowTimestampUTC } from "#lib/server/tool.ts";
+import type { StatusType } from "#lib/types/status.ts";
+import type { TimestampStatusCount } from "#lib/server/types/db.ts";
 import { buildMonitorBarResponse, parseIntParam } from "./shared";
-import GC from "$lib/global-constants";
+import GC from "#lib/global-constants.ts";
 
 const DEFAULT_DAYS = 90;
 const MAX_DAYS = 90;
@@ -47,13 +47,13 @@ export default async function get(req: APIServerRequest): Promise<Response> {
   const endOfDayTodayAtTzStr = req.query.get("endOfDayTodayAtTz");
   const endOfDayTodayAtTz = parseIntParam(endOfDayTodayAtTzStr, GetMinuteStartNowTimestampUTC());
   if (!tag) {
-    return error(400, { message: "tag query parameter is required" });
+    return error(400, "tag query parameter is required");
   }
 
   const monitors = await db.getMonitors({ tag, status: GC.ACTIVE, is_hidden: GC.NO });
   const monitor = monitors[0];
   if (!monitor) {
-    return error(404, { message: "Monitor not found" });
+    return error(404, "Monitor not found");
   }
   const response = await buildMonitorBarResponse(monitor, days, endOfDayTodayAtTz);
 

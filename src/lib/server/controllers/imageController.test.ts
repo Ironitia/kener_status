@@ -7,8 +7,8 @@ import type { Knex } from "knex";
 vi.hoisted(() => {
   if (process.env.TEST_DATABASE_URL) process.env.DATABASE_URL = process.env.TEST_DATABASE_URL;
 });
-vi.mock("$lib/server/db/db", async () => {
-  const { default: DbImpl } = await import("$lib/server/db/dbimpl");
+vi.mock("#lib/server/db/db.ts", async () => {
+  const { default: DbImpl } = await import("#lib/server/db/dbimpl.ts");
   if (process.env.TEST_DATABASE_URL) {
     const { default: knexOb } = await import("../../../../knexfile");
     return { default: new DbImpl(knexOb) };
@@ -18,7 +18,7 @@ vi.mock("$lib/server/db/db", async () => {
   };
 });
 
-import db from "$lib/server/db/db";
+import db from "#lib/server/db/db.ts";
 import { uploadImage } from "./imageController.js";
 import { GET } from "../../../routes/(assets)/assets/images/[id]/+server";
 

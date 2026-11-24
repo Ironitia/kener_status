@@ -1,7 +1,7 @@
 import MobileDetect from "mobile-detect";
 import type { Cookies } from "@sveltejs/kit";
-import type { UserRecordPublic } from "$lib/server/types/db";
-import seedSiteData from "$lib/server/db/seedSiteData";
+import type { UserRecordPublic } from "#lib/server/types/db.ts";
+import seedSiteData from "#lib/server/db/seedSiteData.ts";
 import {
   CanSeeHiddenMonitors,
   GetAllSiteData,
@@ -11,9 +11,9 @@ import {
   HasRequiredEnv,
   IsEmailSetup,
 } from "./controller.js";
-import type { EventDisplaySettings, GlobalPageVisibilitySettings, SiteDateTimeFormat } from "$lib/types/site.js";
+import type { EventDisplaySettings, GlobalPageVisibilitySettings, SiteDateTimeFormat } from "#lib/types/site.js";
 import serverResolve from "../resolver.js";
-import { ResolveEventListPlacement } from "$lib/clientTools";
+import { ResolveEventListPlacement } from "#lib/clientTools.ts";
 
 export interface LayoutServerData {
   isMobile: boolean;

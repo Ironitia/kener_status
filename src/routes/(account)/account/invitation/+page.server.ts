@@ -1,7 +1,7 @@
 import type { PageServerLoad } from "./$types";
-import { VerifyToken } from "$lib/server/controllers/commonController.js";
-import db from "$lib/server/db/db.js";
-import { GetUserPasswordHashById } from "$lib/server/controllers/userController.js";
+import { VerifyToken } from "#lib/server/controllers/commonController.js";
+import db from "#lib/server/db/db.js";
+import { GetUserPasswordHashById } from "#lib/server/controllers/userController.js";
 
 export const load: PageServerLoad = async ({ url, cookies }) => {
   // Clear any existing session

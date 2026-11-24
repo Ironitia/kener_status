@@ -1,22 +1,22 @@
 <script lang="ts">
-  import { browser } from "$app/environment";
-  import * as Item from "$lib/components/ui/item/index.js";
-  import EventsCard from "$lib/components/EventsCard.svelte";
-  import MonitorBar from "$lib/components/MonitorBar.svelte";
-  import ThemePlus from "$lib/components/ThemePlus.svelte";
-  import IncidentItem from "$lib/components/IncidentItem.svelte";
-  import MaintenanceItem from "$lib/components/MaintenanceItem.svelte";
-  import NotificationsList from "$lib/components/NotificationsList.svelte";
-  import mdToHTML from "$lib/marked.js";
-  import clientResolver, { absoluteResolve } from "$lib/client/resolver.js";
+  import { browser } from "$app/env";
+  import * as Item from "#lib/components/ui/item/index.js";
+  import EventsCard from "#lib/components/EventsCard.svelte";
+  import MonitorBar from "#lib/components/MonitorBar.svelte";
+  import ThemePlus from "#lib/components/ThemePlus.svelte";
+  import IncidentItem from "#lib/components/IncidentItem.svelte";
+  import MaintenanceItem from "#lib/components/MaintenanceItem.svelte";
+  import NotificationsList from "#lib/components/NotificationsList.svelte";
+  import mdToHTML from "#lib/marked.js";
+  import clientResolver, { absoluteResolve } from "#lib/client/resolver.js";
   import { resolve } from "$app/paths";
-  import { selectedTimezone } from "$lib/stores/timezone";
-  import { getEndOfDayAtTz } from "$lib/client/datetime";
-  import { requestMonitorBar } from "$lib/client/monitor-bar-client";
-  import type { MonitorBarResponse } from "$lib/server/api-server/monitor-bar/get";
+  import { selectedTimezone } from "#lib/stores/timezone.ts";
+  import { getEndOfDayAtTz } from "#lib/client/datetime.ts";
+  import { requestMonitorBar } from "#lib/client/monitor-bar-client.ts";
+  import type { MonitorBarResponse } from "#lib/server/api-server/monitor-bar/get.ts";
   import { SveltePurify } from "@humanspeak/svelte-purify";
-  import type { PageMonitorLayoutStyle } from "$lib/types/api";
-  import GC from "$lib/global-constants.js";
+  import type { PageMonitorLayoutStyle } from "#lib/types/api.ts";
+  import GC from "#lib/global-constants.js";
 
   let { data } = $props();
   let pageSettings = $derived(data.pageDetails.page_settings);
@@ -25,8 +25,8 @@
       ? pageSettings?.monitor_status_history_days.mobile || GC.DEFAULT_STATUS_HISTORY_DAYS_MOBILE
       : pageSettings?.monitor_status_history_days.desktop || GC.DEFAULT_STATUS_HISTORY_DAYS_DESKTOP
   );
-  let endOfDayTodayAtTz = $derived(getEndOfDayAtTz($selectedTimezone));
 
+  let endOfDayTodayAtTz = $derived(getEndOfDayAtTz($selectedTimezone));
   let monitorBarDataByTag = $state<Record<string, MonitorBarResponse>>({});
   let monitorBarErrorByTag = $state<Record<string, string>>({});
   let requestVersion = 0;
@@ -183,27 +183,21 @@
         {#if showInlineEvents && data.ongoingIncidents && data.ongoingIncidents.length > 0}
           <div class="flex flex-col gap-3">
             {#each data.ongoingIncidents as incident, i (incident.id ?? i)}
-              <div class=" rounded-3xl border p-3 sm:p-4">
-                <IncidentItem {incident} />
-              </div>
+              <div class=" rounded-3xl border p-3 sm:p-4"><IncidentItem {incident} /></div>
             {/each}
           </div>
         {/if}
         {#if showInlineEvents && data.ongoingMaintenances && data.ongoingMaintenances.length > 0}
           <div class="flex flex-col gap-3">
             {#each data.ongoingMaintenances as maintenance, i (maintenance.id ?? i)}
-              <div class="rounded-3xl border p-3 sm:p-4">
-                <MaintenanceItem {maintenance} />
-              </div>
+              <div class="rounded-3xl border p-3 sm:p-4"><MaintenanceItem {maintenance} /></div>
             {/each}
           </div>
         {/if}
         {#if showInlineEvents && data.upcomingMaintenances && data.upcomingMaintenances.length > 0}
           <div class="flex flex-col gap-3">
             {#each data.upcomingMaintenances as maintenance, i (maintenance.id ?? i)}
-              <div class="rounded-3xl border p-3 sm:p-4">
-                <MaintenanceItem {maintenance} />
-              </div>
+              <div class="rounded-3xl border p-3 sm:p-4"><MaintenanceItem {maintenance} /></div>
             {/each}
           </div>
         {/if}

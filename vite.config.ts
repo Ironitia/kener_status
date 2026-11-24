@@ -1,4 +1,6 @@
 /// <reference types="vitest/config" />
+import adapter from "@sveltejs/adapter-node";
+import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 import tailwindcss from "@tailwindcss/vite";
 import { sveltekit } from "@sveltejs/kit/vite";
 import version from "vite-plugin-package-version";
@@ -25,6 +27,7 @@ export default defineConfig(({ mode }) => {
 
   const buildEnv = process.env.VITE_BUILD_ENV || mode || "development";
   const isProduction = buildEnv === "production";
+  const basePath = (process.env.KENER_BASE_PATH || "") as "" | `/${string}`;
 
   const origin = process.env.ORIGIN || `http://localhost:${port}`;
   const allowedHost = getAllowedHost(origin);
@@ -43,7 +46,43 @@ export default defineConfig(({ mode }) => {
         "@uiw/codemirror-theme-github",
       ],
     },
-    plugins: [tailwindcss(), sveltekit(), version(), devtoolsJson()],
+    plugins: [
+      tailwindcss(),
+      sveltekit({
+        preprocess: [vitePreprocess({})],
+        adapter: adapter(),
+        output: {
+          bundleStrategy: "single",
+        },
+        paths: {
+          base: basePath,
+          origin,
+        },
+        csrf: {
+          trustedOrigins: ["*"],
+        },
+        compilerOptions: {
+          dev: !isProduction,
+        },
+        onwarn: (warning, handler) => {
+          const ignoredWarnings = [
+            "a11y-",
+            "unused-export-let",
+            "empty-chunk",
+            "module-unused-import",
+            "conflicting-svelte-resolve",
+          ];
+
+          if (isProduction && warning.code && ignoredWarnings.some((code) => warning.code.startsWith(code))) {
+            return;
+          }
+
+          handler(warning);
+        },
+      }),
+      version(),
+      devtoolsJson(),
+    ],
     server: {
       allowedHosts: allowedHost ? [allowedHost] : undefined,
       port,
@@ -82,6 +121,7 @@ export default defineConfig(({ mode }) => {
           },
           test: {
             name: "client",
+            api: { port: 5180 },
             browser: {
               enabled: true,
               headless: true,
@@ -89,7 +129,6 @@ export default defineConfig(({ mode }) => {
               instances: [{ browser: "chromium" }],
               // Vitest's default browser API port (63315) can fall inside Windows
               // Hyper-V excluded TCP port ranges; pin below the ephemeral range.
-              api: { port: 5180 },
             },
             include: ["src/**/*.svelte.{test,spec}.{js,ts}"],
             setupFiles: ["./vitest-setup-client.ts"],

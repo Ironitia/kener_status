@@ -1,15 +1,15 @@
 <script lang="ts">
-  import { Button } from "$lib/components/ui/button/index.js";
-  import * as Card from "$lib/components/ui/card/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import { Switch } from "$lib/components/ui/switch/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import * as Card from "#lib/components/ui/card/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import { Switch } from "#lib/components/ui/switch/index.js";
   import SaveIcon from "@lucide/svelte/icons/save";
   import Loader from "@lucide/svelte/icons/loader";
-  import type { MonitorRecord, MonitorSharingOptions } from "$lib/server/types/db.js";
+  import type { MonitorRecord, MonitorSharingOptions } from "#lib/server/types/db.js";
   import { toast } from "svelte-sonner";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
-  import type { SiteSubMenuOptions } from "$lib/types/site";
+  import clientResolver from "#lib/client/resolver.js";
+  import type { SiteSubMenuOptions } from "#lib/types/site.ts";
 
   interface Props {
     monitor: MonitorRecord;

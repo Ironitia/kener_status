@@ -3,11 +3,11 @@
   import { mode } from "mode-watcher";
   import { page } from "$app/state";
   import TrendingUp from "@lucide/svelte/icons/trending-up";
-  import { t } from "$lib/stores/i18n";
-  import { formatDate } from "$lib/stores/datetime";
-  import { selectedTimezone } from "$lib/stores/timezone";
+  import { t } from "#lib/stores/i18n.ts";
+  import { formatDate } from "#lib/stores/datetime.ts";
+  import { selectedTimezone } from "#lib/stores/timezone.ts";
   import { toZonedTime } from "date-fns-tz";
-  import * as Tooltip from "$lib/components/ui/tooltip/index.js";
+  import * as Tooltip from "#lib/components/ui/tooltip/index.js";
 
   interface MinuteData {
     timestamp: number;

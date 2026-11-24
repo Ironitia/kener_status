@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Switch } from "$lib/components/ui/switch/index.js";
-  import * as Select from "$lib/components/ui/select/index.js";
-  import * as InputGroup from "$lib/components/ui/input-group/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Switch } from "#lib/components/ui/switch/index.js";
+  import * as Select from "#lib/components/ui/select/index.js";
+  import * as InputGroup from "#lib/components/ui/input-group/index.js";
   import Plus from "@lucide/svelte/icons/plus";
   import X from "@lucide/svelte/icons/x";
-  import { AllRecordTypes } from "$lib/clientTools";
+  import { AllRecordTypes } from "#lib/clientTools.ts";
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let { data = $bindable() }: { data: any } = $props();
@@ -97,7 +97,9 @@
       <div class="flex flex-col gap-2">
         <Label for="dns-tls-servername">TLS Server Name (optional)</Label>
         <Input id="dns-tls-servername" bind:value={data.tlsServername} placeholder="dns.google" />
-        <p class="text-muted-foreground text-xs">SNI hostname for TLS. Required for many public resolvers when using an IP address.</p>
+        <p class="text-muted-foreground text-xs">
+          SNI hostname for TLS. Required for many public resolvers when using an IP address.
+        </p>
       </div>
       <div class="flex items-center gap-3 pt-6">
         <Switch id="dns-self-signed" bind:checked={data.allowSelfSignedCert} />

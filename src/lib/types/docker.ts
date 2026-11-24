@@ -1,6 +1,6 @@
 // Shared Docker monitor types: safe to import from both server and client.
 
-import type { DockerCheckType, DockerConnectionType } from "$lib/anywhere.js";
+import type { DockerCheckType, DockerConnectionType } from "#lib/anywhere.js";
 
 export interface DockerMonitorTypeData {
   /** How Kener reaches the Docker Engine API */

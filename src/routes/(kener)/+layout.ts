@@ -1,5 +1,5 @@
 import type { LayoutLoad } from "./$types";
-import { GetLayoutClientData } from "$lib/client/layoutClientData";
+import { GetLayoutClientData } from "#lib/client/layoutClientData.ts";
 import { setMode } from "mode-watcher";
 
 export const load: LayoutLoad = async ({ data, fetch }) => {

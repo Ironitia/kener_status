@@ -7,8 +7,8 @@ import type { Cookies, RequestEvent } from "@sveltejs/kit";
 vi.hoisted(() => {
   if (process.env.TEST_DATABASE_URL) process.env.DATABASE_URL = process.env.TEST_DATABASE_URL;
 });
-vi.mock("$lib/server/db/db", async () => {
-  const { default: DbImpl } = await import("$lib/server/db/dbimpl");
+vi.mock("#lib/server/db/db.ts", async () => {
+  const { default: DbImpl } = await import("#lib/server/db/dbimpl.ts");
   if (process.env.TEST_DATABASE_URL) {
     const { default: knexOb } = await import("../../../../../knexfile");
     return { default: new DbImpl(knexOb) };
@@ -24,23 +24,23 @@ const { subscriberQueue, alertingQueue, setCache, ClearOidcConfigCache } = vi.ho
   setCache: vi.fn(async (_key: string) => {}),
   ClearOidcConfigCache: vi.fn(),
 }));
-vi.mock("$lib/server/cache/cache", () => ({
+vi.mock("#lib/server/cache/cache.ts", () => ({
   getCache: async (_key: string, fetcher?: () => unknown) => (fetcher ? await fetcher() : null),
   setCache,
   deleteCache: async () => {},
 }));
-vi.mock("$lib/server/queues/subscriberQueue", () => ({ default: subscriberQueue }));
-vi.mock("$lib/server/queues/alertingQueue", () => ({ default: alertingQueue }));
-vi.mock("$lib/server/controllers/oidcController", async (importOriginal) => ({
+vi.mock("#lib/server/queues/subscriberQueue.ts", () => ({ default: subscriberQueue }));
+vi.mock("#lib/server/queues/alertingQueue.ts", () => ({ default: alertingQueue }));
+vi.mock("#lib/server/controllers/oidcController.ts", async (importOriginal) => ({
   ...(await importOriginal<object>()),
   ClearOidcConfigCache,
 }));
 
-import db from "$lib/server/db/db";
-import GC from "$lib/global-constants";
-import { GenerateToken } from "$lib/server/controllers/commonController";
-import { GetMonitorsParsed } from "$lib/server/controllers/monitorsController";
-import { GetNowTimestampUTC, GetMinuteStartNowTimestampUTC } from "$lib/server/tool";
+import db from "#lib/server/db/db.ts";
+import GC from "#lib/global-constants.ts";
+import { GenerateToken } from "#lib/server/controllers/commonController.ts";
+import { GetMonitorsParsed } from "#lib/server/controllers/monitorsController.ts";
+import { GetNowTimestampUTC, GetMinuteStartNowTimestampUTC } from "#lib/server/tool.ts";
 import { seed as seedPermissions } from "../../../../../seeds/permissions";
 import { seed as seedRoles } from "../../../../../seeds/roles";
 import { seed as seedSiteData } from "../../../../../seeds/site_data";
@@ -489,29 +489,27 @@ const pairs: Pair[] = [
         timezone: "Asia/Kolkata",
       }),
   },
-  ...(["scheduledMaintenance", "cancelledMaintenance"] as const).map(
-    (which): Pair => ({
-      name: `PATCH /maintenances/{id} moving a one-time ${which.replace("Maintenance", "")} event = updateMaintenance`,
-      api: async (f) =>
-        v4(
-          maintenance.PATCH,
-          { start_date_time: FUTURE + 86400, monitors: [{ monitor_tag: "api", impact: "MAINTENANCE" }] },
-          await maintenanceLocals(f[which]),
-        ),
-      dashboard: (f) =>
-        dashboard("updateMaintenance", {
-          id: f[which],
-          title: which === "scheduledMaintenance" ? "DB upgrade" : "Cache flush",
-          description: null,
-          start_date_time: FUTURE + 86400,
-          rrule: "FREQ=MINUTELY;COUNT=1",
-          duration_seconds: 3600,
-          status: "ACTIVE",
-          monitors: [{ monitor_tag: "api", monitor_impact: "MAINTENANCE" }],
-          is_global: "YES",
-        }),
-    }),
-  ),
+  ...(["scheduledMaintenance", "cancelledMaintenance"] as const).map((which): Pair => ({
+    name: `PATCH /maintenances/{id} moving a one-time ${which.replace("Maintenance", "")} event = updateMaintenance`,
+    api: async (f) =>
+      v4(
+        maintenance.PATCH,
+        { start_date_time: FUTURE + 86400, monitors: [{ monitor_tag: "api", impact: "MAINTENANCE" }] },
+        await maintenanceLocals(f[which]),
+      ),
+    dashboard: (f) =>
+      dashboard("updateMaintenance", {
+        id: f[which],
+        title: which === "scheduledMaintenance" ? "DB upgrade" : "Cache flush",
+        description: null,
+        start_date_time: FUTURE + 86400,
+        rrule: "FREQ=MINUTELY;COUNT=1",
+        duration_seconds: 3600,
+        status: "ACTIVE",
+        monitors: [{ monitor_tag: "api", monitor_impact: "MAINTENANCE" }],
+        is_global: "YES",
+      }),
+  })),
   {
     name: "DELETE /maintenances/{id} = deleteMaintenance",
     api: async (f) => v4(maintenance.DELETE, undefined, await maintenanceLocals(f.scheduledMaintenance)),

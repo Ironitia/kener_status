@@ -1,18 +1,18 @@
 <script lang="ts">
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import { Textarea } from "$lib/components/ui/textarea/index.js";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Badge } from "$lib/components/ui/badge/index.js";
-  import * as Select from "$lib/components/ui/select/index.js";
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import { Textarea } from "#lib/components/ui/textarea/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Badge } from "#lib/components/ui/badge/index.js";
+  import * as Select from "#lib/components/ui/select/index.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
   import RefreshCwIcon from "@lucide/svelte/icons/refresh-cw";
   import { toast } from "svelte-sonner";
   import { untrack } from "svelte";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
-  import { DOCKER_DEFAULT_SOCKET_PATH, DOCKER_DEFAULT_TIMEOUT } from "$lib/anywhere.js";
-  import type { DockerConnectionDefaults, DockerMonitorTypeData } from "$lib/types/docker.js";
+  import clientResolver from "#lib/client/resolver.js";
+  import { DOCKER_DEFAULT_SOCKET_PATH, DOCKER_DEFAULT_TIMEOUT } from "#lib/anywhere.js";
+  import type { DockerConnectionDefaults, DockerMonitorTypeData } from "#lib/types/docker.js";
 
   let {
     data = $bindable({} as Record<string, unknown>),

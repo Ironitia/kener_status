@@ -1,13 +1,13 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { Writable } from "svelte/store";
 
-vi.mock("$lib/stores/i18n", () => ({ i18n: { init: vi.fn() } }));
-vi.mock("$lib/stores/timezone", async () => {
+vi.mock("#lib/stores/i18n.ts", () => ({ i18n: { init: vi.fn() } }));
+vi.mock("#lib/stores/timezone.ts", async () => {
   const { writable } = await import("svelte/store");
   return { timezone: { init: vi.fn() }, selectedTimezone: writable("UTC") };
 });
 
-import { selectedTimezone } from "$lib/stores/timezone";
+import { selectedTimezone } from "#lib/stores/timezone.ts";
 import { GetLayoutClientData } from "./layoutClientData";
 
 const languageSetting = { defaultLocale: "en", locales: [] };

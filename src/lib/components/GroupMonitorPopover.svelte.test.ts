@@ -2,11 +2,11 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { createRawSnippet } from "svelte";
 import { render } from "vitest-browser-svelte";
 import { page as browserPage } from "vitest/browser";
-import type { MonitorBarResponse } from "$lib/server/api-server/monitor-bar/get";
+import type { MonitorBarResponse } from "#lib/server/api-server/monitor-bar/get.ts";
 import GroupMonitorPopover from "./GroupMonitorPopover.svelte";
 
 const { requestMonitorBar } = vi.hoisted(() => ({ requestMonitorBar: vi.fn() }));
-vi.mock("$lib/client/monitor-bar-client", () => ({ requestMonitorBar, clearMonitorBarCache: vi.fn() }));
+vi.mock("#lib/client/monitor-bar-client.ts", () => ({ requestMonitorBar, clearMonitorBarCache: vi.fn() }));
 
 const barFor = (tag: string) =>
   ({

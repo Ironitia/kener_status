@@ -2,43 +2,43 @@ import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import type { Knex } from "knex";
 import type { Cookies } from "@sveltejs/kit";
 
-vi.mock("$lib/server/db/db", async () => {
-  const { default: DbImpl } = await import("$lib/server/db/dbimpl");
+vi.mock("#lib/server/db/db.ts", async () => {
+  const { default: DbImpl } = await import("#lib/server/db/dbimpl.ts");
   return {
     default: new DbImpl({ client: "better-sqlite3", connection: { filename: ":memory:" }, useNullAsDefault: true }),
   };
 });
 
-vi.mock("$lib/server/cache/cache", () => ({
+vi.mock("#lib/server/cache/cache.ts", () => ({
   getCache: async (_key: string, fetcher?: () => unknown) => (fetcher ? await fetcher() : null),
   setCache: async () => {},
   deleteCache: async () => {},
 }));
 
 const { subscriberQueue } = vi.hoisted(() => ({ subscriberQueue: { push: vi.fn() } }));
-vi.mock("$lib/server/queues/subscriberQueue", () => ({ default: subscriberQueue }));
+vi.mock("#lib/server/queues/subscriberQueue.ts", () => ({ default: subscriberQueue }));
 
-import db from "$lib/server/db/db";
-import { GenerateToken } from "$lib/server/controllers/commonController";
-import { GetLayoutServerData, type LayoutServerData } from "$lib/server/controllers/layoutController";
-import { GetPageDashboardData } from "$lib/server/controllers/dashboardController";
+import db from "#lib/server/db/db.ts";
+import { GenerateToken } from "#lib/server/controllers/commonController.ts";
+import { GetLayoutServerData, type LayoutServerData } from "#lib/server/controllers/layoutController.ts";
+import { GetPageDashboardData } from "#lib/server/controllers/dashboardController.ts";
 import {
   CreateMaintenanceEventWithNotification,
   UpdateMaintenanceEventStatus,
   UpdateMaintenanceEventStatuses,
-} from "$lib/server/controllers/maintenanceController";
-import { AddIncidentComment } from "$lib/server/controllers/incidentController";
-import type { SubscriptionVariableMap } from "$lib/server/notification/types";
-import type { APIServerRequest } from "$lib/server/types/api-server";
-import monitorBars from "$lib/server/api-server/monitor-bars/get";
-import monitorBar from "$lib/server/api-server/monitor-bar/get";
-import monitorLatencyChart from "$lib/server/api-server/monitor-latency-chart/get";
-import monitorDayStatus from "$lib/server/api-server/monitor-day-status/post";
-import monitorDayLatency from "$lib/server/api-server/monitor-day-latency/post";
-import monitorDayIncidents from "$lib/server/api-server/monitor-day-incidents/post";
-import monitorDayMaintenances from "$lib/server/api-server/monitor-day-maintenances/post";
-import notifications from "$lib/server/api-server/notifications/get";
-import { GetNowTimestampUTC } from "$lib/server/tool";
+} from "#lib/server/controllers/maintenanceController.ts";
+import { AddIncidentComment } from "#lib/server/controllers/incidentController.ts";
+import type { SubscriptionVariableMap } from "#lib/server/notification/types.ts";
+import type { APIServerRequest } from "#lib/server/types/api-server.ts";
+import monitorBars from "#lib/server/api-server/monitor-bars/get.ts";
+import monitorBar from "#lib/server/api-server/monitor-bar/get.ts";
+import monitorLatencyChart from "#lib/server/api-server/monitor-latency-chart/get.ts";
+import monitorDayStatus from "#lib/server/api-server/monitor-day-status/post.ts";
+import monitorDayLatency from "#lib/server/api-server/monitor-day-latency/post.ts";
+import monitorDayIncidents from "#lib/server/api-server/monitor-day-incidents/post.ts";
+import monitorDayMaintenances from "#lib/server/api-server/monitor-day-maintenances/post.ts";
+import notifications from "#lib/server/api-server/notifications/get.ts";
+import { GetNowTimestampUTC } from "#lib/server/tool.ts";
 import { load as loadMonitorPage } from "./monitors/[monitor_tag]/+page.server";
 import { load as loadIncidentPage } from "./incidents/[incident_id]/+page.server";
 import { load as loadMaintenancePage } from "./maintenances/[maintenance_id]/+page.server";

@@ -7,20 +7,20 @@
   import CheckIcon from "@lucide/svelte/icons/check";
   import LoaderIcon from "@lucide/svelte/icons/loader";
 
-  import * as Avatar from "$lib/components/ui/avatar/index.js";
-  import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
-  import * as Sidebar from "$lib/components/ui/sidebar/index.js";
-  import * as Dialog from "$lib/components/ui/dialog/index.js";
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import { Button } from "$lib/components/ui/button/index.js";
+  import * as Avatar from "#lib/components/ui/avatar/index.js";
+  import * as DropdownMenu from "#lib/components/ui/dropdown-menu/index.js";
+  import * as Sidebar from "#lib/components/ui/sidebar/index.js";
+  import * as Dialog from "#lib/components/ui/dialog/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
   import { page } from "$app/state";
   import { resolve } from "$app/paths";
-  import type { UserRecordPublic } from "$lib/server/types/db";
+  import type { UserRecordPublic } from "#lib/server/types/db.ts";
   import { toggleMode, mode } from "mode-watcher";
   import Sun from "@lucide/svelte/icons/sun";
   import Moon from "@lucide/svelte/icons/moon";
-  import clientResolver from "$lib/client/resolver.js";
+  import clientResolver from "#lib/client/resolver.js";
 
   let user = $state<UserRecordPublic>(page.data.userDb);
   let nameAbbr = $derived(

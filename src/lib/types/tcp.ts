@@ -1,6 +1,6 @@
 // Shared TCP monitor types: safe to import from both server and client.
 
-import type { PingHostType } from "$lib/types/ping.js";
+import type { PingHostType } from "#lib/types/ping.js";
 
 export interface TcpHost {
   type: PingHostType;

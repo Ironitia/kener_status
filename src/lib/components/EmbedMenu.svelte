@@ -1,14 +1,14 @@
 <script lang="ts">
-  import * as Dialog from "$lib/components/ui/dialog/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import * as ButtonGroup from "$lib/components/ui/button-group/index.js";
-  import CopyButton from "$lib/components/CopyButton.svelte";
+  import * as Dialog from "#lib/components/ui/dialog/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import * as ButtonGroup from "#lib/components/ui/button-group/index.js";
+  import CopyButton from "#lib/components/CopyButton.svelte";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
-  import { t } from "$lib/stores/i18n";
+  import clientResolver from "#lib/client/resolver.js";
+  import { t } from "#lib/stores/i18n.ts";
   import { mode } from "mode-watcher";
-  import trackEvent from "$lib/beacon";
+  import trackEvent from "#lib/beacon.ts";
   import { page } from "$app/state";
 
   import Copy from "@lucide/svelte/icons/clipboard";

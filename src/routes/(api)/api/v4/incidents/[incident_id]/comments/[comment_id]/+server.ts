@@ -1,6 +1,6 @@
 import { json, type RequestHandler } from "@sveltejs/kit";
-import { parseDbTimestamp } from "$lib/server/tool";
-import db from "$lib/server/db/db";
+import { parseDbTimestamp } from "#lib/server/tool.ts";
+import db from "#lib/server/db/db.ts";
 import type {
   GetCommentResponse,
   UpdateCommentRequest,
@@ -9,10 +9,10 @@ import type {
   CommentResponse,
   BadRequestResponse,
   NotFoundResponse,
-} from "$lib/types/api";
-import { GetMinuteStartTimestampUTC } from "$lib/server/tool";
-import { UpdateCommentByID, UpdateCommentStatusByID } from "$lib/server/controllers/incidentController";
-import { readRequestBody } from "$lib/server/requestBody";
+} from "#lib/types/api.ts";
+import { GetMinuteStartTimestampUTC } from "#lib/server/tool.ts";
+import { UpdateCommentByID, UpdateCommentStatusByID } from "#lib/server/controllers/incidentController.ts";
+import { readRequestBody } from "#lib/server/requestBody.ts";
 
 function formatCommentResponse(comment: {
   id: number;

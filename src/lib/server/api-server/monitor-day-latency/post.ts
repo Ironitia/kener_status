@@ -1,11 +1,11 @@
 import { json, error } from "@sveltejs/kit";
-import type { APIServerRequest } from "$lib/server/types/api-server";
-import { CanSeeHiddenMonitors, GetLoggedInSession } from "$lib/server/controllers/userController";
-import db from "$lib/server/db/db";
-import { BeginningOfDay, GetMinuteStartNowTimestampUTC, GetMinuteStartTimestampUTC } from "$lib/server/tool";
+import type { APIServerRequest } from "#lib/server/types/api-server.ts";
+import { CanSeeHiddenMonitors, GetLoggedInSession } from "#lib/server/controllers/userController.ts";
+import db from "#lib/server/db/db.ts";
+import { BeginningOfDay, GetMinuteStartNowTimestampUTC, GetMinuteStartTimestampUTC } from "#lib/server/tool.ts";
 import { GetMonitorsParsed } from "../../controllers/monitorsController";
-import { ParseLatency } from "$lib/clientTools";
-import GC from "$lib/global-constants";
+import { ParseLatency } from "#lib/clientTools.ts";
+import GC from "#lib/global-constants.ts";
 
 interface DayDetailRequest {
   tag: string;
@@ -101,7 +101,7 @@ export default async function post(req: APIServerRequest): Promise<Response> {
   const body = req.body as DayDetailRequest;
 
   if (!body.tag) {
-    return error(400, { message: "tag is required" });
+    return error(400, "tag is required");
   }
 
   const startOfDayTodayAtTz = req.body.startOfDayTodayAtTz
@@ -120,7 +120,7 @@ export default async function post(req: APIServerRequest): Promise<Response> {
     is_hidden: canSeeHidden ? undefined : GC.NO,
   });
   if (!monitors || monitors.length === 0) {
-    return error(404, { message: "Monitor not found" });
+    return error(404, "Monitor not found");
   }
   const monitor = monitors[0];
 

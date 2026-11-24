@@ -1,10 +1,10 @@
 <script lang="ts">
-  import type { DocsLayoutData } from "$lib/types/docs";
+  import type { DocsLayoutData } from "#lib/types/docs.ts";
   import DocsSidebar from "../DocsSidebar.svelte";
   import DocsNavbar from "../DocsNavbar.svelte";
   import type { Snippet } from "svelte";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
+  import clientResolver from "#lib/client/resolver.js";
 
   interface Props {
     data: DocsLayoutData;
@@ -26,14 +26,7 @@
 
 <svelte:head>
   <!-- favicon -->
-  <link
-    rel="icon"
-    href={
-      data.config.favicon
-        ? clientResolver(resolve, data.config.favicon)
-        : data.config.favicon
-    }
-  />
+  <link rel="icon" href={data.config.favicon ? clientResolver(resolve, data.config.favicon) : data.config.favicon} />
 </svelte:head>
 
 <div class="bg-background text-foreground min-h-screen">

@@ -1,11 +1,11 @@
-import db from "$lib/server/db/db";
-import GC from "$lib/global-constants";
-import type { StatusType } from "$lib/types/status";
-import type { MonitorRecord, MonitoringData, TimestampStatusCount } from "$lib/server/types/db";
-import { UptimeCalculator } from "$lib/server/tool";
+import db from "#lib/server/db/db.ts";
+import GC from "#lib/global-constants.ts";
+import type { StatusType } from "#lib/types/status.ts";
+import type { MonitorRecord, MonitoringData, TimestampStatusCount } from "#lib/server/types/db.ts";
+import { UptimeCalculator } from "#lib/server/tool.ts";
 import type { MonitorBarResponse } from "./get";
-import { ResolveSslExpiresAtMs } from "$lib/clientTools";
-import { AttachSslCacheFields } from "$lib/server/controllers/monitorsController";
+import { ResolveSslExpiresAtMs } from "#lib/clientTools.ts";
+import { AttachSslCacheFields } from "#lib/server/controllers/monitorsController.ts";
 
 interface ParsedMonitorSettings {
   uptime_formula_numerator?: string;

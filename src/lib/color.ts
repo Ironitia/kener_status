@@ -1,4 +1,4 @@
-import { GetAllSiteData } from "$lib/server/controllers/controller.js";
+import { GetAllSiteData } from "#lib/server/controllers/controller.js";
 
 export interface StatusColors {
   UP: string;

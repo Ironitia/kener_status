@@ -1,16 +1,16 @@
 <script lang="ts">
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import * as Card from "$lib/components/ui/card/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import * as Card from "#lib/components/ui/card/index.js";
   import TrashIcon from "@lucide/svelte/icons/trash";
   import Loader from "@lucide/svelte/icons/loader";
   import { toast } from "svelte-sonner";
   import { goto } from "$app/navigation";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
-  import * as Select from "$lib/components/ui/select/index.js";
-  import type { MonitorRecord } from "$lib/server/types/db.js";
+  import clientResolver from "#lib/client/resolver.js";
+  import * as Select from "#lib/components/ui/select/index.js";
+  import type { MonitorRecord } from "#lib/server/types/db.js";
 
   interface Props {
     monitor: MonitorRecord;

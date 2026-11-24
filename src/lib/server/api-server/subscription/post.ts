@@ -1,14 +1,14 @@
 import { json, error } from "@sveltejs/kit";
-import type { APIServerRequest } from "$lib/server/types/api-server";
-import type { SubscriptionsConfig } from "$lib/server/types/db.js";
-import { GetSiteDataByKey } from "$lib/server/controllers/siteDataController";
-import { VerifyCaptchaToken } from "$lib/server/controllers/captchaController";
+import type { APIServerRequest } from "#lib/server/types/api-server.ts";
+import type { SubscriptionsConfig } from "#lib/server/types/db.js";
+import { GetSiteDataByKey } from "#lib/server/controllers/siteDataController.ts";
+import { VerifyCaptchaToken } from "#lib/server/controllers/captchaController.ts";
 import {
   SubscriberLogin,
   VerifySubscriberOTP,
   VerifySubscriberToken,
   UpdateSubscriberPreferences,
-} from "$lib/server/controllers/userSubscriptionsController";
+} from "#lib/server/controllers/userSubscriptionsController.ts";
 
 interface LoginRequest {
   action: "login";
@@ -43,12 +43,12 @@ export default async function post(req: APIServerRequest): Promise<Response> {
   // Check if subscriptions are enabled
   const config = await GetSubscriptionConfig();
   if (!config || !config.enable) {
-    return error(400, { message: "Subscriptions are not enabled" });
+    return error(400, "Subscriptions are not enabled");
   }
 
   const emailEnabled = config.methods?.emails?.incidents === true || config.methods?.emails?.maintenances === true;
   if (!emailEnabled) {
-    return error(400, { message: "Email subscriptions are not enabled" });
+    return error(400, "Email subscriptions are not enabled");
   }
 
   switch (action) {
@@ -66,7 +66,7 @@ export default async function post(req: APIServerRequest): Promise<Response> {
         config,
       );
     default:
-      return error(400, { message: "Invalid action" });
+      return error(400, "Invalid action");
   }
 }
 
@@ -85,12 +85,12 @@ async function handleLogin(
 ): Promise<Response> {
   const captchaResult = await VerifyCaptchaToken(captchaToken);
   if (!captchaResult.success) {
-    return error(400, { message: "Captcha verification failed" });
+    return error(400, "Captcha verification failed");
   }
 
   const result = await SubscriberLogin(email);
   if (!result.success) {
-    return error(400, { message: result.error || "Failed to send verification code" });
+    return error(400, result.error || "Failed to send verification code");
   }
 
   return json({ success: true, message: "Verification code sent" });
@@ -99,7 +99,7 @@ async function handleLogin(
 async function handleVerify(email: string, code: string): Promise<Response> {
   const result = await VerifySubscriberOTP(email, code);
   if (!result.success) {
-    return error(400, { message: result.error || "Verification failed" });
+    return error(400, result.error || "Verification failed");
   }
 
   return json({ success: true, token: result.token });
@@ -108,7 +108,7 @@ async function handleVerify(email: string, code: string): Promise<Response> {
 async function handleGetPreferences(token: string, config: SubscriptionsConfig): Promise<Response> {
   const result = await VerifySubscriberToken(token);
   if (!result.success) {
-    return error(401, { message: result.error || "Invalid token" });
+    return error(401, result.error || "Invalid token");
   }
 
   return json({
@@ -140,7 +140,7 @@ async function handleUpdatePreferences(
 
   const result = await UpdateSubscriberPreferences(token, preferences);
   if (!result.success) {
-    return error(400, { message: result.error || "Failed to update preferences" });
+    return error(400, result.error || "Failed to update preferences");
   }
 
   return json({ success: true });

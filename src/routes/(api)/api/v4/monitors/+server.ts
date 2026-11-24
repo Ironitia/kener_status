@@ -1,21 +1,21 @@
 import { json, type RequestHandler } from "@sveltejs/kit";
-import db from "$lib/server/db/db";
+import db from "#lib/server/db/db.ts";
 import type {
   GetMonitorsListResponse,
   MonitorResponse,
   CreateMonitorRequest,
   CreateMonitorResponse,
   BadRequestResponse,
-} from "$lib/types/api";
-import type { MonitorRecord } from "$lib/server/types/db";
+} from "#lib/types/api.ts";
+import type { MonitorRecord } from "#lib/server/types/db.ts";
 import {
   CreateUpdateMonitor,
   GetMonitorsParsed,
   MaskMonitorSecrets,
   ValidateTypeDataProxy,
   WithValidHeartbeatSecret,
-} from "$lib/server/controllers/monitorsController";
-import { readRequestBody } from "$lib/server/requestBody";
+} from "#lib/server/controllers/monitorsController.ts";
+import { readRequestBody } from "#lib/server/requestBody.ts";
 
 export const GET: RequestHandler = async ({ url }) => {
   const status = url.searchParams.get("status") || undefined;

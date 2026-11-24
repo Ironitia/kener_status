@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { Badge } from "$lib/components/ui/badge/index.js";
-  import IncidentItem from "$lib/components/IncidentItem.svelte";
-  import type { IncidentForMonitorListWithComments } from "$lib/server/types/db";
+  import { Badge } from "#lib/components/ui/badge/index.js";
+  import IncidentItem from "#lib/components/IncidentItem.svelte";
+  import type { IncidentForMonitorListWithComments } from "#lib/server/types/db.ts";
 
   interface Props {
     incidents: IncidentForMonitorListWithComments[];

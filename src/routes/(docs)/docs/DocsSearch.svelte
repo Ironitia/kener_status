@@ -1,13 +1,13 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
-  import * as Command from "$lib/components/ui/command/index.js";
+  import * as Command from "#lib/components/ui/command/index.js";
   import Search from "@lucide/svelte/icons/search";
   import FileText from "@lucide/svelte/icons/file-text";
   import Loader2 from "@lucide/svelte/icons/loader-2";
 
   import { onMount, onDestroy } from "svelte";
-  import type { DocsSearchResult } from "$lib/types/docs-search";
-  import clientResolver from "$lib/client/resolver.js";
+  import type { DocsSearchResult } from "#lib/types/docs-search.ts";
+  import clientResolver from "#lib/client/resolver.js";
   import { resolve } from "$app/paths";
 
   interface Props {

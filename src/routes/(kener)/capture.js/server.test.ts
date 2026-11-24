@@ -1,10 +1,10 @@
 import { describe, it, expect, vi } from "vitest";
 
-vi.mock("$lib/server/controllers/siteDataController.js", () => ({
+vi.mock("#lib/server/controllers/siteDataController.js", () => ({
   GetAllAnalyticsData: vi.fn(),
 }));
 
-import { GetAllAnalyticsData } from "$lib/server/controllers/siteDataController.js";
+import { GetAllAnalyticsData } from "#lib/server/controllers/siteDataController.js";
 import { GET } from "./+server";
 
 const call = () => GET({} as Parameters<typeof GET>[0]);

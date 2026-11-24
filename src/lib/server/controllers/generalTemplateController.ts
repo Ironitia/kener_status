@@ -1,5 +1,5 @@
-import db from "$lib/server/db/db";
-import type { GeneralEmailTemplateRecord, GeneralEmailTemplateRecordInsert } from "$lib/server/types/db";
+import db from "#lib/server/db/db.ts";
+import type { GeneralEmailTemplateRecord, GeneralEmailTemplateRecordInsert } from "#lib/server/types/db.ts";
 
 /**
  * Get all general email templates

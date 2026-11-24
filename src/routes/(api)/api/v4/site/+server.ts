@@ -1,7 +1,7 @@
 import { json, type RequestHandler } from "@sveltejs/kit";
-import db from "$lib/server/db/db";
-import { MaskSiteDataSecret } from "$lib/server/controllers/siteDataController";
-import type { GetSiteDataResponse, SiteDataItem } from "$lib/types/api";
+import db from "#lib/server/db/db.ts";
+import { MaskSiteDataSecret } from "#lib/server/controllers/siteDataController.ts";
+import type { GetSiteDataResponse, SiteDataItem } from "#lib/types/api.ts";
 
 export const GET: RequestHandler = async () => {
   const rawData = await db.getAllSiteData();

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import * as Sidebar from "$lib/components/ui/sidebar/index.js";
+  import * as Sidebar from "#lib/components/ui/sidebar/index.js";
   import { page } from "$app/state";
   import type { Component } from "svelte";
   let { items }: { items: { title: string; url: string; icon?: Component }[] } = $props();

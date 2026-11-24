@@ -1,14 +1,14 @@
 import { json, type RequestHandler } from "@sveltejs/kit";
-import db from "$lib/server/db/db";
-import { siteDataKeys } from "$lib/server/controllers/siteDataKeys";
-import { GetSiteDataByKey, InsertKeyValue, MaskSiteDataSecret } from "$lib/server/controllers/siteDataController";
+import db from "#lib/server/db/db.ts";
+import { siteDataKeys } from "#lib/server/controllers/siteDataKeys.ts";
+import { GetSiteDataByKey, InsertKeyValue, MaskSiteDataSecret } from "#lib/server/controllers/siteDataController.ts";
 import type {
   GetSiteDataKeyResponse,
   UpdateSiteDataKeyResponse,
   NotFoundResponse,
   BadRequestResponse,
-} from "$lib/types/api";
-import { readRequestBody } from "$lib/server/requestBody";
+} from "#lib/types/api.ts";
+import { readRequestBody } from "#lib/server/requestBody.ts";
 
 export const GET: RequestHandler = async ({ params }) => {
   const configKey = params.config_key as string;

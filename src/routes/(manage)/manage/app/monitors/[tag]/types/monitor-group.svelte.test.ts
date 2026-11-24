@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { render } from "vitest-browser-svelte";
 import { page as browserPage } from "vitest/browser";
-import type { GroupMonitorTypeData } from "$lib/server/types/monitor";
+import type { GroupMonitorTypeData } from "#lib/server/types/monitor.ts";
 import MonitorGroup from "./monitor-group.svelte";
 
 describe("monitor-group form", () => {

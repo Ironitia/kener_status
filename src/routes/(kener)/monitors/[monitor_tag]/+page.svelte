@@ -1,19 +1,24 @@
 <script lang="ts">
-  import * as Item from "$lib/components/ui/item/index.js";
-  import { t } from "$lib/stores/i18n";
-  import { formatDate } from "$lib/stores/datetime";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import ThemePlus from "$lib/components/ThemePlus.svelte";
-  import MonitorOverview from "$lib/components/MonitorOverview.svelte";
+  import * as Item from "#lib/components/ui/item/index.js";
+  import { t } from "#lib/stores/i18n.ts";
+  import { formatDate } from "#lib/stores/datetime.ts";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import ThemePlus from "#lib/components/ThemePlus.svelte";
+  import MonitorOverview from "#lib/components/MonitorOverview.svelte";
   import ArrowUpRight from "@lucide/svelte/icons/arrow-up-right";
-  import clientResolver, { absoluteResolve } from "$lib/client/resolver.js";
+  import clientResolver, { absoluteResolve } from "#lib/client/resolver.js";
   import { resolve } from "$app/paths";
-  import trackEvent from "$lib/beacon";
-  import IncidentItem from "$lib/components/IncidentItem.svelte";
-  import MaintenanceItem from "$lib/components/MaintenanceItem.svelte";
+  import trackEvent from "#lib/beacon.ts";
+  import IncidentItem from "#lib/components/IncidentItem.svelte";
+  import MaintenanceItem from "#lib/components/MaintenanceItem.svelte";
   import { page } from "$app/state";
-  import { GetSslSecurityState, SslSecurityLabelKey, SslSecurityTextClass, FormatSslRemaining } from "$lib/clientTools";
-  import { getSslNowMs } from "$lib/client/sslClock.svelte";
+  import {
+    GetSslSecurityState,
+    SslSecurityLabelKey,
+    SslSecurityTextClass,
+    FormatSslRemaining
+  } from "#lib/clientTools.ts";
+  import { getSslNowMs } from "#lib/client/sslClock.svelte.ts";
   let { data } = $props();
 
   let isSsl = $derived(data.monitorType === "SSL");

@@ -2,10 +2,10 @@
   import { AreaChart, Area, LinearGradient } from "layerchart";
   import { curveCatmullRom } from "d3-shape";
   import { scaleTime } from "d3-scale";
-  import * as Chart from "$lib/components/ui/chart/index.js";
-  import { t } from "$lib/stores/i18n";
-  import { ParseLatency } from "$lib/clientTools";
-  import { formatDate } from "$lib/stores/datetime";
+  import * as Chart from "#lib/components/ui/chart/index.js";
+  import { t } from "#lib/stores/i18n.ts";
+  import { ParseLatency } from "#lib/clientTools.ts";
+  import { formatDate } from "#lib/stores/datetime.ts";
   import { page } from "$app/state";
 
   interface ChartPoint {

@@ -1,16 +1,16 @@
 <script lang="ts">
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import { Textarea } from "$lib/components/ui/textarea/index.js";
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
-  import { Badge } from "$lib/components/ui/badge/index.js";
-  import { Switch } from "$lib/components/ui/switch/index.js";
-  import * as Card from "$lib/components/ui/card/index.js";
-  import * as Select from "$lib/components/ui/select/index.js";
-  import * as Breadcrumb from "$lib/components/ui/breadcrumb/index.js";
-  import * as Dialog from "$lib/components/ui/dialog/index.js";
-  import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import { Textarea } from "#lib/components/ui/textarea/index.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
+  import { Badge } from "#lib/components/ui/badge/index.js";
+  import { Switch } from "#lib/components/ui/switch/index.js";
+  import * as Card from "#lib/components/ui/card/index.js";
+  import * as Select from "#lib/components/ui/select/index.js";
+  import * as Breadcrumb from "#lib/components/ui/breadcrumb/index.js";
+  import * as Dialog from "#lib/components/ui/dialog/index.js";
+  import * as DropdownMenu from "#lib/components/ui/dropdown-menu/index.js";
   import SaveIcon from "@lucide/svelte/icons/save";
   import Loader from "@lucide/svelte/icons/loader";
   import PlusIcon from "@lucide/svelte/icons/plus";
@@ -21,20 +21,20 @@
   import CheckIcon from "@lucide/svelte/icons/check";
   import AlertTriangleIcon from "@lucide/svelte/icons/alert-triangle";
   import type { PageProps } from "./$types";
-  import type { MonitorRecord, IncidentRecord, IncidentCommentRecord } from "$lib/server/types/db.js";
+  import type { MonitorRecord, IncidentRecord, IncidentCommentRecord } from "#lib/server/types/db.js";
   import { goto } from "$app/navigation";
   import { toast } from "svelte-sonner";
-  import LocalTime from "$lib/components/LocalTime.svelte";
-  import GC from "$lib/global-constants";
+  import LocalTime from "#lib/components/LocalTime.svelte";
+  import GC from "#lib/global-constants.ts";
   import { mode } from "mode-watcher";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
+  import clientResolver from "#lib/client/resolver.js";
   import { SveltePurify } from "@humanspeak/svelte-purify";
 
   import CodeMirror from "svelte-codemirror-editor";
   import { markdown } from "@codemirror/lang-markdown";
   import { githubLight, githubDark } from "@uiw/codemirror-theme-github";
-  import mdToHTML from "$lib/marked";
+  import mdToHTML from "#lib/marked.ts";
 
   let { params }: PageProps = $props();
   const isNew = $derived(params.incident_id === "new");

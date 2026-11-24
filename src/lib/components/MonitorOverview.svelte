@@ -1,23 +1,23 @@
 <script lang="ts">
   import { onMount, untrack } from "svelte";
-  import * as Card from "$lib/components/ui/card/index.js";
-  import { Skeleton } from "$lib/components/ui/skeleton/index.js";
-  import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
-  import StatusBarCalendar from "$lib/components/StatusBarCalendar.svelte";
-  import LatencyTrendChart from "$lib/components/LatencyTrendChart.svelte";
+  import * as Card from "#lib/components/ui/card/index.js";
+  import { Skeleton } from "#lib/components/ui/skeleton/index.js";
+  import * as DropdownMenu from "#lib/components/ui/dropdown-menu/index.js";
+  import StatusBarCalendar from "#lib/components/StatusBarCalendar.svelte";
+  import LatencyTrendChart from "#lib/components/LatencyTrendChart.svelte";
   import ChevronDown from "@lucide/svelte/icons/chevron-down";
   import ArrowUp from "@lucide/svelte/icons/arrow-up";
-  import type { MonitorBarResponse } from "$lib/server/api-server/monitor-bar/get";
-  import type { GroupMemberDisplay } from "$lib/server/types/monitor";
-  import { Button } from "$lib/components/ui/button";
-  import { t } from "$lib/stores/i18n";
-  import { selectedTimezone } from "$lib/stores/timezone";
-  import { getEndOfDayAtTz } from "$lib/client/datetime";
-  import { formatDate } from "$lib/stores/datetime";
-  import { requestMonitorBar, clearMonitorBarCache } from "$lib/client/monitor-bar-client";
-  import * as Popover from "$lib/components/ui/popover/index.js";
-  import * as ToggleGroup from "$lib/components/ui/toggle-group/index.js";
-  import GroupMonitorPopover from "$lib/components/GroupMonitorPopover.svelte";
+  import type { MonitorBarResponse } from "#lib/server/api-server/monitor-bar/get.ts";
+  import type { GroupMemberDisplay } from "#lib/server/types/monitor.ts";
+  import { Button } from "#lib/components/ui/button/index.ts";
+  import { t } from "#lib/stores/i18n.ts";
+  import { selectedTimezone } from "#lib/stores/timezone.ts";
+  import { getEndOfDayAtTz } from "#lib/client/datetime.ts";
+  import { formatDate } from "#lib/stores/datetime.ts";
+  import { requestMonitorBar, clearMonitorBarCache } from "#lib/client/monitor-bar-client.ts";
+  import * as Popover from "#lib/components/ui/popover/index.js";
+  import * as ToggleGroup from "#lib/components/ui/toggle-group/index.js";
+  import GroupMonitorPopover from "#lib/components/GroupMonitorPopover.svelte";
   import { page } from "$app/state";
 
   interface Props {

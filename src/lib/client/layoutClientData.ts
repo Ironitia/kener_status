@@ -1,8 +1,8 @@
 import { fromZonedTime } from "date-fns-tz";
 import { getUnixTime } from "date-fns";
 import { get } from "svelte/store";
-import { i18n } from "$lib/stores/i18n";
-import { timezone, selectedTimezone } from "$lib/stores/timezone";
+import { i18n } from "#lib/stores/i18n.ts";
+import { timezone, selectedTimezone } from "#lib/stores/timezone.ts";
 import { getStartOfDayAtTz, resolveTimezone } from "./datetime";
 
 export interface LayoutClientData {

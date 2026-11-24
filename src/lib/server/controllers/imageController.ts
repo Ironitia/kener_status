@@ -64,7 +64,7 @@ export async function uploadImage(data: ImageUploadData) {
   const isHeicData = heicSignature.includes("ftyp");
   if (isHeicData) {
     const converted = await heicConvert({
-      buffer: new Uint8Array(imageBuffer) as unknown as ArrayBuffer,
+      buffer: new Uint8Array(imageBuffer),
       format: "JPEG",
       quality: 0.85,
     }).catch(unreadable);

@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { render } from "vitest-browser-svelte";
 import ProviderSettingsPanel from "./ProviderSettingsPanel.svelte";
-import type { ProviderDefinition } from "$lib/client/types/provider-settings.js";
+import type { ProviderDefinition } from "#lib/client/types/provider-settings.js";
 
 vi.mock("svelte-sonner", () => ({ toast: { error: vi.fn(), success: vi.fn() } }));
 
@@ -15,9 +15,9 @@ const singleProvider: ProviderDefinition[] = [
     activeInSite: false,
     requirements: [
       { label: "Site Key", type: "text", placeholder: "", required: true, value: "" },
-      { label: "Secret Key", type: "password", placeholder: "", required: true, value: "" }
-    ]
-  }
+      { label: "Secret Key", type: "password", placeholder: "", required: true, value: "" },
+    ],
+  },
 ];
 
 describe("ProviderSettingsPanel", () => {
@@ -31,7 +31,7 @@ describe("ProviderSettingsPanel", () => {
 
     const screen = await render(ProviderSettingsPanel, {
       initialProviders: singleProvider,
-      description: "test"
+      description: "test",
     });
     await expect.element(screen.getByText("Add details for your Test Provider account")).toBeInTheDocument();
 
@@ -67,7 +67,7 @@ describe("ProviderSettingsPanel", () => {
   it("blocks saving a single-active provider if the initial load never succeeded, to avoid clobbering other providers' stored credentials", async () => {
     const twoProviders: ProviderDefinition[] = [
       { label: "Provider A", key: "test.a", isEnabled: true, activeInSite: false, requirements: [] },
-      { label: "Provider B", key: "test.b", isEnabled: false, activeInSite: false, requirements: [] }
+      { label: "Provider B", key: "test.b", isEnabled: false, activeInSite: false, requirements: [] },
     ];
 
     const storeSiteDataCalls: unknown[] = [];
@@ -87,7 +87,7 @@ describe("ProviderSettingsPanel", () => {
     const screen = await render(ProviderSettingsPanel, {
       initialProviders: twoProviders,
       description: "test",
-      enforceSingleActive: true
+      enforceSingleActive: true,
     });
 
     await expect.element(screen.getByText("Add details for your Provider A account")).toBeInTheDocument();

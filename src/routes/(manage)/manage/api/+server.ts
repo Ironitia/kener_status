@@ -1,9 +1,9 @@
 import { json } from "@sveltejs/kit";
-import Service, { type MonitorWithType } from "$lib/server/services/service.js";
+import Service, { type MonitorWithType } from "#lib/server/services/service.js";
 import { format } from "date-fns";
-import db from "$lib/server/db/db";
-import GC, { isMonitoringStatus } from "$lib/global-constants.js";
-import type { MonitoringStatus } from "$lib/types/status.js";
+import db from "#lib/server/db/db.ts";
+import GC, { isMonitoringStatus } from "#lib/global-constants.js";
+import type { MonitoringStatus } from "#lib/types/status.js";
 import {
   CreateUpdateMonitor,
   UpdateMonitoringData,
@@ -53,10 +53,10 @@ import {
   MaskTriggerSecrets,
   MaskAlertConfigTriggerSecrets,
   GetMonitoringDataPaginated,
-} from "$lib/server/controllers/controller.js";
+} from "#lib/server/controllers/controller.js";
 
-import { ListDockerContainers } from "$lib/server/controllers/dockerController.js";
-import { GetNowTimestampUTC } from "$lib/server/tool.js";
+import { ListDockerContainers } from "#lib/server/controllers/dockerController.js";
+import { GetNowTimestampUTC } from "#lib/server/tool.js";
 import {
   CreatePage,
   GetAllPages,
@@ -67,7 +67,7 @@ import {
   RemoveMonitorFromPage,
   GetPageMonitors,
   ReorderPageMonitors,
-} from "$lib/server/controllers/pagesController.js";
+} from "#lib/server/controllers/pagesController.js";
 import {
   CreateMaintenance,
   GetMaintenanceWithEvents,
@@ -84,7 +84,7 @@ import {
   RemoveMonitorFromMaintenance,
   GetMaintenanceMonitors,
   UpdateMaintenanceMonitorImpact,
-} from "$lib/server/controllers/maintenanceController.js";
+} from "#lib/server/controllers/maintenanceController.js";
 import {
   CreateMonitorAlertConfig,
   UpdateMonitorAlertConfig,
@@ -98,7 +98,7 @@ import {
   UpdateMonitorAlertV2Status,
   type MonitorAlertConfigRecord,
   type MonitorAlertV2Record,
-} from "$lib/server/controllers/monitorAlertConfigController.js";
+} from "#lib/server/controllers/monitorAlertConfigController.js";
 
 import {
   GetSubscribersByMethod,
@@ -110,12 +110,12 @@ import {
   AdminUpdateSubscriptionStatus,
   AdminDeleteSubscriber,
   AdminAddSubscriber,
-} from "$lib/server/controllers/userSubscriptionsController.js";
+} from "#lib/server/controllers/userSubscriptionsController.js";
 import {
   GetAllGeneralEmailTemplates,
   GetGeneralEmailTemplateById,
   UpdateGeneralEmailTemplate,
-} from "$lib/server/controllers/generalTemplateController.js";
+} from "#lib/server/controllers/generalTemplateController.js";
 import {
   GetAllRoles,
   GetAllPermissions,
@@ -129,18 +129,18 @@ import {
   DeleteRole,
   GetUserPermissions,
   RequirePermission,
-} from "$lib/server/controllers/userController.js";
-import type { SiteDataForNotification } from "$lib/server/notification/types";
-import { alertToVariables, siteDataToVariables } from "$lib/server/notification/notification_utils";
-import type { TriggerMeta } from "$lib/server/types/db.js";
-import sendWebhook from "$lib/server/notification/webhook_notification.js";
-import sendEmail from "$lib/server/notification/email_notification.js";
-import sendDiscord from "$lib/server/notification/discord_notification.js";
-import sendSlack from "$lib/server/notification/slack_notification.js";
-import serverResolver from "$lib/server/resolver.js";
-import { ACTION_PERMISSION_MAP } from "$lib/allPerms.js";
-import { TestOidcConnection } from "$lib/server/controllers/oidcController.js";
-import { uploadImage } from "$lib/server/controllers/imageController.js";
+} from "#lib/server/controllers/userController.js";
+import type { SiteDataForNotification } from "#lib/server/notification/types.ts";
+import { alertToVariables, siteDataToVariables } from "#lib/server/notification/notification_utils.ts";
+import type { TriggerMeta } from "#lib/server/types/db.js";
+import sendWebhook from "#lib/server/notification/webhook_notification.js";
+import sendEmail from "#lib/server/notification/email_notification.js";
+import sendDiscord from "#lib/server/notification/discord_notification.js";
+import sendSlack from "#lib/server/notification/slack_notification.js";
+import serverResolver from "#lib/server/resolver.js";
+import { ACTION_PERMISSION_MAP } from "#lib/allPerms.js";
+import { TestOidcConnection } from "#lib/server/controllers/oidcController.js";
+import { uploadImage } from "#lib/server/controllers/imageController.js";
 
 export async function POST({ request, cookies }) {
   const payload = await request.json();

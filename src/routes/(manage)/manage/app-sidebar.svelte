@@ -2,11 +2,11 @@
   import InnerShadowTopIcon from "@lucide/svelte/icons/user";
   import NavMain from "./nav-main.svelte";
   import NavUser from "./nav-user.svelte";
-  import * as Sidebar from "$lib/components/ui/sidebar/index.js";
-  import version from "$lib/version";
+  import * as Sidebar from "#lib/components/ui/sidebar/index.js";
+  import version from "#lib/version.ts";
   import type { Component, ComponentProps } from "svelte";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
+  import clientResolver from "#lib/client/resolver.js";
   type NavItem = { title: string; url: string; icon: Component };
 
   let { navItems, ...restProps }: { navItems: NavItem[] } & ComponentProps<typeof Sidebar.Root> = $props();

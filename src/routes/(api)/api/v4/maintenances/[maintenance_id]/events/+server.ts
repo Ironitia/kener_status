@@ -1,9 +1,9 @@
 import { json, type RequestHandler } from "@sveltejs/kit";
-import { parseDbTimestamp } from "$lib/server/tool";
-import db from "$lib/server/db/db";
-import type { GetMaintenanceEventsListResponse, MaintenanceEventResponse } from "$lib/types/api";
-import { GetSiteURL } from "$lib/server/controllers/siteDataController";
-import serverResolver from "$lib/server/resolver";
+import { parseDbTimestamp } from "#lib/server/tool.ts";
+import db from "#lib/server/db/db.ts";
+import type { GetMaintenanceEventsListResponse, MaintenanceEventResponse } from "#lib/types/api.ts";
+import { GetSiteURL } from "#lib/server/controllers/siteDataController.ts";
+import serverResolver from "#lib/server/resolver.ts";
 
 export const GET: RequestHandler = async ({ locals, url }) => {
   // Maintenance is validated by middleware and available in locals

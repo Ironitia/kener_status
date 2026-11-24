@@ -1,16 +1,16 @@
 <script lang="ts">
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import * as Select from "$lib/components/ui/select/index.js";
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import * as Select from "#lib/components/ui/select/index.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
   import Loader from "@lucide/svelte/icons/loader";
   import ShieldCheck from "@lucide/svelte/icons/shield-check";
   import { onMount } from "svelte";
   import { toast } from "svelte-sonner";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
-  import type { ProviderDefinition } from "$lib/client/types/provider-settings.js";
+  import clientResolver from "#lib/client/resolver.js";
+  import type { ProviderDefinition } from "#lib/client/types/provider-settings.js";
 
   interface Props {
     initialProviders: ProviderDefinition[];
@@ -145,8 +145,11 @@
   <div>
     {description}
     {#if learnMoreUrl}
-      <a href={learnMoreUrl} target="_blank" rel="noopener noreferrer" class="text-primary ml-1 underline underline-offset-2"
-        >Learn more</a
+      <a
+        href={learnMoreUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-primary ml-1 underline underline-offset-2">Learn more</a
       >.
     {/if}
   </div>

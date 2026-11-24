@@ -1,4 +1,4 @@
-import type { APIHandler } from "$lib/server/types/api-server";
+import type { APIHandler } from "#lib/server/types/api-server.ts";
 
 interface RouteHandlers {
   get?: APIHandler;

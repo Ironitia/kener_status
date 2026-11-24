@@ -1,12 +1,12 @@
 <script lang="ts">
   import { page } from "$app/state";
-  import * as NavigationMenu from "$lib/components/ui/navigation-menu/index.js";
-  import * as Dropdown from "$lib/components/ui/dropdown-menu/index.js";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { navigationMenuTriggerStyle } from "$lib/components/ui/navigation-menu/navigation-menu-trigger.svelte";
+  import * as NavigationMenu from "#lib/components/ui/navigation-menu/index.js";
+  import * as Dropdown from "#lib/components/ui/dropdown-menu/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { navigationMenuTriggerStyle } from "#lib/components/ui/navigation-menu/navigation-menu-trigger.svelte";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
-  import trackEvent from "$lib/beacon";
+  import clientResolver from "#lib/client/resolver.js";
+  import trackEvent from "#lib/beacon.ts";
   import MenuIcon from "@lucide/svelte/icons/menu";
 
   let { data } = page;
@@ -56,7 +56,7 @@
               <NavigationMenu.Link>
                 {#snippet child()}
                   <a
-                    data-sveltekit-preload-data="off"
+                    data-sveltekit-preload-data="false"
                     href={clientResolver(resolve, item.url)}
                     class="{navigationMenuTriggerStyle()} hover:border-border border border-transparent bg-transparent text-xs hover:bg-transparent"
                     target={item.url.startsWith("http") ? "_blank" : undefined}

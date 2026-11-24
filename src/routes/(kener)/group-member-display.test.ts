@@ -2,22 +2,22 @@ import { beforeAll, describe, expect, it, vi } from "vitest";
 import type { Knex } from "knex";
 import type { Cookies } from "@sveltejs/kit";
 
-vi.mock("$lib/server/db/db", async () => {
-  const { default: DbImpl } = await import("$lib/server/db/dbimpl");
+vi.mock("#lib/server/db/db.ts", async () => {
+  const { default: DbImpl } = await import("#lib/server/db/dbimpl.ts");
   return {
     default: new DbImpl({ client: "better-sqlite3", connection: { filename: ":memory:" }, useNullAsDefault: true }),
   };
 });
 
-vi.mock("$lib/server/cache/cache", () => ({
+vi.mock("#lib/server/cache/cache.ts", () => ({
   getCache: async (_key: string, fetcher?: () => unknown) => (fetcher ? await fetcher() : null),
   setCache: async () => {},
   deleteCache: async () => {},
 }));
 
-import db from "$lib/server/db/db";
-import { GetLayoutServerData, type LayoutServerData } from "$lib/server/controllers/layoutController";
-import { GetPageDashboardData } from "$lib/server/controllers/dashboardController";
+import db from "#lib/server/db/db.ts";
+import { GetLayoutServerData, type LayoutServerData } from "#lib/server/controllers/layoutController.ts";
+import { GetPageDashboardData } from "#lib/server/controllers/dashboardController.ts";
 import { load as loadMonitorPage } from "./monitors/[monitor_tag]/+page.server";
 
 const migrations = import.meta.glob<Knex.Migration>("/migrations/*.ts", { eager: true });

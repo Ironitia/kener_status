@@ -1,13 +1,13 @@
 <script lang="ts">
-  import * as Dialog from "$lib/components/ui/dialog/index.js";
-  import * as InputOTP from "$lib/components/ui/input-otp/index.js";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Switch } from "$lib/components/ui/switch/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
+  import * as Dialog from "#lib/components/ui/dialog/index.js";
+  import * as InputOTP from "#lib/components/ui/input-otp/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Switch } from "#lib/components/ui/switch/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
   import { onMount } from "svelte";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
+  import clientResolver from "#lib/client/resolver.js";
 
   import Mail from "@lucide/svelte/icons/mail";
   import ArrowLeft from "@lucide/svelte/icons/arrow-left";
@@ -16,9 +16,9 @@
   import Bell from "@lucide/svelte/icons/bell";
   import AlertTriangle from "@lucide/svelte/icons/alert-triangle";
   import Wrench from "@lucide/svelte/icons/wrench";
-  import { t } from "$lib/stores/i18n";
-  import trackEvent from "$lib/beacon";
-  import ICONS from "$lib/icons";
+  import { t } from "#lib/stores/i18n.ts";
+  import trackEvent from "#lib/beacon.ts";
+  import ICONS from "#lib/icons.ts";
   import Captcha from "./Captcha.svelte";
 
   interface Props {

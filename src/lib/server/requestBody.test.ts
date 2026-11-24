@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import spec from "../../../static/api-references/v4.json";
-import { MONITOR_TYPES } from "$lib/types/monitor";
+import { MONITOR_TYPES } from "#lib/types/monitor.ts";
 import { findBodyError, readRequestBody, type Schema } from "./requestBody";
 
 const nullableString: Schema = { oneOf: [{ type: "string" }, { type: "null" }] };

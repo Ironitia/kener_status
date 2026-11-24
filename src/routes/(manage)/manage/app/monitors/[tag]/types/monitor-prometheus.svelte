@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import { Textarea } from "$lib/components/ui/textarea/index.js";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Switch } from "$lib/components/ui/switch/index.js";
-  import * as Select from "$lib/components/ui/select/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import { Textarea } from "#lib/components/ui/textarea/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Switch } from "#lib/components/ui/switch/index.js";
+  import * as Select from "#lib/components/ui/select/index.js";
   import Plus from "@lucide/svelte/icons/plus";
   import X from "@lucide/svelte/icons/x";
 

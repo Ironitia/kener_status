@@ -1,14 +1,14 @@
 <script lang="ts">
-  import { browser } from "$app/environment";
+  import { browser } from "$app/env";
   import type { Snippet } from "svelte";
-  import { Button, buttonVariants } from "$lib/components/ui/button/index.js";
-  import * as Drawer from "$lib/components/ui/drawer/index.js";
-  import { requestMonitorBar } from "$lib/client/monitor-bar-client";
-  import type { MonitorBarResponse } from "$lib/server/api-server/monitor-bar/get";
-  import type { GroupMemberDisplay } from "$lib/server/types/monitor";
-  import MonitorBar from "$lib/components/MonitorBar.svelte";
+  import { Button, buttonVariants } from "#lib/components/ui/button/index.js";
+  import * as Drawer from "#lib/components/ui/drawer/index.js";
+  import { requestMonitorBar } from "#lib/client/monitor-bar-client.ts";
+  import type { MonitorBarResponse } from "#lib/server/api-server/monitor-bar/get.ts";
+  import type { GroupMemberDisplay } from "#lib/server/types/monitor.ts";
+  import MonitorBar from "#lib/components/MonitorBar.svelte";
   import ChevronDown from "@lucide/svelte/icons/chevron-down";
-  import { t } from "$lib/stores/i18n";
+  import { t } from "#lib/stores/i18n.ts";
 
   interface Props {
     tags: string[];

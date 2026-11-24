@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
-  import { Badge } from "$lib/components/ui/badge/index.js";
-  import * as Select from "$lib/components/ui/select/index.js";
-  import * as Table from "$lib/components/ui/table/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
+  import { Badge } from "#lib/components/ui/badge/index.js";
+  import * as Select from "#lib/components/ui/select/index.js";
+  import * as Table from "#lib/components/ui/table/index.js";
   import PlusIcon from "@lucide/svelte/icons/plus";
   import ChevronLeftIcon from "@lucide/svelte/icons/chevron-left";
   import ChevronRightIcon from "@lucide/svelte/icons/chevron-right";
@@ -11,7 +11,7 @@
   import { onMount } from "svelte";
   import SettingsIcon from "@lucide/svelte/icons/settings";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
+  import clientResolver from "#lib/client/resolver.js";
 
   // Types
   interface Trigger {

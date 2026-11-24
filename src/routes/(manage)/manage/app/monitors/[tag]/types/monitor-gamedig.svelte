@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import { Textarea } from "$lib/components/ui/textarea/index.js";
-  import { Switch } from "$lib/components/ui/switch/index.js";
-  import * as Select from "$lib/components/ui/select/index.js";
-  import { DefaultGamedigEval, GAMEDIG_TIMEOUT } from "$lib/anywhere.js";
-  import AllGamesListRaw from "$lib/all-games-list.json?raw";
-  import * as Tooltip from "$lib/components/ui/tooltip/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import { Textarea } from "#lib/components/ui/textarea/index.js";
+  import { Switch } from "#lib/components/ui/switch/index.js";
+  import * as Select from "#lib/components/ui/select/index.js";
+  import { DefaultGamedigEval, GAMEDIG_TIMEOUT } from "#lib/anywhere.js";
+  import AllGamesListRaw from "#lib/all-games-list.json?raw";
+  import * as Tooltip from "#lib/components/ui/tooltip/index.js";
   import CodeMirror from "svelte-codemirror-editor";
   import { javascript } from "@codemirror/lang-javascript";
   import { githubLight, githubDark } from "@uiw/codemirror-theme-github";

@@ -1,7 +1,7 @@
 <script lang="ts">
-  import IncidentItem from "$lib/components/IncidentItem.svelte";
-  import MaintenanceItem from "$lib/components/MaintenanceItem.svelte";
-  import { t } from "$lib/stores/i18n";
+  import IncidentItem from "#lib/components/IncidentItem.svelte";
+  import MaintenanceItem from "#lib/components/MaintenanceItem.svelte";
+  import { t } from "#lib/stores/i18n.ts";
   import type { PageData } from "./$types";
   import { setMode } from "mode-watcher";
   import { onMount } from "svelte";

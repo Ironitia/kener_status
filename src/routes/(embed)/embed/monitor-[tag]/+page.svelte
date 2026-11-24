@@ -2,11 +2,11 @@
   import { onMount } from "svelte";
   import { setMode } from "mode-watcher";
   import { resolve } from "$app/paths";
-  import StatusBarCalendar from "$lib/components/StatusBarCalendar.svelte";
-  import { Skeleton } from "$lib/components/ui/skeleton/index.js";
-  import type { MonitorBarResponse } from "$lib/server/api-server/monitor-bar/get";
-  import { t } from "$lib/stores/i18n";
-  import clientResolver from "$lib/client/resolver.js";
+  import StatusBarCalendar from "#lib/components/StatusBarCalendar.svelte";
+  import { Skeleton } from "#lib/components/ui/skeleton/index.js";
+  import type { MonitorBarResponse } from "#lib/server/api-server/monitor-bar/get.ts";
+  import { t } from "#lib/stores/i18n.ts";
+  import clientResolver from "#lib/client/resolver.js";
   interface Props {
     data: {
       monitorTag: string;

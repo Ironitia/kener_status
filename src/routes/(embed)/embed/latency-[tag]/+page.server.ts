@@ -1,6 +1,6 @@
 import type { PageServerLoad } from "./$types";
-import { parseIntParam } from "$lib/server/api-server/monitor-bar/shared";
-import { GetMinuteStartNowTimestampUTC } from "$lib/server/tool";
+import { parseIntParam } from "#lib/server/api-server/monitor-bar/shared.ts";
+import { GetMinuteStartNowTimestampUTC } from "#lib/server/tool.ts";
 
 const DEFAULT_DAYS = 90;
 const MAX_DAYS = 90;

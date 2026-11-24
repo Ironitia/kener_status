@@ -1,4 +1,4 @@
-import type { MonitoringStatus } from "$lib/types/status.js";
+import type { MonitoringStatus } from "#lib/types/status.js";
 
 // Badge styles supported by badge-maker
 export const BADGE_STYLES = ["flat", "plastic", "flat-square", "for-the-badge", "social"] as const;

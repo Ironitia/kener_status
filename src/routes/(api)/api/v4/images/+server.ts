@@ -1,8 +1,8 @@
 import { json, type RequestHandler } from "@sveltejs/kit";
-import type { BadRequestResponse, UploadImageRequest, UploadImageResponse } from "$lib/types/api";
-import { ImageUploadError, uploadImage } from "$lib/server/controllers/imageController";
-import GC from "$lib/global-constants";
-import { readRequestBody } from "$lib/server/requestBody";
+import type { BadRequestResponse, UploadImageRequest, UploadImageResponse } from "#lib/types/api.ts";
+import { ImageUploadError, uploadImage } from "#lib/server/controllers/imageController.ts";
+import GC from "#lib/global-constants.ts";
+import { readRequestBody } from "#lib/server/requestBody.ts";
 
 function badRequest(message: string): Response {
   const errorResponse: BadRequestResponse = { error: { code: "BAD_REQUEST", message } };

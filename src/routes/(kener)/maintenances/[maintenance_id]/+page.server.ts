@@ -4,9 +4,9 @@ import {
   GetMaintenanceWithEvents,
   GetMaintenanceMonitors,
   GetMaintenanceEventById,
-} from "$lib/server/controllers/maintenanceController.js";
-import db from "$lib/server/db/db";
-import type { MaintenanceEventRecord } from "$lib/server/db/dbimpl";
+} from "#lib/server/controllers/maintenanceController.js";
+import db from "#lib/server/db/db.ts";
+import type { MaintenanceEventRecord } from "#lib/server/db/dbimpl.ts";
 
 export const load: PageServerLoad = async ({ params, url, parent }) => {
   const { maintenance_id } = params;
@@ -19,7 +19,7 @@ export const load: PageServerLoad = async ({ params, url, parent }) => {
 
   const eventIdNum = Number(maintenance_id);
   if (isNaN(eventIdNum)) {
-    throw error(400, { message: "Invalid maintenance event ID" });
+    throw error(400, "Invalid maintenance event ID");
   }
 
   // First fetch the maintenance event to get the maintenance_id
@@ -28,7 +28,7 @@ export const load: PageServerLoad = async ({ params, url, parent }) => {
   if (idType === "event") {
     maintenanceEvent = await GetMaintenanceEventById(eventIdNum);
     if (!maintenanceEvent) {
-      throw error(404, { message: "Maintenance event not found" });
+      throw error(404, "Maintenance event not found");
     }
     maintenanceId = maintenanceEvent.maintenance_id;
     //
@@ -40,7 +40,7 @@ export const load: PageServerLoad = async ({ params, url, parent }) => {
   // Fetch maintenance details with events using the maintenance_id from the event
   const maintenance = await GetMaintenanceWithEvents(maintenanceId);
   if (!maintenance) {
-    throw error(404, { message: "Maintenance not found" });
+    throw error(404, "Maintenance not found");
   }
   if (!maintenanceEvent && !!maintenance.events && maintenance.events.length > 0) {
     maintenanceEvent = maintenance.events[0];
@@ -48,7 +48,7 @@ export const load: PageServerLoad = async ({ params, url, parent }) => {
 
   //if maintenanceEvent is still null, throw error
   if (!maintenanceEvent) {
-    throw error(404, { message: "Maintenance event not found" });
+    throw error(404, "Maintenance event not found");
   }
 
   // Fetch monitor tags for this maintenance
@@ -77,7 +77,7 @@ export const load: PageServerLoad = async ({ params, url, parent }) => {
   }
 
   if (maintenance.is_global !== "YES" && affectedMonitors.length === 0) {
-    throw error(404, { message: "Maintenance not found" });
+    throw error(404, "Maintenance not found");
   }
 
   const visibleTags = new Set(affectedMonitors.map((m) => m.monitor_tag));

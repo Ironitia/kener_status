@@ -1,4 +1,4 @@
-import db from "$lib/server/db/db.js";
+import db from "#lib/server/db/db.js";
 import type {
   UserSubscriptionRecord,
   UserSubscriptionRecordInsert,
@@ -10,7 +10,7 @@ import type {
   SubscriberUserRecord,
   SubscriberMethodRecord,
   DbTimestamp,
-} from "$lib/server/types/db.js";
+} from "#lib/server/types/db.js";
 
 // ============ V2 Admin Functions ============
 

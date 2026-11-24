@@ -1,23 +1,23 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Switch } from "$lib/components/ui/switch/index.js";
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
-  import * as Card from "$lib/components/ui/card/index.js";
-  import * as Select from "$lib/components/ui/select/index.js";
-  import CopyButton from "$lib/components/CopyButton.svelte";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Switch } from "#lib/components/ui/switch/index.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
+  import * as Card from "#lib/components/ui/card/index.js";
+  import * as Select from "#lib/components/ui/select/index.js";
+  import CopyButton from "#lib/components/CopyButton.svelte";
   import ColorPicker from "svelte-awesome-color-picker";
   import CopyIcon from "@lucide/svelte/icons/copy";
   import EyeIcon from "@lucide/svelte/icons/eye";
   import RefreshCwIcon from "@lucide/svelte/icons/refresh-cw";
-  import type { MonitorRecord } from "$lib/server/types/db.js";
-  import { BADGE_STYLES, type BadgeStyle } from "$lib/global-constants.js";
-  import type { SiteDataTransformed } from "$lib/server/controllers/siteDataController";
+  import type { MonitorRecord } from "#lib/server/types/db.js";
+  import { BADGE_STYLES, type BadgeStyle } from "#lib/global-constants.js";
+  import type { SiteDataTransformed } from "#lib/server/controllers/siteDataController.ts";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
-  import { availableLocalesList } from "$lib/stores/i18n";
+  import clientResolver from "#lib/client/resolver.js";
+  import { availableLocalesList } from "#lib/stores/i18n.ts";
   // Monitors state
   let monitors = $state<MonitorRecord[]>([]);
   let activatedLocales = $state<{ code: string; name: string }[]>([]);

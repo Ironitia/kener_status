@@ -1,9 +1,9 @@
 <script lang="ts">
   import { toast } from "svelte-sonner";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import * as Card from "$lib/components/ui/card/index.js";
-  import * as Field from "$lib/components/ui/field/index.js";
-  import * as InputGroup from "$lib/components/ui/input-group/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import * as Card from "#lib/components/ui/card/index.js";
+  import * as Field from "#lib/components/ui/field/index.js";
+  import * as InputGroup from "#lib/components/ui/input-group/index.js";
   import { goto } from "$app/navigation";
   import MailIcon from "@lucide/svelte/icons/mail";
   import LockIcon from "@lucide/svelte/icons/lock";
@@ -12,7 +12,7 @@
   import EyeOpenIcon from "@lucide/svelte/icons/eye";
   import ArrowLeftIcon from "@lucide/svelte/icons/arrow-left";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
+  import clientResolver from "#lib/client/resolver.js";
   const { data } = $props();
 
   const view: string = $derived(data.view);

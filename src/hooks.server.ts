@@ -1,11 +1,11 @@
-import { json, type Handle, type RequestEvent } from "@sveltejs/kit";
-import { sequence } from "@sveltejs/kit/hooks";
-import { VerifyAPIKey } from "$lib/server/controllers/apiController";
-import db from "$lib/server/db/db";
-import type { UnauthorizedResponse, NotFoundResponse } from "$lib/types/api";
-import { GetMonitorsParsed } from "$lib/server/controllers/monitorsController";
-import GC from "$lib/global-constants";
-import { InstallEnvProxy } from "$lib/server/proxy";
+import { json, type RequestEvent } from "@sveltejs/kit";
+import { sequence, type Handle } from "@sveltejs/kit/hooks";
+import { VerifyAPIKey } from "#lib/server/controllers/apiController.ts";
+import db from "#lib/server/db/db.ts";
+import type { UnauthorizedResponse, NotFoundResponse } from "#lib/types/api.ts";
+import { GetMonitorsParsed } from "#lib/server/controllers/monitorsController.ts";
+import GC from "#lib/global-constants.ts";
+import { InstallEnvProxy } from "#lib/server/proxy.ts";
 
 // Dev runs the SvelteKit server and the scheduler as separate processes; each installs once.
 InstallEnvProxy();

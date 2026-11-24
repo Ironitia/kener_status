@@ -1,13 +1,13 @@
 import { json, type RequestHandler } from "@sveltejs/kit";
-import db from "$lib/server/db/db";
+import db from "#lib/server/db/db.ts";
 import type {
   GetMaintenanceEventsDetailListResponse,
   MaintenanceEventDetailResponse,
   MaintenanceMonitor,
-} from "$lib/types/api";
-import { GetNowTimestampUTC, GetMinuteStartTimestampUTC } from "$lib/server/tool";
-import { GetSiteURL } from "$lib/server/controllers/siteDataController";
-import serverResolver from "$lib/server/resolver";
+} from "#lib/types/api.ts";
+import { GetNowTimestampUTC, GetMinuteStartTimestampUTC } from "#lib/server/tool.ts";
+import { GetSiteURL } from "#lib/server/controllers/siteDataController.ts";
+import serverResolver from "#lib/server/resolver.ts";
 
 const VALID_EVENT_STATUSES = ["SCHEDULED", "ONGOING", "COMPLETED", "CANCELLED", "READY"];
 

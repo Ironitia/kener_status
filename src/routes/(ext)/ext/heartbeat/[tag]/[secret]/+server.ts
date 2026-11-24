@@ -1,5 +1,5 @@
 import { json, type RequestHandler } from "@sveltejs/kit";
-import { RegisterHeartbeat } from "$lib/server/controllers/monitorsController";
+import { RegisterHeartbeat } from "#lib/server/controllers/monitorsController.ts";
 
 const handler: RequestHandler = async ({ params }) => {
   const { tag, secret } = params;

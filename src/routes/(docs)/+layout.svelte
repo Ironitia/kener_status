@@ -6,9 +6,9 @@
   import "highlight.js/styles/github-dark.css";
   import { ModeWatcher } from "mode-watcher";
   import { resolve } from "$app/paths";
-  import { Toaster } from "$lib/components/ui/sonner/index.js";
+  import { Toaster } from "#lib/components/ui/sonner/index.js";
 
-  let base = resolve("/");
+  let base = resolve("/(kener)");
 
   let { children, data } = $props();
 </script>

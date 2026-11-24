@@ -1,8 +1,8 @@
-import { GetSiteDataByKey } from "$lib/server/controllers/siteDataController.js";
-import { GetAllPages } from "$lib/server/controllers/pagesController.js";
-import { GetMonitors } from "$lib/server/controllers/monitorsController.js";
-import serverResolver from "$lib/server/resolver.js";
-import type { SitemapXMLConfig } from "$lib/types/site.js";
+import { GetSiteDataByKey } from "#lib/server/controllers/siteDataController.js";
+import { GetAllPages } from "#lib/server/controllers/pagesController.js";
+import { GetMonitors } from "#lib/server/controllers/monitorsController.js";
+import serverResolver from "#lib/server/resolver.js";
+import type { SitemapXMLConfig } from "#lib/types/site.js";
 import type { RequestHandler } from "./$types";
 
 export const GET: RequestHandler = async () => {

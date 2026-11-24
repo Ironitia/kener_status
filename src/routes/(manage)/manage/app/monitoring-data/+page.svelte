@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
-  import { Badge } from "$lib/components/ui/badge/index.js";
-  import * as Table from "$lib/components/ui/table/index.js";
-  import * as Tooltip from "$lib/components/ui/tooltip/index.js";
-  import * as Select from "$lib/components/ui/select/index.js";
-  import * as AlertDialog from "$lib/components/ui/alert-dialog/index.js";
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
+  import { Badge } from "#lib/components/ui/badge/index.js";
+  import * as Table from "#lib/components/ui/table/index.js";
+  import * as Tooltip from "#lib/components/ui/tooltip/index.js";
+  import * as Select from "#lib/components/ui/select/index.js";
+  import * as AlertDialog from "#lib/components/ui/alert-dialog/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
   import ChevronLeftIcon from "@lucide/svelte/icons/chevron-left";
   import ChevronRightIcon from "@lucide/svelte/icons/chevron-right";
   import SearchIcon from "@lucide/svelte/icons/search";
@@ -15,13 +15,13 @@
   import FilterIcon from "@lucide/svelte/icons/filter";
   import XIcon from "@lucide/svelte/icons/x";
   import { format } from "date-fns";
-  import LocalTime from "$lib/components/LocalTime.svelte";
+  import LocalTime from "#lib/components/LocalTime.svelte";
   import { onMount } from "svelte";
   import { toast } from "svelte-sonner";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
-  import GC, { isMonitoringStatus } from "$lib/global-constants";
-  import type { MonitoringStatus } from "$lib/types/status.js";
+  import clientResolver from "#lib/client/resolver.js";
+  import GC, { isMonitoringStatus } from "#lib/global-constants.ts";
+  import type { MonitoringStatus } from "#lib/types/status.js";
 
   // Types
   interface MonitoringData {
@@ -467,8 +467,7 @@
         {#if statusFilter !== "ALL"}
           with status <strong>{statusFilter}</strong>
         {/if}
-        from {startDateTime} to {endDateTime}.
-        This action cannot be undone.
+        from {startDateTime} to {endDateTime}. This action cannot be undone.
       </AlertDialog.Description>
     </AlertDialog.Header>
     <AlertDialog.Footer>

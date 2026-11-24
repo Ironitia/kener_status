@@ -1,13 +1,13 @@
 <script lang="ts">
-  import * as Command from "$lib/components/ui/command/index.js";
-  import * as Popover from "$lib/components/ui/popover/index.js";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { timezone, selectedTimezone } from "$lib/stores/timezone";
+  import * as Command from "#lib/components/ui/command/index.js";
+  import * as Popover from "#lib/components/ui/popover/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { timezone, selectedTimezone } from "#lib/stores/timezone.ts";
   import Globe from "@lucide/svelte/icons/globe";
   import CheckIcon from "@lucide/svelte/icons/check";
   import { tick } from "svelte";
-  import { cn } from "$lib/utils.js";
-  import trackEvent from "$lib/beacon";
+  import { cn } from "#lib/utils.js";
+  import trackEvent from "#lib/beacon.ts";
 
   interface Props {
     compact?: boolean;

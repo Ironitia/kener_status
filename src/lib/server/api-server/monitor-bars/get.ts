@@ -1,18 +1,18 @@
 import { json, error } from "@sveltejs/kit";
-import type { APIServerRequest } from "$lib/server/types/api-server";
-import { CanSeeHiddenMonitors, GetLoggedInSession } from "$lib/server/controllers/userController";
-import db from "$lib/server/db/db";
-import { GetMinuteStartNowTimestampUTC } from "$lib/server/tool";
-import type { StatusType } from "$lib/types/status";
-import GC from "$lib/global-constants";
-import type { MonitorBarResponse } from "$lib/server/api-server/monitor-bar/get";
-import { buildMonitorBarResponseFromRawData, parseIntParam } from "$lib/server/api-server/monitor-bar/shared";
+import type { APIServerRequest } from "#lib/server/types/api-server.ts";
+import { CanSeeHiddenMonitors, GetLoggedInSession } from "#lib/server/controllers/userController.ts";
+import db from "#lib/server/db/db.ts";
+import { GetMinuteStartNowTimestampUTC } from "#lib/server/tool.ts";
+import type { StatusType } from "#lib/types/status.ts";
+import GC from "#lib/global-constants.ts";
+import type { MonitorBarResponse } from "#lib/server/api-server/monitor-bar/get.ts";
+import { buildMonitorBarResponseFromRawData, parseIntParam } from "#lib/server/api-server/monitor-bar/shared.ts";
 import {
   AttachSslCacheFields,
   GetLatestMonitoringDataAllActive,
   GetStatusCountsByIntervalGroupedByMonitor,
-} from "$lib/server/controllers/monitorsController";
-import type { TimestampStatusCount, TimestampStatusCountByMonitor } from "$lib/server/types/db";
+} from "#lib/server/controllers/monitorsController.ts";
+import type { TimestampStatusCount, TimestampStatusCountByMonitor } from "#lib/server/types/db.ts";
 
 const DEFAULT_DAYS = 90;
 const MAX_DAYS = 90;
@@ -35,7 +35,7 @@ export default async function get(req: APIServerRequest): Promise<Response> {
   const endOfDayTodayAtTz = parseIntParam(endOfDayTodayAtTzStr, GetMinuteStartNowTimestampUTC());
 
   if (!tagsStr) {
-    return error(400, { message: "tags query parameter is required" });
+    return error(400, "tags query parameter is required");
   }
 
   const tags = Array.from(
@@ -48,11 +48,11 @@ export default async function get(req: APIServerRequest): Promise<Response> {
   );
 
   if (tags.length === 0) {
-    return error(400, { message: "At least one tag is required" });
+    return error(400, "At least one tag is required");
   }
 
   if (tags.length > MAX_TAGS) {
-    return error(400, { message: `Maximum ${MAX_TAGS} tags are allowed` });
+    return error(400, `Maximum ${MAX_TAGS} tags are allowed`);
   }
 
   const startTime = endOfDayTodayAtTz - days * 24 * 60 * 60;

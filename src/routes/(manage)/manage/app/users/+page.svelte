@@ -1,18 +1,18 @@
 <script lang="ts">
-  import * as Card from "$lib/components/ui/card/index.js";
-  import * as Table from "$lib/components/ui/table/index.js";
-  import * as Dialog from "$lib/components/ui/dialog/index.js";
-  import * as Sheet from "$lib/components/ui/sheet/index.js";
-  import * as Alert from "$lib/components/ui/alert/index.js";
-  import { Checkbox } from "$lib/components/ui/checkbox/index.js";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import { buttonVariants } from "$lib/components/ui/button/index.js";
-  import GC from "$lib/global-constants";
+  import * as Card from "#lib/components/ui/card/index.js";
+  import * as Table from "#lib/components/ui/table/index.js";
+  import * as Dialog from "#lib/components/ui/dialog/index.js";
+  import * as Sheet from "#lib/components/ui/sheet/index.js";
+  import * as Alert from "#lib/components/ui/alert/index.js";
+  import { Checkbox } from "#lib/components/ui/checkbox/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import { buttonVariants } from "#lib/components/ui/button/index.js";
+  import GC from "#lib/global-constants.ts";
 
-  import { Badge } from "$lib/components/ui/badge/index.js";
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
+  import { Badge } from "#lib/components/ui/badge/index.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
   import UsersIcon from "@lucide/svelte/icons/users";
   import PlusIcon from "@lucide/svelte/icons/plus";
   import SettingsIcon from "@lucide/svelte/icons/settings";
@@ -23,13 +23,13 @@
   import ChevronRightIcon from "@lucide/svelte/icons/chevron-right";
   import EyeClosedIcon from "@lucide/svelte/icons/eye-closed";
   import EyeOpenIcon from "@lucide/svelte/icons/eye";
-  import * as Tooltip from "$lib/components/ui/tooltip/index.js";
+  import * as Tooltip from "#lib/components/ui/tooltip/index.js";
   import { toast } from "svelte-sonner";
-  import LocalTime from "$lib/components/LocalTime.svelte";
+  import LocalTime from "#lib/components/LocalTime.svelte";
   import { onMount } from "svelte";
-  import type { UserRecordDashboard, UserRecordPublic, RoleRecord } from "$lib/server/types/db.js";
+  import type { UserRecordDashboard, UserRecordPublic, RoleRecord } from "#lib/server/types/db.js";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
+  import clientResolver from "#lib/client/resolver.js";
 
   // Types
   interface NewUser {

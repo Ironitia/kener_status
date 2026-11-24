@@ -1,16 +1,16 @@
 <script lang="ts">
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import * as Card from "$lib/components/ui/card/index.js";
-  import * as Select from "$lib/components/ui/select/index.js";
-  import * as Dialog from "$lib/components/ui/dialog/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import * as Card from "#lib/components/ui/card/index.js";
+  import * as Select from "#lib/components/ui/select/index.js";
+  import * as Dialog from "#lib/components/ui/dialog/index.js";
   import SaveIcon from "@lucide/svelte/icons/save";
   import Loader from "@lucide/svelte/icons/loader";
   import PlayIcon from "@lucide/svelte/icons/play";
-  import type { MonitorRecord } from "$lib/server/types/db.js";
-  import type { GroupMonitorTypeData, MonitoringResult } from "$lib/server/types/monitor.js";
-  import type { DockerConnectionDefaults } from "$lib/types/docker.js";
-  import { MONITOR_TYPES, type MonitorType } from "$lib/types/monitor.js";
+  import type { MonitorRecord } from "#lib/server/types/db.js";
+  import type { GroupMonitorTypeData, MonitoringResult } from "#lib/server/types/monitor.js";
+  import type { DockerConnectionDefaults } from "#lib/types/docker.js";
+  import { MONITOR_TYPES, type MonitorType } from "#lib/types/monitor.js";
   import { toast } from "svelte-sonner";
   import {
     ValidateIpAddress,
@@ -20,16 +20,16 @@
     IsValidURL,
     IsValidPort,
     ResolveGroupMemberDisplay
-  } from "$lib/clientTools";
+  } from "#lib/clientTools.ts";
   import {
     GAMEDIG_SOCKET_TIMEOUT,
     DOCKER_CONNECTION_TYPES,
     DOCKER_CHECK_TYPES,
     IsValidProxyURL,
     IsValidHeartbeatSecret
-  } from "$lib/anywhere";
+  } from "#lib/anywhere.ts";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
+  import clientResolver from "#lib/client/resolver.js";
   // Type-specific components
   import {
     MonitorApi,

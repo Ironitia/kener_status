@@ -1,22 +1,22 @@
 <script lang="ts">
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import { Switch } from "$lib/components/ui/switch/index.js";
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
-  import { Checkbox } from "$lib/components/ui/checkbox/index.js";
-  import { Input } from "$lib/components/ui/input/index.js";
-  import * as Card from "$lib/components/ui/card/index.js";
-  import * as Select from "$lib/components/ui/select/index.js";
-  import { Badge } from "$lib/components/ui/badge/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import { Switch } from "#lib/components/ui/switch/index.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
+  import { Checkbox } from "#lib/components/ui/checkbox/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import * as Card from "#lib/components/ui/card/index.js";
+  import * as Select from "#lib/components/ui/select/index.js";
+  import { Badge } from "#lib/components/ui/badge/index.js";
   import SaveIcon from "@lucide/svelte/icons/save";
   import Loader from "@lucide/svelte/icons/loader";
   import GlobeIcon from "@lucide/svelte/icons/globe";
   import ClockIcon from "@lucide/svelte/icons/clock";
   import CalendarClockIcon from "@lucide/svelte/icons/calendar-clock";
   import { toast } from "svelte-sonner";
-  import { availableLocalesList } from "$lib/stores/i18n";
+  import { availableLocalesList } from "#lib/stores/i18n.ts";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
+  import clientResolver from "#lib/client/resolver.js";
   import { format } from "date-fns";
 
   interface Locale {

@@ -1,5 +1,5 @@
 import { json, type RequestHandler } from "@sveltejs/kit";
-import db from "$lib/server/db/db";
+import db from "#lib/server/db/db.ts";
 import type {
   GetIncidentsListResponse,
   IncidentResponse,
@@ -7,13 +7,13 @@ import type {
   CreateIncidentResponse,
   IncidentDetailResponse,
   BadRequestResponse,
-} from "$lib/types/api";
-import GC from "$lib/global-constants";
-import { GetMinuteStartTimestampUTC, parseDbTimestamp } from "$lib/server/tool";
-import { GetSiteURL } from "$lib/server/controllers/siteDataController";
-import { AddIncidentMonitor, CreateIncident } from "$lib/server/controllers/incidentController";
-import serverResolver from "$lib/server/resolver";
-import { readRequestBody } from "$lib/server/requestBody";
+} from "#lib/types/api.ts";
+import GC from "#lib/global-constants.ts";
+import { GetMinuteStartTimestampUTC, parseDbTimestamp } from "#lib/server/tool.ts";
+import { GetSiteURL } from "#lib/server/controllers/siteDataController.ts";
+import { AddIncidentMonitor, CreateIncident } from "#lib/server/controllers/incidentController.ts";
+import serverResolver from "#lib/server/resolver.ts";
+import { readRequestBody } from "#lib/server/requestBody.ts";
 
 export const GET: RequestHandler = async ({ url }) => {
   // Parse query params for filtering

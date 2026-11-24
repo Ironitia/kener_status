@@ -1,27 +1,27 @@
 <script lang="ts">
-  import { t } from "$lib/stores/i18n";
-  import * as Tooltip from "$lib/components/ui/tooltip/index.js";
+  import { t } from "#lib/stores/i18n.ts";
+  import * as Tooltip from "#lib/components/ui/tooltip/index.js";
 
   import { resolve } from "$app/paths";
   import Clock from "@lucide/svelte/icons/clock";
-  import * as Dialog from "$lib/components/ui/dialog/index.js";
-  import { Skeleton } from "$lib/components/ui/skeleton/index.js";
-  import LoaderBoxes from "$lib/components/loaderbox.svelte";
-  import * as Tabs from "$lib/components/ui/tabs/index.js";
+  import * as Dialog from "#lib/components/ui/dialog/index.js";
+  import { Skeleton } from "#lib/components/ui/skeleton/index.js";
+  import LoaderBoxes from "#lib/components/loaderbox.svelte";
+  import * as Tabs from "#lib/components/ui/tabs/index.js";
   import { page } from "$app/state";
   import { AreaChart, Area, LinearGradient } from "layerchart";
   import { curveCatmullRom } from "d3-shape";
   import { scaleTime } from "d3-scale";
-  import IncidentItem from "$lib/components/IncidentItem.svelte";
-  import MaintenanceItem from "$lib/components/MaintenanceItem.svelte";
-  import MinuteGrid from "$lib/components/MinuteGrid.svelte";
-  import clientResolver from "$lib/client/resolver.js";
-  import { ParseLatency } from "$lib/clientTools";
+  import IncidentItem from "#lib/components/IncidentItem.svelte";
+  import MaintenanceItem from "#lib/components/MaintenanceItem.svelte";
+  import MinuteGrid from "#lib/components/MinuteGrid.svelte";
+  import clientResolver from "#lib/client/resolver.js";
+  import { ParseLatency } from "#lib/clientTools.ts";
 
-  import * as Chart from "$lib/components/ui/chart/index.js";
-  import type { IncidentForMonitorListWithComments, MaintenanceEventsMonitorList } from "$lib/server/types/db";
-  import { formatDate } from "$lib/stores/datetime";
-  import trackEvent from "$lib/beacon";
+  import * as Chart from "#lib/components/ui/chart/index.js";
+  import type { IncidentForMonitorListWithComments, MaintenanceEventsMonitorList } from "#lib/server/types/db.ts";
+  import { formatDate } from "#lib/stores/datetime.ts";
+  import trackEvent from "#lib/beacon.ts";
 
   interface DayDetailData {
     minutes: Array<{

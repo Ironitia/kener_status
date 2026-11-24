@@ -1,8 +1,8 @@
 import { redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
-import { VerifyToken } from "$lib/server/controllers/commonController.js";
-import db from "$lib/server/db/db.js";
-import serverResolve from "$lib/server/resolver.js";
+import { VerifyToken } from "#lib/server/controllers/commonController.js";
+import db from "#lib/server/db/db.js";
+import serverResolve from "#lib/server/resolver.js";
 
 export const load: PageServerLoad = async ({ url }) => {
   const view = url.searchParams.get("view") || "";

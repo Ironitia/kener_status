@@ -3,16 +3,16 @@
   import MessageSquare from "@lucide/svelte/icons/message-square";
   import Monitor from "@lucide/svelte/icons/monitor";
   import ArrowRight from "@lucide/svelte/icons/arrow-right";
-  import * as Item from "$lib/components/ui/item/index.js";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Badge } from "$lib/components/ui/badge/index.js";
-  import * as Tooltip from "$lib/components/ui/tooltip/index.js";
-  import mdToHTML from "$lib/marked";
-  import ThemePlus from "$lib/components/ThemePlus.svelte";
+  import * as Item from "#lib/components/ui/item/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Badge } from "#lib/components/ui/badge/index.js";
+  import * as Tooltip from "#lib/components/ui/tooltip/index.js";
+  import mdToHTML from "#lib/marked.ts";
+  import ThemePlus from "#lib/components/ThemePlus.svelte";
   import { SveltePurify } from "@humanspeak/svelte-purify";
-  import { t } from "$lib/stores/i18n";
-  import { formatDate, formatDuration } from "$lib/stores/datetime";
-  import clientResolver, { absoluteResolve } from "$lib/client/resolver.js";
+  import { t } from "#lib/stores/i18n.ts";
+  import { formatDate, formatDuration } from "#lib/stores/datetime.ts";
+  import clientResolver, { absoluteResolve } from "#lib/client/resolver.js";
   import { page } from "$app/state";
 
   let { data } = $props();

@@ -1,5 +1,5 @@
 import type { PageServerLoad } from "./$types";
-import { parseIntParam } from "$lib/server/api-server/monitor-bar/shared";
+import { parseIntParam } from "#lib/server/api-server/monitor-bar/shared.ts";
 
 const DEFAULT_DAYS = 90;
 const MAX_DAYS = 90;

@@ -1,24 +1,24 @@
 <script lang="ts">
-  import * as Item from "$lib/components/ui/item/index.js";
-  import { Skeleton } from "$lib/components/ui/skeleton/index.js";
-  import * as Avatar from "$lib/components/ui/avatar/index.js";
-  import ICONS from "$lib/icons";
-  import StatusBarCalendar from "$lib/components/StatusBarCalendar.svelte";
-  import type { MonitorBarResponse } from "$lib/server/api-server/monitor-bar/get.js";
+  import * as Item from "#lib/components/ui/item/index.js";
+  import { Skeleton } from "#lib/components/ui/skeleton/index.js";
+  import * as Avatar from "#lib/components/ui/avatar/index.js";
+  import ICONS from "#lib/icons.ts";
+  import StatusBarCalendar from "#lib/components/StatusBarCalendar.svelte";
+  import type { MonitorBarResponse } from "#lib/server/api-server/monitor-bar/get.js";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
-  import { formatDate } from "$lib/stores/datetime";
+  import clientResolver from "#lib/client/resolver.js";
+  import { formatDate } from "#lib/stores/datetime.ts";
   import {
     GetInitials,
     GetSslSecurityState,
     SslSecurityLabelKey,
     SslSecurityTextClass,
     FormatSslRemaining
-  } from "$lib/clientTools.js";
-  import { getSslNowMs } from "$lib/client/sslClock.svelte";
+  } from "#lib/clientTools.js";
+  import { getSslNowMs } from "#lib/client/sslClock.svelte.ts";
   import GroupMonitorPopover from "./GroupMonitorPopover.svelte";
-  import type { GroupMemberDisplay } from "$lib/server/types/monitor";
-  import { t } from "$lib/stores/i18n";
+  import type { GroupMemberDisplay } from "#lib/server/types/monitor.ts";
+  import { t } from "#lib/stores/i18n.ts";
   import { page } from "$app/state";
 
   interface Props {

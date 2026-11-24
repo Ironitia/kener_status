@@ -5,7 +5,7 @@ import { randomBytes } from "node:crypto";
 const { db } = vi.hoisted(() => ({
   db: { insertImage: vi.fn(async (row: { id: string; data: string }) => row.id) },
 }));
-vi.mock("$lib/server/db/db", () => ({ default: db }));
+vi.mock("#lib/server/db/db.ts", () => ({ default: db }));
 
 import { POST } from "./+server";
 

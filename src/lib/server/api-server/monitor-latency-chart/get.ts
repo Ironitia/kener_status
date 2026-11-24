@@ -1,9 +1,9 @@
 import { json, error } from "@sveltejs/kit";
-import type { APIServerRequest } from "$lib/server/types/api-server";
-import { CanSeeHiddenMonitors, GetLoggedInSession } from "$lib/server/controllers/userController";
-import db from "$lib/server/db/db";
-import { GetMinuteStartNowTimestampUTC } from "$lib/server/tool";
-import GC from "$lib/global-constants";
+import type { APIServerRequest } from "#lib/server/types/api-server.ts";
+import { CanSeeHiddenMonitors, GetLoggedInSession } from "#lib/server/controllers/userController.ts";
+import db from "#lib/server/db/db.ts";
+import { GetMinuteStartNowTimestampUTC } from "#lib/server/tool.ts";
+import GC from "#lib/global-constants.ts";
 
 /**
  * Time range definitions with aggregation intervals
@@ -38,20 +38,20 @@ export default async function get(req: APIServerRequest): Promise<Response> {
   const localTz = req.query.get("localTz") || "UTC";
 
   if (!tag) {
-    return error(400, { message: "tag query parameter is required" });
+    return error(400, "tag query parameter is required");
   }
 
   const canSeeHidden = await CanSeeHiddenMonitors(await GetLoggedInSession(req.cookies));
   const monitors = await db.getMonitors({ tag, status: GC.ACTIVE, is_hidden: canSeeHidden ? undefined : GC.NO });
   const monitor = monitors[0];
   if (!monitor) {
-    return error(404, { message: "Monitor not found" });
+    return error(404, "Monitor not found");
   }
 
   // Find the time range config
   const rangeConfig = TIME_RANGES.find((r) => r.value === range);
   if (!rangeConfig) {
-    return error(400, { message: "Invalid range parameter" });
+    return error(400, "Invalid range parameter");
   }
 
   const now = GetMinuteStartNowTimestampUTC();

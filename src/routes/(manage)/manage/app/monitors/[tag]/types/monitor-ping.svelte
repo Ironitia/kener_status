@@ -1,18 +1,18 @@
 <script lang="ts">
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import * as Select from "$lib/components/ui/select/index.js";
-  import { ValidateIpAddress } from "$lib/clientTools";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import * as Select from "#lib/components/ui/select/index.js";
+  import { ValidateIpAddress } from "#lib/clientTools.ts";
   import Plus from "@lucide/svelte/icons/plus";
   import X from "@lucide/svelte/icons/x";
-  import { DefaultPingEval } from "$lib/anywhere.js";
+  import { DefaultPingEval } from "#lib/anywhere.js";
   import CodeMirror from "svelte-codemirror-editor";
   import { javascript } from "@codemirror/lang-javascript";
   import { githubLight, githubDark } from "@uiw/codemirror-theme-github";
   import { mode } from "mode-watcher";
-  import type { PingHost, PingHostType, PingMonitorTypeData } from "$lib/types/ping.js";
-  import { PING_HOST_TYPES } from "$lib/types/ping.js";
+  import type { PingHost, PingHostType, PingMonitorTypeData } from "#lib/types/ping.js";
+  import { PING_HOST_TYPES } from "#lib/types/ping.js";
 
   let { data = $bindable({ hosts: [], pingEval: DefaultPingEval }) }: { data: PingMonitorTypeData } = $props();
 

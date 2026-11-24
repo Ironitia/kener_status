@@ -1,13 +1,13 @@
 // @ts-nocheck
-import gtm from "$lib/snippets/capture/google-tag-manager.js?raw";
-import mx from "$lib/snippets/capture/mixpanel.js?raw";
-import am from "$lib/snippets/capture/amplitude.js?raw";
-import pl from "$lib/snippets/capture/plausible.js?raw";
-import mscl from "$lib/snippets/capture/clarity.js?raw";
-import um from "$lib/snippets/capture/umami.js?raw";
-import ph from "$lib/snippets/capture/posthog.js?raw";
-import op from "$lib/snippets/capture/openpanel.js?raw";
-import { GetAllAnalyticsData } from "$lib/server/controllers/siteDataController.js";
+import gtm from "#lib/snippets/capture/google-tag-manager.js?raw";
+import mx from "#lib/snippets/capture/mixpanel.js?raw";
+import am from "#lib/snippets/capture/amplitude.js?raw";
+import pl from "#lib/snippets/capture/plausible.js?raw";
+import mscl from "#lib/snippets/capture/clarity.js?raw";
+import um from "#lib/snippets/capture/umami.js?raw";
+import ph from "#lib/snippets/capture/posthog.js?raw";
+import op from "#lib/snippets/capture/openpanel.js?raw";
+import { GetAllAnalyticsData } from "#lib/server/controllers/siteDataController.js";
 
 import type { RequestHandler } from "./$types";
 

@@ -77,7 +77,7 @@ export const VerifyPassword = async (plainTextPassword: string, hashedPassword: 
     throw err;
   }
 };
-import type { TokenPayload } from "$lib/server/types/auth.js";
+import type { TokenPayload } from "#lib/server/types/auth.js";
 import type { SMTPConfiguration } from "../notification/types";
 
 export const VerifyToken = async (token: string): Promise<TokenPayload | undefined> => {

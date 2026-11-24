@@ -1,38 +1,38 @@
 <script lang="ts">
-  import { page } from "$app/stores";
+  import { page } from "$app/state";
   import { goto } from "$app/navigation";
   import { onMount } from "svelte";
   import { toast } from "svelte-sonner";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import { Textarea } from "$lib/components/ui/textarea/index.js";
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
-  import { Badge } from "$lib/components/ui/badge/index.js";
-  import { Checkbox } from "$lib/components/ui/checkbox/index.js";
-  import { Switch } from "$lib/components/ui/switch/index.js";
-  import * as Card from "$lib/components/ui/card/index.js";
-  import * as Select from "$lib/components/ui/select/index.js";
-  import * as AlertDialog from "$lib/components/ui/alert-dialog/index.js";
-  import * as Breadcrumb from "$lib/components/ui/breadcrumb/index.js";
-  import * as Popover from "$lib/components/ui/popover/index.js";
-  import * as Command from "$lib/components/ui/command/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import { Textarea } from "#lib/components/ui/textarea/index.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
+  import { Badge } from "#lib/components/ui/badge/index.js";
+  import { Checkbox } from "#lib/components/ui/checkbox/index.js";
+  import { Switch } from "#lib/components/ui/switch/index.js";
+  import * as Card from "#lib/components/ui/card/index.js";
+  import * as Select from "#lib/components/ui/select/index.js";
+  import * as AlertDialog from "#lib/components/ui/alert-dialog/index.js";
+  import * as Breadcrumb from "#lib/components/ui/breadcrumb/index.js";
+  import * as Popover from "#lib/components/ui/popover/index.js";
+  import * as Command from "#lib/components/ui/command/index.js";
   import ArrowLeftIcon from "@lucide/svelte/icons/arrow-left";
   import TrashIcon from "@lucide/svelte/icons/trash";
   import ChevronsUpDownIcon from "@lucide/svelte/icons/chevrons-up-down";
   import CheckIcon from "@lucide/svelte/icons/check";
   import XIcon from "@lucide/svelte/icons/x";
-  import GC from "$lib/global-constants";
+  import GC from "#lib/global-constants.ts";
   import type {
     TriggerRecord,
     MonitorAlertConfigWithTriggers,
     AlertForType,
     AlertSeverityType,
     YesNoType
-  } from "$lib/server/types/db";
+  } from "#lib/server/types/db.ts";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
-  import { getAlertText } from "$lib/alerts/alert-text";
+  import clientResolver from "#lib/client/resolver.js";
+  import { getAlertText } from "#lib/alerts/alert-text.ts";
 
   let { data } = $props();
   const alertConfigId = $derived(data.alert_config_id);
@@ -325,11 +325,10 @@
                   <Command.Empty>No monitors found.</Command.Empty>
                   <Command.Group>
                     {#each monitors as monitor (monitor.tag)}
-                      <Command.Item
-                        value={monitor.name}
-                        onSelect={() => toggleMonitor(monitor.tag)}
-                      >
-                        <CheckIcon class="size-4 {form.monitor_tags.includes(monitor.tag) ? 'opacity-100' : 'opacity-0'}" />
+                      <Command.Item value={monitor.name} onSelect={() => toggleMonitor(monitor.tag)}>
+                        <CheckIcon
+                          class="size-4 {form.monitor_tags.includes(monitor.tag) ? 'opacity-100' : 'opacity-0'}"
+                        />
                         {monitor.name}
                       </Command.Item>
                     {/each}
@@ -343,11 +342,7 @@
               {#each form.monitor_tags as tag (tag)}
                 <Badge variant="secondary" class="gap-1 pr-1">
                   {monitors.find((m) => m.tag === tag)?.name || tag}
-                  <button
-                    type="button"
-                    class="hover:bg-muted rounded-sm p-0.5"
-                    onclick={() => toggleMonitor(tag)}
-                  >
+                  <button type="button" class="hover:bg-muted rounded-sm p-0.5" onclick={() => toggleMonitor(tag)}>
                     <XIcon class="size-3" />
                   </button>
                 </Badge>
@@ -540,10 +535,9 @@
           <Card.Description>Irreversible actions for this alert configuration.</Card.Description>
         </Card.Header>
         <Card.Content>
-          <Button variant="destructive" onclick={() => (deleteDialogOpen = true)}>
-            <TrashIcon class="size-4" />
-            Delete Alert
-          </Button>
+          <Button variant="destructive" onclick={() => (deleteDialogOpen = true)}
+            ><TrashIcon class="size-4" /> Delete Alert</Button
+          >
         </Card.Content>
       </Card.Root>
     {/if}

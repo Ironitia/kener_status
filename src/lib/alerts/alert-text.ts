@@ -1,4 +1,4 @@
-import GC from "$lib/global-constants";
+import GC from "#lib/global-constants.ts";
 
 type AlertTextKind = "label" | "help" | "description";
 

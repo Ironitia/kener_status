@@ -1,18 +1,18 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Input } from "$lib/components/ui/input/index.js";
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
-  import { Label } from "$lib/components/ui/label/index.js";
-  import { Switch } from "$lib/components/ui/switch/index.js";
-  import * as Card from "$lib/components/ui/card/index.js";
-  import * as Table from "$lib/components/ui/table/index.js";
-  import * as Dialog from "$lib/components/ui/dialog/index.js";
-  import * as Alert from "$lib/components/ui/alert/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Input } from "#lib/components/ui/input/index.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
+  import { Label } from "#lib/components/ui/label/index.js";
+  import { Switch } from "#lib/components/ui/switch/index.js";
+  import * as Card from "#lib/components/ui/card/index.js";
+  import * as Table from "#lib/components/ui/table/index.js";
+  import * as Dialog from "#lib/components/ui/dialog/index.js";
+  import * as Alert from "#lib/components/ui/alert/index.js";
   import { toast } from "svelte-sonner";
-  import LocalTime from "$lib/components/LocalTime.svelte";
+  import LocalTime from "#lib/components/LocalTime.svelte";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
+  import clientResolver from "#lib/client/resolver.js";
   import { page as pageData } from "$app/state";
   import Bell from "@lucide/svelte/icons/bell";
   import PlusIcon from "@lucide/svelte/icons/plus";
@@ -24,7 +24,7 @@
   import Mail from "@lucide/svelte/icons/mail";
   import Rss from "@lucide/svelte/icons/rss";
 
-  import type { SubscriptionsConfig } from "$lib/server/types/db.js";
+  import type { SubscriptionsConfig } from "#lib/server/types/db.js";
   import AlertCircleIcon from "@lucide/svelte/icons/octagon-alert";
 
   // Config state
@@ -437,8 +437,8 @@
                 <div class="space-y-0.5">
                   <Label for="enable-rss-feed" class="mb-0">Show RSS feed link</Label>
                   <p class="text-muted-foreground text-xs">
-                    Adds an RSS icon to the public page header. The feed routes
-                    (<code class="text-xs">/rss.xml</code>) remain reachable either way.
+                    Adds an RSS icon to the public page header. The feed routes (<code class="text-xs">/rss.xml</code>)
+                    remain reachable either way.
                   </p>
                 </div>
                 <Switch

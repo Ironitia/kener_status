@@ -1,6 +1,6 @@
 <script lang="ts">
-  import type { DocsPage } from "$lib/types/docs";
-  import { base } from "$app/paths";
+  import type { DocsPage } from "#lib/types/docs.ts";
+  import { resolve } from "$app/paths";
   import ChevronLeft from "@lucide/svelte/icons/chevron-left";
   import ChevronRight from "@lucide/svelte/icons/chevron-right";
   interface Props {
@@ -11,7 +11,7 @@
   let { prevPage, nextPage }: Props = $props();
 
   function getHref(slug: string): string {
-    return `${base}/docs/${slug}`;
+    return resolve(`docs/${slug}`);
   }
 </script>
 

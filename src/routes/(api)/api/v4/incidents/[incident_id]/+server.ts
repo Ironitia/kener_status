@@ -1,5 +1,5 @@
 import { json, type RequestHandler } from "@sveltejs/kit";
-import db from "$lib/server/db/db";
+import db from "#lib/server/db/db.ts";
 import type {
   GetIncidentResponse,
   UpdateIncidentRequest,
@@ -7,18 +7,18 @@ import type {
   DeleteIncidentResponse,
   IncidentDetailResponse,
   BadRequestResponse,
-} from "$lib/types/api";
-import { GetMinuteStartTimestampUTC, parseDbTimestamp } from "$lib/server/tool";
-import { GetSiteURL } from "$lib/server/controllers/siteDataController";
+} from "#lib/types/api.ts";
+import { GetMinuteStartTimestampUTC, parseDbTimestamp } from "#lib/server/tool.ts";
+import { GetSiteURL } from "#lib/server/controllers/siteDataController.ts";
 import {
   AddIncidentMonitor,
   ClearIncidentEndTime,
   DeleteIncident,
   RemoveIncidentMonitor,
   UpdateIncident,
-} from "$lib/server/controllers/incidentController";
-import serverResolver from "$lib/server/resolver";
-import { readRequestBody } from "$lib/server/requestBody";
+} from "#lib/server/controllers/incidentController.ts";
+import serverResolver from "#lib/server/resolver.ts";
+import { readRequestBody } from "#lib/server/requestBody.ts";
 
 async function buildIncidentResponse(incidentId: number): Promise<IncidentDetailResponse | null> {
   const incident = await db.getIncidentById(incidentId);

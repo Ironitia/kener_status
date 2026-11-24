@@ -16,10 +16,10 @@ const { db, rows } = vi.hoisted(() => {
     },
   };
 });
-vi.mock("$lib/server/db/db", () => ({ default: db }));
+vi.mock("#lib/server/db/db.ts", () => ({ default: db }));
 
 import { GET, POST } from "./+server";
-import { HEARTBEAT_SECRET_RULE } from "$lib/anywhere";
+import { HEARTBEAT_SECRET_RULE } from "#lib/anywhere.ts";
 
 const post = (body: Record<string, unknown>) =>
   POST({

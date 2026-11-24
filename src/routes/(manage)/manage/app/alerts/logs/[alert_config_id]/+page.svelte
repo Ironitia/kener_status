@@ -1,14 +1,14 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import { onMount } from "svelte";
-  import { Button } from "$lib/components/ui/button/index.js";
-  import { Spinner } from "$lib/components/ui/spinner/index.js";
-  import { Badge } from "$lib/components/ui/badge/index.js";
-  import { Checkbox } from "$lib/components/ui/checkbox/index.js";
-  import * as Table from "$lib/components/ui/table/index.js";
-  import * as Select from "$lib/components/ui/select/index.js";
-  import * as Breadcrumb from "$lib/components/ui/breadcrumb/index.js";
-  import * as AlertDialog from "$lib/components/ui/alert-dialog/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import { Spinner } from "#lib/components/ui/spinner/index.js";
+  import { Badge } from "#lib/components/ui/badge/index.js";
+  import { Checkbox } from "#lib/components/ui/checkbox/index.js";
+  import * as Table from "#lib/components/ui/table/index.js";
+  import * as Select from "#lib/components/ui/select/index.js";
+  import * as Breadcrumb from "#lib/components/ui/breadcrumb/index.js";
+  import * as AlertDialog from "#lib/components/ui/alert-dialog/index.js";
   import ChevronLeftIcon from "@lucide/svelte/icons/chevron-left";
   import ChevronRightIcon from "@lucide/svelte/icons/chevron-right";
   import ArrowLeftIcon from "@lucide/svelte/icons/arrow-left";
@@ -16,10 +16,10 @@
   import BellOffIcon from "@lucide/svelte/icons/bell-off";
   import TrashIcon from "@lucide/svelte/icons/trash";
   import { toast } from "svelte-sonner";
-  import LocalTime from "$lib/components/LocalTime.svelte";
-  import type { MonitorAlertConfigWithTriggers, MonitorAlertV2WithConfig } from "$lib/server/types/db";
+  import LocalTime from "#lib/components/LocalTime.svelte";
+  import type { MonitorAlertConfigWithTriggers, MonitorAlertV2WithConfig } from "#lib/server/types/db.ts";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
+  import clientResolver from "#lib/client/resolver.js";
   let { data } = $props();
   const alertConfigId = $derived(data.alert_config_id);
 

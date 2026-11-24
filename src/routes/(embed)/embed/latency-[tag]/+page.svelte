@@ -2,12 +2,12 @@
   import { onMount } from "svelte";
   import { setMode } from "mode-watcher";
   import { resolve } from "$app/paths";
-  import LatencyTrendChart from "$lib/components/LatencyTrendChart.svelte";
-  import { Skeleton } from "$lib/components/ui/skeleton/index.js";
-  import type { MonitorBarResponse } from "$lib/server/api-server/monitor-bar/get";
-  import type { TimestampStatusCount } from "$lib/server/types/db";
-  import { t } from "$lib/stores/i18n";
-  import clientResolver from "$lib/client/resolver.js";
+  import LatencyTrendChart from "#lib/components/LatencyTrendChart.svelte";
+  import { Skeleton } from "#lib/components/ui/skeleton/index.js";
+  import type { MonitorBarResponse } from "#lib/server/api-server/monitor-bar/get.ts";
+  import type { TimestampStatusCount } from "#lib/server/types/db.ts";
+  import { t } from "#lib/stores/i18n.ts";
+  import clientResolver from "#lib/client/resolver.js";
   interface Props {
     data: {
       monitorTag: string;

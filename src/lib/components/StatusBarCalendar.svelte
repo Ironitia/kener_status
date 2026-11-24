@@ -2,12 +2,12 @@
   import { onMount } from "svelte";
   import { mode } from "mode-watcher";
   import { page } from "$app/state";
-  import { GetStatusSummary, ParseLatency } from "$lib/clientTools";
-  import MonitorDayDetail from "$lib/components/MonitorDayDetail.svelte";
-  import type { TimestampStatusCount } from "$lib/server/types/db";
-  import { t } from "$lib/stores/i18n";
-  import { formatDate } from "$lib/stores/datetime";
-  import trackEvent from "$lib/beacon";
+  import { GetStatusSummary, ParseLatency } from "#lib/clientTools.ts";
+  import MonitorDayDetail from "#lib/components/MonitorDayDetail.svelte";
+  import type { TimestampStatusCount } from "#lib/server/types/db.ts";
+  import { t } from "#lib/stores/i18n.ts";
+  import { formatDate } from "#lib/stores/datetime.ts";
+  import trackEvent from "#lib/beacon.ts";
 
   interface Props {
     data: TimestampStatusCount[];

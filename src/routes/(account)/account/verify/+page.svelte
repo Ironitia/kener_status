@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { Button } from "$lib/components/ui/button/index.js";
-  import * as Card from "$lib/components/ui/card/index.js";
+  import { Button } from "#lib/components/ui/button/index.js";
+  import * as Card from "#lib/components/ui/card/index.js";
   import AlertCircleIcon from "@lucide/svelte/icons/alert-circle";
   import ArrowLeftIcon from "@lucide/svelte/icons/arrow-left";
   import { resolve } from "$app/paths";
-  import clientResolver from "$lib/client/resolver.js";
+  import clientResolver from "#lib/client/resolver.js";
 
   const { data } = $props();
   const error: string = $derived(data.error || "Invalid verification link.");

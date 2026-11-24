@@ -1,23 +1,23 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-vi.mock("$lib/server/db/db", () => ({
+vi.mock("#lib/server/db/db.ts", () => ({
   default: {
     getMonitors: vi.fn().mockResolvedValue([]),
   },
 }));
 
-vi.mock("$lib/server/controllers/monitorsController", () => ({
+vi.mock("#lib/server/controllers/monitorsController.ts", () => ({
   GetLatestMonitoringDataAllActive: vi.fn().mockResolvedValue([]),
   GetStatusCountsByIntervalGroupedByMonitor: vi.fn().mockResolvedValue([]),
 }));
 
-vi.mock("$lib/server/controllers/userController", () => ({
+vi.mock("#lib/server/controllers/userController.ts", () => ({
   GetLoggedInSession: vi.fn().mockResolvedValue(null),
   CanSeeHiddenMonitors: vi.fn().mockResolvedValue(false),
 }));
 
-import { GetStatusCountsByIntervalGroupedByMonitor } from "$lib/server/controllers/monitorsController";
-import type { APIServerRequest } from "$lib/server/types/api-server";
+import { GetStatusCountsByIntervalGroupedByMonitor } from "#lib/server/controllers/monitorsController.ts";
+import type { APIServerRequest } from "#lib/server/types/api-server.ts";
 import get from "./get";
 
 const mockedCounts = vi.mocked(GetStatusCountsByIntervalGroupedByMonitor);
