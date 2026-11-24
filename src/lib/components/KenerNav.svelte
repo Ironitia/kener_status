@@ -43,9 +43,11 @@
         onclick={trackBrandClick}
       >
         {#if logo}
-          <img src={clientResolver(resolve, logo)} alt={siteName} class="mr-2 h-6 w-6 rounded-full object-cover" />
+          <img src={clientResolver(resolve, logo)} alt={siteName} class="h-6 w-auto max-w-24 object-contain" />
+          <span class="sr-only">{siteName}</span>
+        {:else}
+          {siteName}
         {/if}
-        {siteName}
       </a>
 
       <!-- Desktop Nav Links -->
