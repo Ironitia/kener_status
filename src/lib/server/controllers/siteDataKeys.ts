@@ -197,6 +197,11 @@ export const siteDataKeys: SiteDataKey[] = [
     data_type: "string",
   },
   {
+    key: "analytics.matomo",
+    isValid: IsValidJSONString,
+    data_type: "object",
+  },
+  {
     key: "analytics.googleTagManager",
     isValid: IsValidJSONString,
     data_type: "object",

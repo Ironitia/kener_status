@@ -4,6 +4,23 @@
 
   const analyticsProviders: ProviderDefinition[] = [
     {
+      label: "Matomo (self-hosted)",
+      logo: "/matomo.png",
+      key: "analytics.matomo",
+      isEnabled: false,
+      activeInSite: false,
+      requirements: [
+        {
+          label: "Matomo URL",
+          type: "text",
+          placeholder: "https://status.example.com/matomo/",
+          required: true,
+          value: "https://status.diamy.fr/matomo/"
+        },
+        { label: "Site ID", type: "text", placeholder: "1", required: true, value: "1" }
+      ]
+    },
+    {
       label: "Google Analytics",
       logo: "/ga.png",
       key: "analytics.googleTagManager",

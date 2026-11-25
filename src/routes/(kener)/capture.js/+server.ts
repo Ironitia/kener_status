@@ -7,6 +7,7 @@ import mscl from "#lib/snippets/capture/clarity.js?raw";
 import um from "#lib/snippets/capture/umami.js?raw";
 import ph from "#lib/snippets/capture/posthog.js?raw";
 import op from "#lib/snippets/capture/openpanel.js?raw";
+import matomo from "#lib/snippets/capture/matomo.js?raw";
 import { GetAllAnalyticsData } from "#lib/server/controllers/siteDataController.js";
 
 import type { RequestHandler } from "./$types";
@@ -43,6 +44,15 @@ export const GET: RequestHandler = async ({ params, url }) => {
   }
 
   let captureScript = "";
+
+  if (!!analyticsData["analytics.matomo"]) {
+    let matomoUrl = analyticsData["analytics.matomo"].requirements["Matomo URL"];
+    let siteId = analyticsData["analytics.matomo"].requirements["Site ID"];
+    captureScript =
+      captureScript +
+      ";\n" +
+      matomo.replaceAll("{{matomo_url}}", matomoUrl).replaceAll("{{site_id}}", siteId);
+  }
 
   if (!!analyticsData["analytics.googleTagManager"]) {
     let id = analyticsData["analytics.googleTagManager"].requirements["Measurement ID"];

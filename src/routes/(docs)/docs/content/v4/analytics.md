@@ -15,6 +15,7 @@ Paste keys and URLs exactly as your provider shows them. Kener escapes every val
 
 | Provider          | Key                          |
 | ----------------- | ---------------------------- |
+| Matomo            | `analytics.matomo`            |
 | Google Analytics  | `analytics.googleTagManager` |
 | Plausible         | `analytics.plausible`        |
 | Mixpanel          | `analytics.mixpanel`         |
@@ -23,6 +24,21 @@ Paste keys and URLs exactly as your provider shows them. Kener escapes every val
 | Umami             | `analytics.umami`            |
 | PostHog           | `analytics.posthog`          |
 | OpenPanel         | `analytics.openpanel`        |
+
+---
+
+## Matomo {#matomo}
+
+Open-source analytics that can be hosted on your own infrastructure.
+
+| Field      | Required | Example                             |
+| ---------- | -------- | ----------------------------------- |
+| Matomo URL | Yes      | `https://status.example.com/matomo/` |
+| Site ID    | Yes      | `1`                                 |
+
+**Matomo URL** is the public base URL of your Matomo installation. Kener normalizes the trailing slash and loads `matomo.js` from that location. **Site ID** is the numeric website identifier shown in Matomo under **Administration → Websites → Manage**.
+
+The browser records the initial status-page view, link tracking and Kener's custom `analyticsEvent` events. The Matomo administration interface may remain IP-restricted as long as the `matomo.js` and `matomo.php` tracking endpoints are publicly reachable.
 
 ---
 

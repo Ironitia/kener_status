@@ -13,6 +13,36 @@ function enable(key: string, requirements: Record<string, string>) {
   vi.mocked(GetAllAnalyticsData).mockResolvedValue([{ key, value: { isEnabled: true, requirements } }]);
 }
 
+describe("GET /capture.js — Matomo", () => {
+  it("loads the self-hosted tracker and forwards Kener analytics events", async () => {
+    enable("analytics.matomo", {
+      "Matomo URL": "https://status.diamy.fr/matomo/",
+      "Site ID": "1",
+    });
+    const res = await call();
+    const body = await res.text();
+    expect(res.headers.get("Content-Type")).toBe("application/javascript");
+    expect(res.headers.get("Cache-Control")).toBe("no-cache");
+    expect(body).toContain('setTrackerUrl", matomoBaseUrl + "matomo.php"');
+    expect(body).toContain('setSiteId", "1"');
+    expect(body).toContain('script.src = matomoBaseUrl + "matomo.js"');
+    expect(body).toContain('window.addEventListener("analyticsEvent"');
+    expect(body).not.toContain("{{");
+    expect(() => new Function(body)).not.toThrow();
+  });
+
+  it("normalizes a Matomo URL without a trailing slash and safely escapes values", async () => {
+    enable("analytics.matomo", {
+      "Matomo URL": 'https://analytics.example.com/root"quoted',
+      "Site ID": '1"; alert(1); //',
+    });
+    const body = await (await call()).text();
+    expect(body).toContain('const configuredUrl = "https://analytics.example.com/root\\"quoted"');
+    expect(body).toContain('"1\\"; alert(1); //"');
+    expect(() => new Function(body)).not.toThrow();
+  });
+});
+
 describe("GET /capture.js — OpenPanel", () => {
   it("substitutes every placeholder from the saved requirements", async () => {
     enable("analytics.openpanel", {
