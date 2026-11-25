@@ -31,7 +31,7 @@ const DEFAULT_OPTIONS: ProtectionOptions = {
 
 export function createProtection(secret: string, options: ProtectionOptions = DEFAULT_OPTIONS) {
   if (secret.length < 32) {
-    throw new Error("ALTCHA_HMAC_SECRET must contain at least 32 characters");
+    throw new Error("ALTCHA secret key must contain at least 32 characters");
   }
 
   const keySecret = deriveHmacKeySecret(secret);
@@ -127,16 +127,6 @@ export function createProtection(secret: string, options: ProtectionOptions = DE
   return { challenge, verify };
 }
 
-let protection: ReturnType<typeof createProtection> | undefined;
-
-export function getProtection() {
-  return (protection ??= createProtection(process.env.ALTCHA_HMAC_SECRET ?? ""));
-}
-
-export function clientAddress(request: Request) {
-  return request.headers.get("x-real-ip")?.slice(0, 64) || "local";
-}
-
-export async function verifyAltchaForm(formData: FormData, request: Request) {
-  await getProtection().verify(formData.get("altcha"), clientAddress(request));
+export function clientAddress(headers?: Headers) {
+  return headers?.get("x-real-ip")?.slice(0, 64) || "local";
 }

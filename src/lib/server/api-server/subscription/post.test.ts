@@ -46,7 +46,7 @@ describe("POST /dashboard-apis/subscription — login action", () => {
     const response = await post({ body: { action: "login", email: "a@b.com", captchaToken: "good" } } as any);
 
     expect(response.status).toBe(200);
-    expect(VerifyCaptchaToken).toHaveBeenCalledWith("good");
+    expect(VerifyCaptchaToken).toHaveBeenCalledWith("good", "local");
     expect(SubscriberLogin).toHaveBeenCalledWith("a@b.com");
   });
 
@@ -59,7 +59,7 @@ describe("POST /dashboard-apis/subscription — login action", () => {
     const response = await post({ body: { action: "login", email: "a@b.com" } } as any);
 
     expect(response.status).toBe(200);
-    expect(VerifyCaptchaToken).toHaveBeenCalledWith(undefined);
+    expect(VerifyCaptchaToken).toHaveBeenCalledWith(undefined, "local");
   });
 
   it("passes an explicit JSON null captchaToken through unchanged (not coerced to undefined)", async () => {
@@ -71,6 +71,6 @@ describe("POST /dashboard-apis/subscription — login action", () => {
     const response = await post({ body: { action: "login", email: "a@b.com", captchaToken: null } } as any);
 
     expect(response.status).toBe(200);
-    expect(VerifyCaptchaToken).toHaveBeenCalledWith(null);
+    expect(VerifyCaptchaToken).toHaveBeenCalledWith(null, "local");
   });
 });

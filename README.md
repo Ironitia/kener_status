@@ -177,16 +177,10 @@ Create a `.env` with at least:
 
 ```dotenv
 KENER_SECRET_KEY=replace_with_a_random_string
-ALTCHA_HMAC_SECRET=replace_with_a_different_random_string_of_at_least_32_characters
 ORIGIN=http://localhost:3000
 REDIS_URL=redis://localhost:6379
 PORT=3000
 ```
-
-`ALTCHA_HMAC_SECRET` signs the self-hosted anti-spam challenges used by the local
-sign-in, first-admin registration, and password-reset forms. Generate a unique
-secret for each deployment; do not reuse `KENER_SECRET_KEY` or a secret from
-another site.
 
 For the full quick start (including local Docker builds and dev mode), see the docs:
 

@@ -3,6 +3,7 @@ import type { APIServerRequest } from "#lib/server/types/api-server.ts";
 import type { SubscriptionsConfig } from "#lib/server/types/db.js";
 import { GetSiteDataByKey } from "#lib/server/controllers/siteDataController.ts";
 import { VerifyCaptchaToken } from "#lib/server/controllers/captchaController.ts";
+import { clientAddress } from "#lib/server/altcha.ts";
 import {
   SubscriberLogin,
   VerifySubscriberOTP,
@@ -53,7 +54,12 @@ export default async function post(req: APIServerRequest): Promise<Response> {
 
   switch (action) {
     case "login":
-      return handleLogin((body as LoginRequest).email, (body as LoginRequest).captchaToken, config);
+      return handleLogin(
+        (body as LoginRequest).email,
+        (body as LoginRequest).captchaToken,
+        config,
+        clientAddress(req.headers),
+      );
     case "verify":
       return handleVerify((body as VerifyRequest).email, (body as VerifyRequest).code);
     case "getPreferences":
@@ -82,8 +88,9 @@ async function handleLogin(
   email: string,
   captchaToken: string | null | undefined,
   config: SubscriptionsConfig,
+  clientIp: string,
 ): Promise<Response> {
-  const captchaResult = await VerifyCaptchaToken(captchaToken);
+  const captchaResult = await VerifyCaptchaToken(captchaToken, clientIp);
   if (!captchaResult.success) {
     return error(400, "Captcha verification failed");
   }

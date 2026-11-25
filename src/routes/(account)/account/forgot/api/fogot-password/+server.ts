@@ -5,20 +5,16 @@ import db from "#lib/server/db/db.js";
 import { GetGeneralEmailTemplateById } from "#lib/server/controllers/generalTemplateController.ts";
 import { siteDataToVariables } from "#lib/server/notification/notification_utils.ts";
 import sendEmail from "#lib/server/notification/email_notification.js";
-import { AltchaError, clientAddress, getProtection } from "#lib/server/altcha.ts";
+import { clientAddress } from "#lib/server/altcha.ts";
+import { VerifyCaptchaToken } from "#lib/server/controllers/captchaController.ts";
 
 export const POST: RequestHandler = async ({ request }) => {
   const body = await request.json();
-  const { email, altcha } = body;
+  const { email, captchaToken } = body;
 
-  try {
-    await getProtection().verify(altcha, clientAddress(request));
-  } catch (error) {
-    const status = error instanceof AltchaError ? error.status : 503;
-    return json(
-      { error: error instanceof AltchaError ? error.message : "Anti-spam verification is unavailable." },
-      { status },
-    );
+  const captcha = await VerifyCaptchaToken(captchaToken, clientAddress(request.headers));
+  if (!captcha.success) {
+    return json({ error: "Captcha verification failed. Please try again." }, { status: 403 });
   }
 
   if (!email) {

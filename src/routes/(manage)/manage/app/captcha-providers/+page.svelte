@@ -4,6 +4,22 @@
 
   const captchaProviders: ProviderDefinition[] = [
     {
+      label: "ALTCHA (self-hosted)",
+      key: "captcha.altcha",
+      isEnabled: false,
+      activeInSite: false,
+      requirements: [
+        {
+          label: "Secret Key",
+          type: "password",
+          placeholder: "At least 32 random characters",
+          required: true,
+          minLength: 32,
+          value: ""
+        }
+      ]
+    },
+    {
       label: "hCaptcha",
       logo: "/hcaptcha.png",
       key: "captcha.hcaptcha",
@@ -53,7 +69,7 @@
 
 <ProviderSettingsPanel
   initialProviders={captchaProviders}
-  description="Add your CAPTCHA provider Site Key/Secret Key here. Only one provider can be active at a time."
+  description="Configure a CAPTCHA provider here. ALTCHA is self-hosted and only needs a private secret key. Only one provider can be active at a time."
   learnMoreUrl="https://kener.ing/docs/v4/captcha"
   enforceSingleActive
 />

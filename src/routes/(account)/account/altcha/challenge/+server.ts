@@ -1,10 +1,11 @@
 import { json } from "@sveltejs/kit";
 import type { RequestHandler } from "./$types";
-import { AltchaError, clientAddress, getProtection } from "#lib/server/altcha.ts";
+import { AltchaError, clientAddress } from "#lib/server/altcha.ts";
+import { CreateAltchaChallenge } from "#lib/server/controllers/captchaController.ts";
 
 export const GET: RequestHandler = async ({ request }) => {
   try {
-    return json(await getProtection().challenge(clientAddress(request)), {
+    return json(await CreateAltchaChallenge(clientAddress(request.headers)), {
       headers: { "Cache-Control": "no-store" },
     });
   } catch (error) {

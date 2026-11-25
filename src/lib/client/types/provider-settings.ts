@@ -3,6 +3,7 @@ export interface ProviderRequirement {
   type: string;
   placeholder: string;
   required: boolean;
+  minLength?: number;
   value: string;
 }
 

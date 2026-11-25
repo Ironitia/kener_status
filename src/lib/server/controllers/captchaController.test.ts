@@ -3,7 +3,14 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 const { GetAllCaptchaData } = vi.hoisted(() => ({ GetAllCaptchaData: vi.fn() }));
 vi.mock("./siteDataController.js", () => ({ GetAllCaptchaData }));
 
-import { GetActiveCaptchaProvider, GetPublicCaptchaConfig, VerifyCaptchaToken } from "./captchaController";
+import {
+  CreateAltchaChallenge,
+  GetActiveCaptchaProvider,
+  GetPublicCaptchaConfig,
+  VerifyCaptchaToken,
+} from "./captchaController";
+
+const ALTCHA_SECRET = "test-altcha-secret-with-more-than-thirty-two-characters";
 
 describe("captchaController", () => {
   afterEach(() => {
@@ -58,6 +65,19 @@ describe("captchaController", () => {
       expect(JSON.stringify(config)).not.toContain("secret-xyz");
     });
 
+    it("exposes ALTCHA as self-hosted without exposing its secret", async () => {
+      GetAllCaptchaData.mockResolvedValue([
+        {
+          key: "captcha.altcha",
+          value: { isEnabled: true, requirements: { "Secret Key": ALTCHA_SECRET } },
+        },
+      ]);
+
+      const config = await GetPublicCaptchaConfig();
+      expect(config).toEqual({ provider: "altcha", siteKey: null, misconfigured: false });
+      expect(JSON.stringify(config)).not.toContain(ALTCHA_SECRET);
+    });
+
     // The pair that used to disagree: VerifyCaptchaToken fails closed here, so
     // the public config must not report this state as "captcha off" — that
     // combination dead-ended the subscribe form with no challenge to solve.
@@ -69,6 +89,18 @@ describe("captchaController", () => {
   });
 
   describe("VerifyCaptchaToken", () => {
+    it("creates a self-hosted ALTCHA challenge and rejects an invalid proof", async () => {
+      GetAllCaptchaData.mockResolvedValue([
+        {
+          key: "captcha.altcha",
+          value: { isEnabled: true, requirements: { "Secret Key": ALTCHA_SECRET } },
+        },
+      ]);
+      const challenge = await CreateAltchaChallenge("192.0.2.40");
+      expect(challenge).toMatchObject({ signature: expect.any(String) });
+      expect(await VerifyCaptchaToken("not-a-proof", "192.0.2.40")).toEqual({ success: false });
+    });
+
     it("passes with no token when no provider is configured", async () => {
       GetAllCaptchaData.mockResolvedValue([]);
       expect(await VerifyCaptchaToken(undefined)).toEqual({ success: true });

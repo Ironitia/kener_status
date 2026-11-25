@@ -1,21 +1,36 @@
 ---
 title: Captcha
-description: Protect the public subscribe form from automated abuse with a CAPTCHA provider
+description: Protect public account and subscribe forms from automated abuse with a CAPTCHA provider
 ---
 
-Kener can require a CAPTCHA challenge before sending subscribe verification emails. Go to **Manage → Captcha Providers** to configure any of the supported providers.
+Kener can require a CAPTCHA challenge on local sign-in, first-admin registration,
+password reset, and before sending subscribe verification emails. Go to
+**Manage → Captcha Providers** to configure any of the supported providers.
 
 ## How it works {#how-it-works}
 
-When a provider is enabled, Kener renders its widget on the public subscribe form and verifies the solved token server-side before sending the OTP email. Only one provider can be active at a time — enabling one disables the others. With no provider enabled, the subscribe form works as before.
+When a provider is enabled, Kener renders its widget on the protected forms and
+verifies the solved token server-side before continuing. Only one provider can
+be active at a time — enabling one disables the others. With no provider enabled,
+the forms work as before.
 
 ## Supported providers {#supported-providers}
 
 | Provider             | Key                 |
 | --------------------- | -------------------- |
+| ALTCHA (self-hosted)  | `captcha.altcha`     |
 | hCaptcha              | `captcha.hcaptcha`   |
 | Google reCAPTCHA      | `captcha.recaptcha`  |
 | Cloudflare Turnstile  | `captcha.turnstile`  |
+
+---
+
+## ALTCHA (self-hosted) {#altcha}
+
+ALTCHA runs entirely on the Kener instance and does not send visitors to a
+third-party CAPTCHA service. Generate a unique random **Secret Key** containing
+at least 32 characters, save it, and enable the provider. Do not reuse another
+application secret.
 
 ---
 
@@ -56,7 +71,7 @@ Add a widget in the [Cloudflare dashboard](https://dash.cloudflare.com/?to=/:acc
 
 1. Go to **Manage → Captcha Providers**.
 2. Select the provider from the left panel.
-3. Fill in the **Site Key** and **Secret Key**.
+3. Fill in the requested fields. ALTCHA only needs a **Secret Key**; external providers need both keys.
 4. Set **Status** to **Enable**.
 5. Click **Save Changes**.
 

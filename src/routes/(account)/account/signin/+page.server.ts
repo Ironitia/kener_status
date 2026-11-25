@@ -10,7 +10,8 @@ import { VerifyPassword, GenerateToken, CookieConfig } from "#lib/server/control
 import { GetOidcSettings } from "#lib/server/controllers/oidcController.ts";
 import serverResolve from "#lib/server/resolver.js";
 import GC from "#lib/global-constants.ts";
-import { AltchaError, verifyAltchaForm } from "#lib/server/altcha.ts";
+import { clientAddress } from "#lib/server/altcha.ts";
+import { VerifyCaptchaToken } from "#lib/server/controllers/captchaController.ts";
 
 // oidc_error carries a code, never free text; anything unknown gets the generic message.
 const OIDC_ERROR_MESSAGES: Record<string, string> = {
@@ -60,14 +61,12 @@ export const actions: Actions = {
     const email = String(formData.get("email") ?? "").trim();
     const password = String(formData.get("password") ?? "");
 
-    try {
-      await verifyAltchaForm(formData, request);
-    } catch (error) {
-      const status = error instanceof AltchaError ? error.status : 503;
-      return fail(status, {
-        error: error instanceof AltchaError ? error.message : "Anti-spam verification is unavailable.",
-        values: { email },
-      });
+    const captcha = await VerifyCaptchaToken(
+      String(formData.get("captchaToken") ?? "") || null,
+      clientAddress(request.headers),
+    );
+    if (!captcha.success) {
+      return fail(403, { error: "Captcha verification failed. Please try again.", values: { email } });
     }
 
     if (!email || !password) {
@@ -143,14 +142,12 @@ export const actions: Actions = {
     const email = String(formData.get("email") ?? "").trim();
     const password = String(formData.get("password") ?? "");
 
-    try {
-      await verifyAltchaForm(formData, request);
-    } catch (error) {
-      const status = error instanceof AltchaError ? error.status : 503;
-      return fail(status, {
-        error: error instanceof AltchaError ? error.message : "Anti-spam verification is unavailable.",
-        values: { name, email },
-      });
+    const captcha = await VerifyCaptchaToken(
+      String(formData.get("captchaToken") ?? "") || null,
+      clientAddress(request.headers),
+    );
+    if (!captcha.success) {
+      return fail(403, { error: "Captcha verification failed. Please try again.", values: { name, email } });
     }
 
     if (!name || !email || !password) {

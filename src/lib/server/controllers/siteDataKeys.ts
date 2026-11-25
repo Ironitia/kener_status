@@ -237,6 +237,11 @@ export const siteDataKeys: SiteDataKey[] = [
     data_type: "object",
   },
   {
+    key: "captcha.altcha",
+    isValid: IsValidJSONString,
+    data_type: "object",
+  },
+  {
     key: "captcha.hcaptcha",
     isValid: IsValidJSONString,
     data_type: "object",

@@ -211,6 +211,7 @@
                     id={fieldId}
                     placeholder={req.placeholder}
                     required={req.required}
+                    minlength={req.minLength}
                   />
                 </div>
               {/each}

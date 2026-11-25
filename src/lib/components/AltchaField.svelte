@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { resolve } from "$app/paths";
+  import clientResolver from "#lib/client/resolver.js";
   import type {} from "altcha/types/svelte";
 
   interface Props {
@@ -8,7 +9,7 @@
   }
 
   let { onVerified }: Props = $props();
-  let widget: HTMLElement;
+  let widget: HTMLElement & { reset?: () => void };
   let loaded = $state(false);
   let failed = $state(false);
 
@@ -35,12 +36,17 @@
       widget?.removeEventListener("statechange", stateChange);
     };
   });
+
+  export function reset() {
+    widget?.reset?.();
+    onVerified(false);
+  }
 </script>
 
 <div class="mt-5" aria-label="Vérification anti-spam">
   <altcha-widget
     bind:this={widget}
-    challenge={resolve("account/altcha/challenge")}
+    challenge={clientResolver(resolve, "/account/altcha/challenge")}
     name="altcha"
     language="fr-fr"
     auto="onload"
