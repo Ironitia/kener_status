@@ -10,6 +10,7 @@ import { VerifyPassword, GenerateToken, CookieConfig } from "#lib/server/control
 import { GetOidcSettings } from "#lib/server/controllers/oidcController.ts";
 import serverResolve from "#lib/server/resolver.js";
 import GC from "#lib/global-constants.ts";
+import { AltchaError, verifyAltchaForm } from "#lib/server/altcha.ts";
 
 // oidc_error carries a code, never free text; anything unknown gets the generic message.
 const OIDC_ERROR_MESSAGES: Record<string, string> = {
@@ -58,6 +59,16 @@ export const actions: Actions = {
     const formData = await request.formData();
     const email = String(formData.get("email") ?? "").trim();
     const password = String(formData.get("password") ?? "");
+
+    try {
+      await verifyAltchaForm(formData, request);
+    } catch (error) {
+      const status = error instanceof AltchaError ? error.status : 503;
+      return fail(status, {
+        error: error instanceof AltchaError ? error.message : "Anti-spam verification is unavailable.",
+        values: { email },
+      });
+    }
 
     if (!email || !password) {
       return fail(400, { error: "Email and password are required", values: { email } });
@@ -131,6 +142,16 @@ export const actions: Actions = {
     const name = String(formData.get("name") ?? "").trim();
     const email = String(formData.get("email") ?? "").trim();
     const password = String(formData.get("password") ?? "");
+
+    try {
+      await verifyAltchaForm(formData, request);
+    } catch (error) {
+      const status = error instanceof AltchaError ? error.status : 503;
+      return fail(status, {
+        error: error instanceof AltchaError ? error.message : "Anti-spam verification is unavailable.",
+        values: { name, email },
+      });
+    }
 
     if (!name || !email || !password) {
       return fail(400, { error: "Email, password, and name are required", values: { name, email } });

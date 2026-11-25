@@ -13,6 +13,7 @@
   import * as Alert from "#lib/components/ui/alert/index.js";
   import type { PageProps } from "./$types";
   import { resolve } from "$app/paths";
+  import AltchaField from "#lib/components/AltchaField.svelte";
 
   let { data, form }: PageProps = $props();
   const isAdminAccountCreated: boolean = $derived(data.isAdminAccountCreated);
@@ -31,6 +32,7 @@
   let loading = $state(false);
   let showPassword = $state(false);
   let password = $state("");
+  let captchaVerified = $state(false);
 </script>
 
 <svelte:head>
@@ -196,8 +198,10 @@
               </Field.Field>
             </Field.Group>
 
+            <AltchaField onVerified={(verified) => (captchaVerified = verified)} />
+
             <div class="mt-6">
-              <Button type="submit" class="w-full" disabled={loading}>
+              <Button type="submit" class="w-full" disabled={loading || !captchaVerified}>
                 {#if loading}
                   {!isAdminAccountCreated ? "Creating Account..." : "Signing In..."}
                 {:else}

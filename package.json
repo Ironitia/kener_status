@@ -128,6 +128,8 @@
     "@scalar/sveltekit": "^0.3.41",
     "@scaleway/random-name": "^5.1.4",
     "@uiw/codemirror-theme-github": "^4.25.3",
+    "altcha": "3.7.0",
+    "altcha-lib": "2.10.0",
     "axios": "^1.21.0",
     "badge-maker": "^5.0.2",
     "bcrypt": "^6.0.0",

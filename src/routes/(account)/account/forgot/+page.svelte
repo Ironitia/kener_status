@@ -13,6 +13,7 @@
   import ArrowLeftIcon from "@lucide/svelte/icons/arrow-left";
   import { resolve } from "$app/paths";
   import clientResolver from "#lib/client/resolver.js";
+  import AltchaField from "#lib/components/AltchaField.svelte";
   const { data } = $props();
 
   const view: string = $derived(data.view);
@@ -23,6 +24,9 @@
   let showConfirmPassword = $state(false);
   let emailSent = $state(false);
   let passwordReset = $state(false);
+  let captchaVerified = $state(false);
+  let captchaPayload = $state("");
+  let captchaAttempt = $state(0);
 
   let email = $state("");
   let newPassword = $state("");
@@ -39,13 +43,16 @@
       const response = await fetch(clientResolver(resolve, "/account/forgot/api/fogot-password"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email })
+        body: JSON.stringify({ email, altcha: captchaPayload })
       });
 
       const data = await response.json();
 
       if (!response.ok) {
         toast.error(data.error || "Failed to send reset email");
+        captchaVerified = false;
+        captchaPayload = "";
+        captchaAttempt += 1;
         return;
       }
 
@@ -53,6 +60,9 @@
       toast.success("Password reset email sent!");
     } catch (e) {
       toast.error("An error occurred. Please try again.");
+      captchaVerified = false;
+      captchaPayload = "";
+      captchaAttempt += 1;
     } finally {
       loading = false;
     }
@@ -203,8 +213,17 @@
               </Field.Field>
             </Field.Group>
 
+            {#key captchaAttempt}
+              <AltchaField
+                onVerified={(verified, payload) => {
+                  captchaVerified = verified;
+                  captchaPayload = verified ? (payload ?? "") : "";
+                }}
+              />
+            {/key}
+
             <div class="mt-6">
-              <Button type="submit" class="w-full" disabled={loading}>
+              <Button type="submit" class="w-full" disabled={loading || !captchaVerified || !captchaPayload}>
                 {#if loading}
                   Resetting Password...
                 {:else}
